@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BattleUnit : MonoBehaviour
 {
-    public string Name;
+    public int level;
+    public string unitName;
     public int maxHP;
     public int currentHP;
     public int attackValue;
