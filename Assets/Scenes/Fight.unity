@@ -153,7 +153,7 @@ Transform:
   m_Children:
   - {fileID: 499243185}
   m_Father: {fileID: 1001660026}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &27785730
 MonoBehaviour:
@@ -412,17 +412,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75029364}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -244.7026}
+  m_LocalScale: {x: 0.018909777, y: 0.018909777, z: 0.018909777}
   m_Children:
   - {fileID: 482234829}
-  m_Father: {fileID: 1001660026}
+  m_Father: {fileID: 214945002}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -264, y: -114}
+  m_AnchoredPosition: {x: 0.030456543, y: -0.0018997192}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &75029366
@@ -468,7 +468,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 75029367}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1588003166}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: OnAttackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &75029367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,16 +546,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127206733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.000282, y: 1.000282, z: 1.000282}
+  m_LocalPosition: {x: 0, y: 0, z: -244.7026}
+  m_LocalScale: {x: 0.01891511, y: 0.01891511, z: 0.01891511}
   m_Children:
   - {fileID: 74979147}
-  m_Father: {fileID: 1001660026}
+  m_Father: {fileID: 214945002}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -264.00003, y: -152.26}
+  m_AnchoredPosition: {x: 0.030456543, y: -0.7253723}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &127206735
@@ -707,6 +719,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206839969}
   m_CullTransparentMesh: 1
+--- !u!1 &214945001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 214945002}
+  m_Layer: 0
+  m_Name: CombatButtons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &214945002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214945001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -207.2, y: -113.9, z: 12940.534}
+  m_LocalScale: {x: 52.882698, y: 52.882698, z: 52.882698}
+  m_Children:
+  - {fileID: 75029365}
+  - {fileID: 127206734}
+  m_Father: {fileID: 1001660026}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &482234828
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +776,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482234828}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1157,8 +1201,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 75029365}
-  - {fileID: 127206734}
+  - {fileID: 214945002}
   - {fileID: 27785729}
   - {fileID: 1674505353}
   m_Father: {fileID: 0}
@@ -1201,7 +1244,9 @@ MonoBehaviour:
   playerPrefab: {fileID: 6681134252212794779, guid: 13a0ddf19e7079e4daae682e3d50cb60, type: 3}
   enemyPrefab: {fileID: 4429221161773916493, guid: ca4958f746bc4084f8c5561d8796f7bc, type: 3}
   playerHUD: {fileID: 1674505354}
-  enemeyHUD: {fileID: 27785730}
+  enemyHUD: {fileID: 27785730}
+  attackButton: {fileID: 75029366}
+  healButton: {fileID: 127206735}
   state: 0
 --- !u!4 &1588003167
 Transform:
@@ -1247,7 +1292,7 @@ Transform:
   m_Children:
   - {fileID: 1908542255}
   m_Father: {fileID: 1001660026}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1674505354
 MonoBehaviour:

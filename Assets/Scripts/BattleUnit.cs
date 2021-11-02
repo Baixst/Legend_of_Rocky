@@ -8,6 +8,17 @@ public class BattleUnit : MonoBehaviour
     public string unitName;
     public int maxHP;
     public int currentHP;
-    public int attackValue;
+    public int physicalAttack;
     public int init;
+
+
+    public void TakeDamage(int dmg)
+    {
+        currentHP = currentHP - dmg;
+        if(currentHP < 0) {
+            currentHP = 0;
+        }
+    }
 }
+
+

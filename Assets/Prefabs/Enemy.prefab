@@ -99,5 +99,5 @@ MonoBehaviour:
   unitName: Stone Knight
   maxHP: 100
   currentHP: 100
-  attackValue: 30
+  physicalAttack: 25
   init: 40

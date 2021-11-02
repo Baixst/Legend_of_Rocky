@@ -15,7 +15,10 @@ public class BattleSystem : MonoBehaviour
     BattleUnit enemyUnit;
 
     public BattleHUD playerHUD;
-    public BattleHUD enemeyHUD;
+    public BattleHUD enemyHUD;
+
+    public Button attackButton;
+    public Button healButton;
 
     // public Transform playerPosition;
     // public Transform enemyPosition;
@@ -28,7 +31,7 @@ public class BattleSystem : MonoBehaviour
         SetupBattle();
     }
 
-    void SetupBattle()
+    private void SetupBattle()
     {
         // Instantiate(playerPrefab, playerPosition);
         // Instantiate(enemyPrefab, playerPosition);
@@ -40,6 +43,83 @@ public class BattleSystem : MonoBehaviour
         enemyUnit = enemyGO.GetComponent<BattleUnit>();
 
         playerHUD.SetHUD(playerUnit);
-        enemeyHUD.SetHUD(enemyUnit);
+        enemyHUD.SetHUD(enemyUnit);
+
+        state = BattleState.PLAYER_TURN;
+        PlayerTurn();
+    }
+
+    private void PlayerTurn()
+    {
+        attackButton.gameObject.SetActive(true);
+        healButton.gameObject.SetActive(true);
+    }
+
+    public void OnAttackButton()
+    {
+        if (state != BattleState.PLAYER_TURN)
+        {
+            return;
+        }
+
+        StartCoroutine(PlayerAttack());
+    }
+
+    IEnumerator PlayerAttack()
+    {
+        // Damage the enemy
+        Debug.Log("Player attacks for " + playerUnit.physicalAttack + " points of damage!");
+        Debug.Log("Enemy HP before attack: " + enemyUnit.currentHP);
+        enemyUnit.TakeDamage(playerUnit.physicalAttack);
+        Debug.Log("Enemy HP after attack: " + enemyUnit.currentHP);
+        enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit);
+        Debug.Log("Succesfull attack");
+
+        yield return new WaitForSeconds(1f);
+
+        if (enemyUnit.currentHP == 0)
+        {
+            state = BattleState.WON;
+            EndBattle();
+        }
+        else
+        {
+            attackButton.gameObject.SetActive(false);
+            healButton.gameObject.SetActive(false);
+            state = BattleState.ENEMY_TURN;
+            StartCoroutine(EnemyTurn());
+        }
+    }
+
+    IEnumerator EnemyTurn()
+    {
+        Debug.Log("Enemy is attacking");
+
+        playerUnit.TakeDamage(enemyUnit.physicalAttack);
+        playerHUD.SetHP(playerUnit.currentHP, playerUnit);
+
+        yield return new WaitForSeconds(1f);
+
+        if (playerUnit.currentHP == 0)
+        {
+            state = BattleState.LOST;
+            EndBattle();
+        } else
+        {
+            state = BattleState.PLAYER_TURN;
+            PlayerTurn();
+        }
+    }
+
+    void EndBattle()
+    {
+        if (state == BattleState.WON)
+        {
+            Debug.Log("Rocky won the battle!");
+        }
+        else if (state == BattleState.LOST)
+        {
+            Debug.Log("Stone Knight won the battle");
+        }
     }
 }

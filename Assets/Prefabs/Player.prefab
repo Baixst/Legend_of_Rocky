@@ -99,5 +99,5 @@ MonoBehaviour:
   unitName: Rocky
   maxHP: 100
   currentHP: 100
-  attackValue: 35
+  physicalAttack: 35
   init: 50
