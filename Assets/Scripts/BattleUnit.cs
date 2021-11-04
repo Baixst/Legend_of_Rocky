@@ -10,7 +10,8 @@ public class BattleUnit : MonoBehaviour
     public int currentHP;
     public int physicalAttack;
     public int init;
-
+    
+    public bool playerCharacter;
 
     public void TakeDamage(int dmg)
     {

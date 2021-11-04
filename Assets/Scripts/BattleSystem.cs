@@ -20,6 +20,9 @@ public class BattleSystem : MonoBehaviour
     public Button attackButton;
     public Button healButton;
 
+    private List<BattleUnit> turnOrder = new List<BattleUnit>();
+    private int turnOrderIndex = 0;
+
     // public Transform playerPosition;
     // public Transform enemyPosition;
 
@@ -27,6 +30,8 @@ public class BattleSystem : MonoBehaviour
 
     void Start()
     {
+        attackButton.gameObject.SetActive(false);
+        healButton.gameObject.SetActive(false);
         state = BattleState.START;
         SetupBattle();
     }
@@ -45,8 +50,33 @@ public class BattleSystem : MonoBehaviour
         playerHUD.SetHUD(playerUnit);
         enemyHUD.SetHUD(enemyUnit);
 
-        state = BattleState.PLAYER_TURN;
-        PlayerTurn();
+        SetupTurnOrder();
+
+        if (turnOrder[turnOrderIndex].playerCharacter)
+        {
+            state = BattleState.PLAYER_TURN;
+            PlayerTurn();
+        }
+        else
+        {
+            state = BattleState.ENEMY_TURN;
+            StartCoroutine(EnemyTurn());
+        }
+    }
+
+    private void SetupTurnOrder()
+    {
+        turnOrder.Add(playerUnit);
+        turnOrder.Add(enemyUnit);
+
+        // orders list ascending by init stat -> unit with lowest init is first in list
+        turnOrder.Sort((x, y) => x.init.CompareTo(y.init));
+
+        // reverse list so that unit with highest init is first in list
+        turnOrder.Reverse();
+
+        Debug.Log("First in order: " + turnOrder[0].unitName);
+        Debug.Log("Speed of first unit: " + turnOrder[0].init);
     }
 
     private void PlayerTurn()
@@ -67,13 +97,15 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerAttack()
     {
+        // disable buttons
+        attackButton.gameObject.SetActive(false);
+        healButton.gameObject.SetActive(false);
+
         // Damage the enemy
         Debug.Log("Player attacks for " + playerUnit.physicalAttack + " points of damage!");
-        Debug.Log("Enemy HP before attack: " + enemyUnit.currentHP);
         enemyUnit.TakeDamage(playerUnit.physicalAttack);
         Debug.Log("Enemy HP after attack: " + enemyUnit.currentHP);
         enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit);
-        Debug.Log("Succesfull attack");
 
         yield return new WaitForSeconds(1f);
 
@@ -84,8 +116,29 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            attackButton.gameObject.SetActive(false);
-            healButton.gameObject.SetActive(false);
+            nextTurn();
+        }
+    }
+
+    private void nextTurn()
+    {
+        // if last unit in turn order acted start at the beginning of the list
+        if (turnOrderIndex + 1 == turnOrder.Count)
+        {
+            turnOrderIndex = 0;
+        }
+        else
+        {
+            turnOrderIndex++;
+        }
+
+        if (turnOrder[turnOrderIndex].playerCharacter)
+        {
+            state = BattleState.PLAYER_TURN;
+            PlayerTurn();
+        }
+        else
+        {
             state = BattleState.ENEMY_TURN;
             StartCoroutine(EnemyTurn());
         }
@@ -100,15 +153,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        if (playerUnit.currentHP == 0)
-        {
-            state = BattleState.LOST;
-            EndBattle();
-        } else
-        {
-            state = BattleState.PLAYER_TURN;
-            PlayerTurn();
-        }
+        nextTurn();
     }
 
     void EndBattle()
