@@ -3037,6 +3037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d277d6609220bb45bf28060c35453ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadFightScene: 0
 --- !u!1 &1809551869
 GameObject:
   m_ObjectHideFlags: 0

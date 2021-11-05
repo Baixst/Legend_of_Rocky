@@ -17,8 +17,7 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
 
-    public Button attackButton;
-    public Button healButton;
+    public GameObject combatButtons;
 
     private List<BattleUnit> turnOrder = new List<BattleUnit>();
     private int turnOrderIndex = 0;
@@ -30,8 +29,7 @@ public class BattleSystem : MonoBehaviour
 
     void Start()
     {
-        attackButton.gameObject.SetActive(false);
-        healButton.gameObject.SetActive(false);
+        combatButtons.gameObject.SetActive(false);
         state = BattleState.START;
         SetupBattle();
     }
@@ -81,33 +79,27 @@ public class BattleSystem : MonoBehaviour
 
     private void PlayerTurn()
     {
-        attackButton.gameObject.SetActive(true);
-        healButton.gameObject.SetActive(true);
+        combatButtons.gameObject.SetActive(true);
     }
 
-    public void OnAttackButton()
+    public void OnMoveButton(int moveIndex)
     {
         if (state != BattleState.PLAYER_TURN)
         {
             return;
         }
 
-        StartCoroutine(PlayerAttack());
+        // disable buttons
+        combatButtons.gameObject.SetActive(false);
+
+        turnOrder[turnOrderIndex].useMove(enemyUnit, moveIndex);
+        PlayerAttack();
     }
 
-    IEnumerator PlayerAttack()
-    {
-        // disable buttons
-        attackButton.gameObject.SetActive(false);
-        healButton.gameObject.SetActive(false);
-
-        // Damage the enemy
-        Debug.Log("Player attacks for " + playerUnit.physicalAttack + " points of damage!");
-        enemyUnit.TakeDamage(playerUnit.physicalAttack);
-        Debug.Log("Enemy HP after attack: " + enemyUnit.currentHP);
+    private void PlayerAttack()
+    {   
+        // Update HP value in UI      
         enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit);
-
-        yield return new WaitForSeconds(1f);
 
         if (enemyUnit.currentHP == 0)
         {
@@ -122,7 +114,7 @@ public class BattleSystem : MonoBehaviour
 
     private void nextTurn()
     {
-        // if last unit in turn order acted start at the beginning of the list
+        // if last unit in turn order acted: start at the beginning of the list
         if (turnOrderIndex + 1 == turnOrder.Count)
         {
             turnOrderIndex = 0;
@@ -153,7 +145,15 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        nextTurn();
+        if (playerUnit.currentHP == 0)
+        {
+            state = BattleState.LOST;
+            EndBattle();
+        }
+        else
+        {
+            nextTurn();
+        }
     }
 
     void EndBattle()
