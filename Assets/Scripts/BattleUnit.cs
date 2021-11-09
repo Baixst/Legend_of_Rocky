@@ -48,6 +48,8 @@ public class BattleUnit : MonoBehaviour
                 targets[i].DebuffStat(move.debuffStat, move.debuffValue);
             }
         }
+
+        Debug.Log(unitName + " is using " + move.moveName);
     }
 
     public void TakeDamage(int dmg)

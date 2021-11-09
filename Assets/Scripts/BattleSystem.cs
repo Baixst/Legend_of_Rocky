@@ -8,14 +8,20 @@ public class BattleSystem : MonoBehaviour
 
     public enum BattleState { START, PLAYER_TURN, ENEMY_TURN, WON, LOST }
 
-    public GameObject playerPrefab;
-    public GameObject enemyPrefab;
+    public GameObject playerPrefab1;
+    public GameObject playerPrefab2;
+    public GameObject enemyPrefab1;
+    public GameObject enemyPrefab2;
 
-    BattleUnit playerUnit;
-    BattleUnit enemyUnit;
+    BattleUnit playerUnit1;
+    BattleUnit playerUnit2;
+    BattleUnit enemyUnit1;
+    BattleUnit enemyUnit2;
 
-    public BattleHUD playerHUD;
-    public BattleHUD enemyHUD;
+    public BattleHUD playerHUD1;
+    public BattleHUD playerHUD2;
+    public BattleHUD enemyHUD1;
+    public BattleHUD enemyHUD2;
 
     public GameObject combatButtons;
 
@@ -37,16 +43,29 @@ public class BattleSystem : MonoBehaviour
     private void SetupBattle()
     {
         // Instantiate(playerPrefab, playerPosition);
-        // Instantiate(enemyPrefab, playerPosition);
+        // Instantiate(enemyPrefab, playerPosition);F
 
-        GameObject playerGO = Instantiate(playerPrefab);
-        playerUnit = playerGO.GetComponent<BattleUnit>();
+        GameObject playerGO1 = Instantiate(playerPrefab1);
+        playerUnit1 = playerGO1.GetComponent<BattleUnit>();
+        playerHUD1.SetHUD(playerUnit1);
 
-        GameObject enemyGO = Instantiate(enemyPrefab);
-        enemyUnit = enemyGO.GetComponent<BattleUnit>();
+        if (playerPrefab2 != null)
+        {
+            GameObject playerGO2 = Instantiate(playerPrefab2);
+            playerUnit2 = playerGO2.GetComponent<BattleUnit>();
+            playerHUD2.SetHUD(playerUnit2);
+        }
 
-        playerHUD.SetHUD(playerUnit);
-        enemyHUD.SetHUD(enemyUnit);
+        GameObject enemyGO1 = Instantiate(enemyPrefab1);
+        enemyUnit1 = enemyGO1.GetComponent<BattleUnit>();
+        enemyHUD1.SetHUD(enemyUnit1);
+
+        if (enemyPrefab2 != null)
+        {
+            GameObject enemyGO2 = Instantiate(enemyPrefab2);
+            enemyUnit2 = enemyGO2.GetComponent<BattleUnit>();
+            enemyHUD2.SetHUD(enemyUnit2);
+        }
 
         SetupTurnOrder();
 
@@ -64,8 +83,17 @@ public class BattleSystem : MonoBehaviour
 
     private void SetupTurnOrder()
     {
-        turnOrder.Add(playerUnit);
-        turnOrder.Add(enemyUnit);
+        turnOrder.Add(playerUnit1);
+        turnOrder.Add(enemyUnit1);
+
+        if (playerUnit2 != null)
+        {
+            turnOrder.Add(playerUnit2);
+        }
+        if (enemyUnit2 != null)
+        {
+            turnOrder.Add(enemyUnit2);
+        }
 
         turnOrder = orderByInitiative(turnOrder);
 
@@ -98,16 +126,16 @@ public class BattleSystem : MonoBehaviour
         // disable buttons
         combatButtons.gameObject.SetActive(false);
 
-        turnOrder[turnOrderIndex].useMove(enemyUnit, moveIndex);
+        turnOrder[turnOrderIndex].useMove(enemyUnit1, moveIndex);
         PlayerAttack();
     }
 
     private void PlayerAttack()
-    {   
+    {
         // Update HP value in UI      
-        enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit);
+        enemyHUD1.SetHP(enemyUnit1.currentHP, enemyUnit1);
 
-        if (enemyUnit.currentHP == 0)
+        if (enemyUnit1.currentHP == 0)
         {
             state = BattleState.WON;
             EndBattle();
@@ -148,12 +176,12 @@ public class BattleSystem : MonoBehaviour
     {
         Debug.Log("Enemy is attacking");
 
-        playerUnit.TakeDamage(enemyUnit.physicalAttack);
-        playerHUD.SetHP(playerUnit.currentHP, playerUnit);
+        playerUnit1.TakeDamage(enemyUnit1.physicalAttack);
+        playerHUD1.SetHP(playerUnit1.currentHP, playerUnit1);
 
         yield return new WaitForSeconds(1f);
 
-        if (playerUnit.currentHP == 0)
+        if (playerUnit1.currentHP == 0)
         {
             state = BattleState.LOST;
             EndBattle();
