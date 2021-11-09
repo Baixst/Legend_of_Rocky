@@ -100,8 +100,7 @@ MonoBehaviour:
   maxHP: 100
   currentHP: 100
   physicalAttack: 25
+  defense: 0
   init: 60
-  move1: {fileID: 0}
-  move2: {fileID: 0}
   playerCharacter: 0
   moves: []

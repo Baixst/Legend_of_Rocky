@@ -67,14 +67,20 @@ public class BattleSystem : MonoBehaviour
         turnOrder.Add(playerUnit);
         turnOrder.Add(enemyUnit);
 
-        // orders list ascending by init stat -> unit with lowest init is first in list
-        turnOrder.Sort((x, y) => x.init.CompareTo(y.init));
-
-        // reverse list so that unit with highest init is first in list
-        turnOrder.Reverse();
+        turnOrder = orderByInitiative(turnOrder);
 
         Debug.Log("First in order: " + turnOrder[0].unitName);
         Debug.Log("Speed of first unit: " + turnOrder[0].init);
+    }
+
+    private List<BattleUnit> orderByInitiative(List<BattleUnit> list)
+    {
+        // orders list ascending by init stat -> unit with lowest init is first in list
+        list.Sort((x, y) => x.init.CompareTo(y.init));
+
+        // reverse list so that unit with highest init is first in list
+        list.Reverse();
+        return list;
     }
 
     private void PlayerTurn()
@@ -117,6 +123,8 @@ public class BattleSystem : MonoBehaviour
         // if last unit in turn order acted: start at the beginning of the list
         if (turnOrderIndex + 1 == turnOrder.Count)
         {
+            // sort turn order again, a units init could have changed
+            turnOrder = orderByInitiative(turnOrder);
             turnOrderIndex = 0;
         }
         else
