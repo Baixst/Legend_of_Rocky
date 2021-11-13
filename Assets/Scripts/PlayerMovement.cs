@@ -2,73 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement2 : MonoBehaviour
 {
-    private Rigidbody2D body;
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float jumpHight;
-    private float scaleX, scaleY, scaleZ;
-    private bool grounded;
-    private bool moveButtonPressed = false;
+    public CharacterController2D controller;
+    public float runSpeed = 40f;
 
-    private void Awake()
+    public Animator animator;
+
+    float horizontalMove = 0f;
+    private bool jump = false;
+    private bool crouch = false;
+
+    // Update is called once per frame
+    void Update()
     {
-        body = GetComponent<Rigidbody2D>();
-        scaleX = transform.localScale.x;
-        scaleY = transform.localScale.y;
-        scaleZ = transform.localScale.z;
-    }
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-    private void Update()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-
-        if (Input.GetKeyDown("a") || Input.GetKeyDown("d"))
+        if (Input.GetButtonDown("Jump"))
         {
-            moveButtonPressed = true;
+            jump = true;
+            animator.SetBool("IsJumping", true);
         }
 
-        if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
+        if (Input.GetButtonDown("Crouch"))
         {
-            moveButtonPressed = false;
-            body.velocity = new Vector2(0, body.velocity.y);
+            crouch = true;
         }
-
-        //allow horizontal movement
-        if (moveButtonPressed)
+        else if (Input.GetButtonUp("Crouch"))
         {
-            body.velocity = new Vector2(horizontalInput * movementSpeed, body.velocity.y);
-        }
-
-        // Flip sprite in movement direction
-        if (horizontalInput > 0.01f)
-        {
-            transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
-        }
-        else if (horizontalInput < -0.01f)
-        {
-            transform.localScale = new Vector3(-scaleX, scaleY, scaleZ);
-        }
-
-        // Allow jumping
-        if (Input.GetKey(KeyCode.Space) && grounded)
-        {
-            Jump();
-
+            crouch = false;
         }
     }
 
-    private void Jump()
+    public void OnLanding()
     {
-        body.velocity = new Vector2(body.velocity.x, jumpHight);
-        grounded = false;
+        animator.SetBool("IsJumping", false);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCrouching(bool isCrouching)
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            grounded = true;
-        }
+        animator.SetBool("IsCrouching", isCrouching);
+    }
+
+    void FixedUpdate()
+    {
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        jump = false;
     }
 }

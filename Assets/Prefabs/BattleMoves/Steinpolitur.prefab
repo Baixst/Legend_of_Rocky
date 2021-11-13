@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Steinpolitur
   description: Heilt den Anwender um 40 HP.
-  numberOfTargets: 1
-  targetTyp: self
+  numberOfTargets: 2
+  targetTyp: ally
   damage: 0
   healing: 40
   damageTyp: 

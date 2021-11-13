@@ -98,7 +98,7 @@ MonoBehaviour:
   level: 0
   unitName: "Stein der Wei\xDFen"
   maxHP: 80
-  currentHP: 80
+  currentHP: 40
   physicalAttack: 25
   defense: 10
   init: 40

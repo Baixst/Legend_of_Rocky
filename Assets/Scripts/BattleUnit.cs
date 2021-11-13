@@ -16,16 +16,39 @@ public class BattleUnit : MonoBehaviour
 
     public List<Move> moves = new List<Move>();
 
-    public void useMove(BattleUnit target, int moveIndex)
+    public IEnumerator useMove(GameObject targetSelector, int moveIndex)
     {
         Move move = moves[moveIndex];
-
-        // TODO: select target depending on target type and number
         List<BattleUnit> targets = new List<BattleUnit>();
-        targets.Add(target);
+        targetSelector.SetActive(true);
+        TargetSelector selector = targetSelector.GetComponent<TargetSelector>();
 
+        // start finding a target
+        selector.findPossibleTargets(move);
+        if (selector.possibleTargets.Count > 1 && move.numberOfTargets == 1)
+        {
+            // set position to first player character
+            var tmp = selector.possibleTargets[0].transform.position;
+            tmp.y += 0.5f;
+            targetSelector.transform.position = tmp;
+
+            // wait until target is selected by user
+            yield return new WaitUntil(() => selector.selectedUnit != null);
+        }
+
+        if (move.numberOfTargets > 1)
+        {
+            targets = selector.possibleTargets;
+        }
+        else
+        {
+            targets.Add(selector.selectedUnit);
+        }
+        
         for (int i = 0; i < targets.Count; i++)
         {
+            Debug.Log("Attacking " + targets[i].unitName);
+
             // check if move heals or deals damage
             if (move.healing > 0) // move heals
             {
@@ -49,6 +72,8 @@ public class BattleUnit : MonoBehaviour
             }
         }
 
+        selector.selectedUnit = null;
+        targetSelector.SetActive(false);
         Debug.Log(unitName + " is using " + move.moveName);
     }
 
