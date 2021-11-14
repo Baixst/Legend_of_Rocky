@@ -398,8 +398,9 @@ GameObject:
   - component: {fileID: 75029368}
   - component: {fileID: 75029367}
   - component: {fileID: 75029366}
+  - component: {fileID: 75029369}
   m_Layer: 5
-  m_Name: AttackButton
+  m_Name: Button_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,6 +520,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75029364}
   m_CullTransparentMesh: 1
+--- !u!114 &75029369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75029364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86478c5fb5160448b1e0c38c05d8043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveIndex: 0
+  battleSystem: {fileID: 1588003166}
+  buttonText: {fileID: 482234830}
 --- !u!1 &127206733
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,8 +547,9 @@ GameObject:
   - component: {fileID: 127206737}
   - component: {fileID: 127206736}
   - component: {fileID: 127206735}
+  - component: {fileID: 127206738}
   m_Layer: 5
-  m_Name: HealButton
+  m_Name: Button_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -652,6 +669,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127206733}
   m_CullTransparentMesh: 1
+--- !u!114 &127206738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127206733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86478c5fb5160448b1e0c38c05d8043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveIndex: 1
+  battleSystem: {fileID: 1588003166}
+  buttonText: {fileID: 74979148}
 --- !u!1 &206839969
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 214945002}
   m_Layer: 0
-  m_Name: CombatButtons
+  m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1339,8 +1371,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1329557639
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9421f41e50c2b4b4785355bd0dc22f2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1749,7 +1781,7 @@ MonoBehaviour:
   playerHUD2: {fileID: 514692567}
   enemyHUD1: {fileID: 27785730}
   enemyHUD2: {fileID: 378738016}
-  combatButtons: {fileID: 214945001}
+  buttonsParent: {fileID: 214945001}
   state: 0
 --- !u!4 &1588003167
 Transform:
@@ -1823,8 +1855,9 @@ GameObject:
   - component: {fileID: 1813576248}
   - component: {fileID: 1813576247}
   - component: {fileID: 1813576246}
+  - component: {fileID: 1813576249}
   m_Layer: 5
-  m_Name: BuffButton
+  m_Name: Button_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1944,6 +1977,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813576244}
   m_CullTransparentMesh: 1
+--- !u!114 &1813576249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813576244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86478c5fb5160448b1e0c38c05d8043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveIndex: 2
+  battleSystem: {fileID: 1588003166}
+  buttonText: {fileID: 456760149}
 --- !u!1 &1904818565
 GameObject:
   m_ObjectHideFlags: 0

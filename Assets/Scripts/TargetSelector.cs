@@ -13,6 +13,7 @@ public class TargetSelector : MonoBehaviour
     public void findPossibleTargets(Move move)
     {
         Debug.Log("finding possible targets...");
+        possibleTargets.Clear();
 
         if (move.targetTyp == "ally")
         {
@@ -20,14 +21,18 @@ public class TargetSelector : MonoBehaviour
         }
         else if (move.targetTyp == "enemy")
         {
-            possibleTargets = battleSystem.getEnemyUnits();
+            List<BattleUnit> temp = battleSystem.getEnemyUnits();       // only add units to list when they are not dead yet
+            foreach (BattleUnit unit in temp)
+            {
+                if (unit.currentHP > 0)
+                {
+                    possibleTargets.Add(unit);
+                }
+            }
         }
         else if (move.targetTyp == "self")
         {
-            List<BattleUnit> list = new List<BattleUnit>();
-            list.Add(battleSystem.getActiveUnit());
-            possibleTargets = list;
-            selectedUnit = possibleTargets[0];
+            possibleTargets.Add(battleSystem.getActiveUnit());
         }
         else
         {
@@ -71,7 +76,7 @@ public class TargetSelector : MonoBehaviour
         if (Input.GetButtonUp("Submit"))
         {
             selectedUnit = possibleTargets[possibleTargetsIndex];
-            Debug.Log("set selectedUnit to a value");
+            possibleTargetsIndex = 0;
         }
     }
 }

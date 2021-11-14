@@ -104,6 +104,6 @@ MonoBehaviour:
   init: 40
   playerCharacter: 1
   moves:
-  - {fileID: 8607934247056443778, guid: ab6f8a129daad83428b2669649121f30, type: 3}
+  - {fileID: 4664661398628708366, guid: fff2b0d6c1db6834d86e4e73c113480e, type: 3}
   - {fileID: 6273898198910531896, guid: 4b01476e29e271b448aa5da47862ac4f, type: 3}
-  - {fileID: 6273898198910531896, guid: d1852d8574e5bd444baee6310aa62e57, type: 3}
+  - {fileID: 6569501063299088427, guid: 4d8e49e0b7d2e0c4ea05ac50a7eee527, type: 3}

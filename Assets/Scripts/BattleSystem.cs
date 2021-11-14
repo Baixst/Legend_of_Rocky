@@ -24,7 +24,8 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD enemyHUD1;
     public BattleHUD enemyHUD2;
 
-    public GameObject combatButtons;
+    public GameObject buttonsParent;
+    private List<BattleButton> battleButtons = new List<BattleButton>();
 
     private List<BattleUnit> turnOrder = new List<BattleUnit>();
     private int turnOrderIndex = 0;
@@ -40,16 +41,22 @@ public class BattleSystem : MonoBehaviour
     void Start()
     {
         targetSelector.SetActive(false);
-        combatButtons.gameObject.SetActive(false);
+        buttonsParent.SetActive(false);
+        
+        // get all children from the battleButtons parent object
+        BattleButton[] allChildren = buttonsParent.GetComponentsInChildren<BattleButton>();
+        foreach (BattleButton child in allChildren)
+        {
+            battleButtons.Add(child);
+        }
+
         state = BattleState.START;
         SetupBattle();
     }
 
     private void SetupBattle()
     {
-        // Instantiate(playerPrefab, playerPosition);
-        // Instantiate(enemyPrefab, playerPosition);F
-
+        // instantiate all battle units and setup their UI components
         GameObject playerGO1 = Instantiate(playerPrefab1);
         playerUnit1 = playerGO1.GetComponent<BattleUnit>();
         playerHUD1.SetHUD(playerUnit1);
@@ -76,6 +83,7 @@ public class BattleSystem : MonoBehaviour
             totalEnemyHP += enemyUnit2.currentHP;
         }
 
+        // setup turn order and start battle with the fastest unit
         SetupTurnOrder();
 
         if (turnOrder[turnOrderIndex].playerCharacter)
@@ -86,7 +94,7 @@ public class BattleSystem : MonoBehaviour
         else
         {
             state = BattleState.ENEMY_TURN;
-            StartCoroutine(EnemyTurn());
+            EnemyTurn();
         }
     }
 
@@ -128,7 +136,8 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            combatButtons.gameObject.SetActive(true);
+            updateButtons();
+            buttonsParent.SetActive(true);
         }
     }
 
@@ -145,7 +154,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         // disable buttons
-        combatButtons.gameObject.SetActive(false);
+        buttonsParent.SetActive(false);
         
         yield return StartCoroutine(turnOrder[turnOrderIndex].useMove(targetSelector, moveIndex));
         PlayerAttack();
@@ -190,11 +199,24 @@ public class BattleSystem : MonoBehaviour
         else
         {
             state = BattleState.ENEMY_TURN;
-            StartCoroutine(EnemyTurn());
+            EnemyTurn();
         }
     }
 
-    IEnumerator EnemyTurn()
+    private void EnemyTurn()
+    {
+        // check if unit is still alive
+        if (turnOrder[turnOrderIndex].currentHP == 0)
+        {
+            nextTurn();
+        }
+        else
+        {
+            StartCoroutine(EnemyAttack());
+        }
+    }
+
+    IEnumerator EnemyAttack()
     {
         Debug.Log("Enemy is attacking");
 
@@ -235,6 +257,14 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    private void updateButtons()
+    {
+        foreach (BattleButton b in battleButtons)
+        {
+            b.changeTextToActiveUnit();
+        }
+    }
+
     private void updateHUDs()
     {
         playerHUD1.SetHP(playerUnit1.currentHP, playerUnit1);
@@ -258,7 +288,7 @@ public class BattleSystem : MonoBehaviour
             totalPlayerHP += playerUnit2.currentHP;
         }
 
-        totalEnemyHP = enemyUnit2.currentHP;
+        totalEnemyHP = enemyUnit1.currentHP;
         if (enemyPrefab2 != null)
         {
             totalEnemyHP += enemyUnit2.currentHP;

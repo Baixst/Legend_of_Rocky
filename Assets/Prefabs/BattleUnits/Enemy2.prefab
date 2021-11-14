@@ -99,7 +99,7 @@ MonoBehaviour:
   unitName: Knight 2
   maxHP: 90
   currentHP: 90
-  physicalAttack: 25
+  physicalAttack: 20
   defense: 10
   init: 50
   playerCharacter: 0

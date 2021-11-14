@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Schwerthieb
-  description: "Rocky f\xFChrt einen Schlag mit seinem krassen Schwert aus."
+  description: "Anwender f\xFChrt einen Schlag mit seinem krassen Schwert aus."
   numberOfTargets: 1
   targetTyp: enemy
-  damage: 30
+  damage: 35
   healing: 0
   damageTyp: physical
   canDebuff: 0

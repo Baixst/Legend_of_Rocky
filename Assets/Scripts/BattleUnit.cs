@@ -25,9 +25,9 @@ public class BattleUnit : MonoBehaviour
 
         // start finding a target
         selector.findPossibleTargets(move);
-        if (selector.possibleTargets.Count > 1 && move.numberOfTargets == 1)
+        if (move.numberOfTargets == 1)
         {
-            // set position to first player character
+            // set position to first possible target
             var tmp = selector.possibleTargets[0].transform.position;
             tmp.y += 0.5f;
             targetSelector.transform.position = tmp;
