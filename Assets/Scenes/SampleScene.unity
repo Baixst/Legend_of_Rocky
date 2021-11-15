@@ -2898,7 +2898,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1626401340}
-        m_TargetAssemblyTypeName: PlayerMovement2, Assembly-CSharp
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnLanding
         m_Mode: 1
         m_Arguments:
@@ -2913,7 +2913,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1626401340}
-        m_TargetAssemblyTypeName: PlayerMovement2, Assembly-CSharp
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnCrouching
         m_Mode: 0
         m_Arguments:
@@ -3037,7 +3037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d277d6609220bb45bf28060c35453ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadFightScene: 0
+  loadFightScene: 1
 --- !u!1 &1809551869
 GameObject:
   m_ObjectHideFlags: 0
