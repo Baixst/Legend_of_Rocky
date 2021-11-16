@@ -17,10 +17,14 @@ public class TargetSelector : MonoBehaviour
 
         if (move.targetTyp == "ally")
         {
+            Debug.Log("target index: " + possibleTargetsIndex);
+            
             possibleTargets = battleSystem.getPartyUnits();
         }
         else if (move.targetTyp == "enemy")
         {
+            Debug.Log("target index: " + possibleTargetsIndex);
+
             List<BattleUnit> temp = battleSystem.getEnemyUnits();       // only add units to list when they are not dead yet
             foreach (BattleUnit unit in temp)
             {

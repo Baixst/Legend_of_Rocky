@@ -79,7 +79,7 @@ public class BattleUnit : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        currentHP = currentHP - dmg;
+        currentHP -= dmg;
         if (currentHP < 0)
         {
             currentHP = 0;
@@ -88,7 +88,7 @@ public class BattleUnit : MonoBehaviour
 
     public void HealFor(int healing)
     {
-        currentHP = currentHP + healing;
+        currentHP += healing;
         if (currentHP > maxHP)
         {
             currentHP = maxHP;

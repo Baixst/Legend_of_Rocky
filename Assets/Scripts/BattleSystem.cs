@@ -11,25 +11,31 @@ public class BattleSystem : MonoBehaviour
 
     public GameObject playerPrefab1;
     public GameObject playerPrefab2;
+    public GameObject playerPrefab3;
     public GameObject enemyPrefab1;
     public GameObject enemyPrefab2;
+    public GameObject enemyPrefab3;
 
     BattleUnit playerUnit1;
     BattleUnit playerUnit2;
+    BattleUnit playerUnit3;
     BattleUnit enemyUnit1;
     BattleUnit enemyUnit2;
+    BattleUnit enemyUnit3;
 
     public BattleHUD playerHUD1;
     public BattleHUD playerHUD2;
+    public BattleHUD playerHUD3;
     public BattleHUD enemyHUD1;
     public BattleHUD enemyHUD2;
+    public BattleHUD enemyHUD3;
 
     public GameObject buttonsParent;
     private List<BattleButton> battleButtons = new List<BattleButton>();
 
     private List<BattleUnit> turnOrder = new List<BattleUnit>();
     private int turnOrderIndex = 0;
-    
+
     private int totalEnemyHP = 0;
     private int totalPlayerHP = 0;
 
@@ -42,7 +48,7 @@ public class BattleSystem : MonoBehaviour
     {
         targetSelector.SetActive(false);
         buttonsParent.SetActive(false);
-        
+
         // get all children from the battleButtons parent object
         BattleButton[] allChildren = buttonsParent.GetComponentsInChildren<BattleButton>();
         foreach (BattleButton child in allChildren)
@@ -69,6 +75,13 @@ public class BattleSystem : MonoBehaviour
             playerHUD2.SetHUD(playerUnit2);
             totalPlayerHP += playerUnit2.currentHP;
         }
+        if (playerPrefab3 != null)
+        {
+            GameObject playerGO3 = Instantiate(playerPrefab3);
+            playerUnit3 = playerGO3.GetComponent<BattleUnit>();
+            playerHUD3.SetHUD(playerUnit3);
+            totalPlayerHP += playerUnit3.currentHP;
+        }
 
         GameObject enemyGO1 = Instantiate(enemyPrefab1);
         enemyUnit1 = enemyGO1.GetComponent<BattleUnit>();
@@ -81,6 +94,13 @@ public class BattleSystem : MonoBehaviour
             enemyUnit2 = enemyGO2.GetComponent<BattleUnit>();
             enemyHUD2.SetHUD(enemyUnit2);
             totalEnemyHP += enemyUnit2.currentHP;
+        }
+        if (enemyPrefab3 != null)
+        {
+            GameObject enemyGO3 = Instantiate(enemyPrefab3);
+            enemyUnit3 = enemyGO3.GetComponent<BattleUnit>();
+            enemyHUD3.SetHUD(enemyUnit3);
+            totalEnemyHP += enemyUnit3.currentHP;
         }
 
         // setup turn order and start battle with the fastest unit
@@ -107,9 +127,17 @@ public class BattleSystem : MonoBehaviour
         {
             turnOrder.Add(playerUnit2);
         }
+        if (playerUnit3 != null)
+        {
+            turnOrder.Add(playerUnit3);
+        }
         if (enemyUnit2 != null)
         {
             turnOrder.Add(enemyUnit2);
+        }
+        if (enemyUnit3 != null)
+        {
+            turnOrder.Add(enemyUnit3);
         }
 
         turnOrder = orderByInitiative(turnOrder);
@@ -155,7 +183,7 @@ public class BattleSystem : MonoBehaviour
 
         // disable buttons
         buttonsParent.SetActive(false);
-        
+
         yield return StartCoroutine(turnOrder[turnOrderIndex].useMove(targetSelector, moveIndex));
         PlayerAttack();
     }
@@ -163,8 +191,8 @@ public class BattleSystem : MonoBehaviour
     private void PlayerAttack()
     {
         // Update HP value in UI and logic  
-        updateHUDs(); 
-        updateHPTrackers();  
+        updateHUDs();
+        updateHPTrackers();
 
         if (totalEnemyHP == 0)
         {
@@ -272,11 +300,19 @@ public class BattleSystem : MonoBehaviour
         {
             playerHUD2.SetHP(playerUnit2.currentHP, playerUnit2);
         }
+        if (playerPrefab3 != null)
+        {
+            playerHUD3.SetHP(playerUnit3.currentHP, playerUnit3);
+        }
 
         enemyHUD1.SetHP(enemyUnit1.currentHP, enemyUnit1);
         if (enemyPrefab2 != null)
         {
             enemyHUD2.SetHP(enemyUnit2.currentHP, enemyUnit2);
+        }
+        if (enemyPrefab3 != null)
+        {
+            enemyHUD3.SetHP(enemyUnit3.currentHP, enemyUnit3);
         }
     }
 
@@ -287,11 +323,19 @@ public class BattleSystem : MonoBehaviour
         {
             totalPlayerHP += playerUnit2.currentHP;
         }
+        if (playerPrefab3 != null)
+        {
+            totalPlayerHP += playerUnit3.currentHP;
+        }
 
         totalEnemyHP = enemyUnit1.currentHP;
         if (enemyPrefab2 != null)
         {
             totalEnemyHP += enemyUnit2.currentHP;
+        }
+        if (enemyPrefab3 != null)
+        {
+            totalEnemyHP += enemyUnit3.currentHP;
         }
     }
 
@@ -308,8 +352,10 @@ public class BattleSystem : MonoBehaviour
         {
             partyUnits.Add(playerUnit2);
         }
-        // add later:
-        // if(playerUnit3 != null) partyUnits.Add(playerUnit3);
+        if (playerUnit3 != null)
+        {
+            partyUnits.Add(playerUnit3);
+        }
         return partyUnits;
     }
 
@@ -321,8 +367,10 @@ public class BattleSystem : MonoBehaviour
         {
             enemyUnits.Add(enemyUnit2);
         }
-        // add later:
-        // if(enemyUnit3 != null) enemyUnits.Add(enemyUnit3);
+        if (enemyUnit3 != null)
+        {
+            enemyUnits.Add(enemyUnit3);
+        }
         return enemyUnits;
     }
 }

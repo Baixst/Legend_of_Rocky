@@ -12,10 +12,10 @@ public class Move : MonoBehaviour
    public int healing;
    public string damageTyp;
    public bool canDebuff;
-   public int debuffValue;      // how much a stat wil be reduced
+   public int debuffValue;      // how much a stat will be reduced
    public string debuffStat;    // stat to be reduced, can be "attack", "defense" or "init"
    public bool canBuff;
-   public int buffValue;        // how much a stat wil be increased
+   public int buffValue;        // how much a stat will be increased
    public string buffStat;      // stat to be increased
 
    // Depending on system:
