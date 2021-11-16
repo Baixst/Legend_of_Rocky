@@ -8,7 +8,6 @@ public class BattleButton : MonoBehaviour
 {
     public int moveIndex;
     public BattleSystem battleSystem;
-    //public Text buttonText;
     public TextMeshProUGUI buttonText;
 
     public void changeTextToActiveUnit()
