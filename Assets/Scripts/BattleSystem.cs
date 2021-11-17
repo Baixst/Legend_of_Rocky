@@ -203,16 +203,18 @@ public class BattleSystem : MonoBehaviour
         // disable buttons
         buttonsParent.SetActive(false);
 
+        // actually use move
+        yield return StartCoroutine(turnOrder[turnOrderIndex].useMove(targetSelector, moveIndex));
+
         // show move name in infobox
         infoText.SetText(turnOrder[turnOrderIndex].moves[moveIndex].moveName);
         infoBox.SetActive(true);
-        yield return new WaitForSeconds(1); // this wait would be replaced by an attack animation
-
-        // actually use move
-        yield return StartCoroutine(turnOrder[turnOrderIndex].useMove(targetSelector, moveIndex));
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2); // this wait would be replaced by an attack animation
 
         UpdateAfterMove();
+        yield return new WaitForSeconds(1.5f);
+        infoBox.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
         nextTurn();
     }
 
