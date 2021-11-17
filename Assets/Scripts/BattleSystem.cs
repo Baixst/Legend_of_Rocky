@@ -220,24 +220,28 @@ public class BattleSystem : MonoBehaviour
 
     private void UpdateAfterMove()
     {
-        // Update HP value in UI and logic  
+        // Update HP value in UI 
         updateHUDs();
         updateHPTrackers();
+    }
 
+    private void nextTurn()
+    {
+        // only play next turn when battle is not won or lost
+        if (state == BattleState.WON || state == BattleState.LOST) return;
         if (totalEnemyHP == 0)
         {
             state = BattleState.WON;
             EndBattle();
+            return;
         }
         else if (totalPlayerHP == 0)
         {
             state = BattleState.LOST;
             EndBattle();
+            return;
         }
-    }
 
-    private void nextTurn()
-    {
         // if last unit in turn order acted: start at the beginning of the list
         if (turnOrderIndex + 1 == turnOrder.Count)
         {
