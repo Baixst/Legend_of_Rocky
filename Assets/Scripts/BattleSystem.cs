@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BattleSystem : MonoBehaviour
 {
     public enum BattleState { START, PLAYER_TURN, ENEMY_TURN, WON, LOST }
 
     public GameObject targetSelector;
+
+    public GameObject infoBox;
+    private TextMeshProUGUI infoText;
 
     public GameObject playerPrefab1;
     public GameObject playerPrefab2;
@@ -46,6 +50,8 @@ public class BattleSystem : MonoBehaviour
 
     void Start()
     {
+        infoText = infoBox.GetComponentInChildren<TextMeshProUGUI>();   
+        infoBox.SetActive(false);     
         targetSelector.SetActive(false);
         buttonsParent.SetActive(false);
 
@@ -103,19 +109,9 @@ public class BattleSystem : MonoBehaviour
             totalEnemyHP += enemyUnit3.currentHP;
         }
 
-        // setup turn order and start battle with the fastest unit
+        // setup turn order and start battle
         SetupTurnOrder();
-
-        if (turnOrder[turnOrderIndex].playerCharacter)
-        {
-            state = BattleState.PLAYER_TURN;
-            PlayerTurn();
-        }
-        else
-        {
-            state = BattleState.ENEMY_TURN;
-            EnemyTurn();
-        }
+        StartCoroutine(StartBattle());
     }
 
     private void SetupTurnOrder()
@@ -156,6 +152,29 @@ public class BattleSystem : MonoBehaviour
         return list;
     }
 
+    private IEnumerator StartBattle()
+    {
+        // show initial info text
+        yield return new WaitForSeconds(1);
+        infoText.SetText("Fight the enemy");
+        infoBox.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        infoBox.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+
+        // start battle with the fastet unit
+        if (turnOrder[turnOrderIndex].playerCharacter)
+        {
+            state = BattleState.PLAYER_TURN;
+            PlayerTurn();
+        }
+        else
+        {
+            state = BattleState.ENEMY_TURN;
+            EnemyTurn();
+        }
+    }
+
     private void PlayerTurn()
     {
         if (turnOrder[turnOrderIndex].currentHP == 0)
@@ -184,29 +203,45 @@ public class BattleSystem : MonoBehaviour
         // disable buttons
         buttonsParent.SetActive(false);
 
+        // actually use move
         yield return StartCoroutine(turnOrder[turnOrderIndex].useMove(targetSelector, moveIndex));
-        PlayerAttack();
+
+        // show move name in infobox
+        infoText.SetText(turnOrder[turnOrderIndex].moves[moveIndex].moveName);
+        infoBox.SetActive(true);
+        yield return new WaitForSeconds(2); // this wait would be replaced by an attack animation
+
+        UpdateAfterMove();
+        yield return new WaitForSeconds(1.5f);
+        infoBox.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        nextTurn();
     }
 
-    private void PlayerAttack()
+    private void UpdateAfterMove()
     {
-        // Update HP value in UI and logic  
+        // Update HP value in UI 
         updateHUDs();
         updateHPTrackers();
-
-        if (totalEnemyHP == 0)
-        {
-            state = BattleState.WON;
-            EndBattle();
-        }
-        else
-        {
-            nextTurn();
-        }
     }
 
     private void nextTurn()
     {
+        // only play next turn when battle is not won or lost
+        if (state == BattleState.WON || state == BattleState.LOST) return;
+        if (totalEnemyHP == 0)
+        {
+            state = BattleState.WON;
+            EndBattle();
+            return;
+        }
+        else if (totalPlayerHP == 0)
+        {
+            state = BattleState.LOST;
+            EndBattle();
+            return;
+        }
+
         // if last unit in turn order acted: start at the beginning of the list
         if (turnOrderIndex + 1 == turnOrder.Count)
         {
@@ -244,45 +279,43 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    IEnumerator EnemyAttack()
+    private IEnumerator EnemyAttack()
     {
-        Debug.Log("Enemy is attacking");
+        infoText.SetText(turnOrder[turnOrderIndex].unitName + " is attacking");
+        infoBox.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
 
         if (playerUnit1.currentHP > 0)
         {
-            playerUnit1.TakeDamage(enemyUnit1.physicalAttack);
+            playerUnit1.TakeDamage(turnOrder[turnOrderIndex].physicalAttack);
+        }
+        else if (playerUnit2.currentHP > 0)
+        {
+            playerUnit2.TakeDamage(turnOrder[turnOrderIndex].physicalAttack);
         }
         else
         {
-            playerUnit2.TakeDamage(enemyUnit1.physicalAttack);
+            playerUnit3.TakeDamage(turnOrder[turnOrderIndex].physicalAttack);
         }
 
-        updateHUDs();
-        updateHPTrackers();
+        infoBox.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
 
-        yield return new WaitForSeconds(1f);
-
-        if (totalPlayerHP == 0)
-        {
-            state = BattleState.LOST;
-            EndBattle();
-        }
-        else
-        {
-            nextTurn();
-        }
+        UpdateAfterMove();
+        nextTurn();
     }
 
-    void EndBattle()
+    private void EndBattle()
     {
         if (state == BattleState.WON)
         {
-            Debug.Log("Rocky won the battle!");
+            infoText.SetText("You won :)");
         }
         else if (state == BattleState.LOST)
         {
-            Debug.Log("Stone Knight won the battle");
+            infoText.SetText("Rocky was defeated :(");
         }
+        infoBox.SetActive(true);
     }
 
     private void updateButtons()
