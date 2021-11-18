@@ -8,14 +8,17 @@ public class BattleUnit : MonoBehaviour
     public string unitName;
     public int maxHP;
     public int currentHP;
-    public int lastTurnHP;
-    public int physicalAttack;
-    public int defense;
+    public int phyAtk;
+    public int phyDef;
+    public int magAtk;
+    public int magDef;
     public int init;
-
     public bool playerCharacter;
 
     public List<Move> moves = new List<Move>();
+
+    [HideInInspector]
+    public int lastTurnHP;
 
     private void Start()
     {
@@ -106,11 +109,11 @@ public class BattleUnit : MonoBehaviour
         switch (stat)
         {
             case "attack":
-                physicalAttack += buffValue;
+                phyAtk += buffValue;
                 break;
 
             case "defense":
-                defense += buffValue;
+                phyDef += buffValue;
                 break;
 
             case "init":
@@ -128,11 +131,11 @@ public class BattleUnit : MonoBehaviour
         switch (stat)
         {
             case "attack":
-                physicalAttack -= debuffValue;
+                phyAtk -= debuffValue;
                 break;
 
             case "defense":
-                defense -= debuffValue;
+                phyDef -= debuffValue;
                 break;
 
             case "init":

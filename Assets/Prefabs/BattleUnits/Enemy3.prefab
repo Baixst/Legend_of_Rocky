@@ -99,8 +99,11 @@ MonoBehaviour:
   unitName: Knight 3
   maxHP: 105
   currentHP: 105
-  physicalAttack: 20
-  defense: 10
+  phyAtk: 24
+  phyDef: 0
+  magAtk: 25
+  magDef: 0
   init: 55
   playerCharacter: 0
   moves: []
+  lastTurnHP: 0

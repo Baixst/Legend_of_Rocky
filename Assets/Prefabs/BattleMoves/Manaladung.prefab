@@ -46,10 +46,10 @@ MonoBehaviour:
   moveName: Manaladung
   description: "Anwender zieht Mana aus der Umgebung und erh\xF6t seinen Angriffwert"
   numberOfTargets: 1
-  targetTyp: self
+  targetTyp: 2
+  damageTyp: 1
   damage: 0
   healing: 0
-  damageTyp: 
   canDebuff: 0
   debuffValue: 0
   debuffStat: 

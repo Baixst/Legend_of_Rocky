@@ -15,13 +15,13 @@ public class TargetSelector : MonoBehaviour
         Debug.Log("finding possible targets...");
         possibleTargets.Clear();
 
-        if (move.targetTyp == "ally")
+        if (move.targetTyp == Move.TargetTyp.Ally)
         {
             Debug.Log("target index: " + possibleTargetsIndex);
             
             possibleTargets = battleSystem.getPartyUnits();
         }
-        else if (move.targetTyp == "enemy")
+        else if (move.targetTyp == Move.TargetTyp.Enemy)
         {
             Debug.Log("target index: " + possibleTargetsIndex);
 
@@ -34,7 +34,7 @@ public class TargetSelector : MonoBehaviour
                 }
             }
         }
-        else if (move.targetTyp == "self")
+        else if (move.targetTyp == Move.TargetTyp.Self)
         {
             possibleTargets.Add(battleSystem.getActiveUnit());
         }

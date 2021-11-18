@@ -99,8 +99,11 @@ MonoBehaviour:
   unitName: Knight 1
   maxHP: 100
   currentHP: 100
-  physicalAttack: 25
-  defense: 0
+  phyAtk: 22
+  phyDef: 0
+  magAtk: 10
+  magDef: 0
   init: 60
   playerCharacter: 0
   moves: []
+  lastTurnHP: 0

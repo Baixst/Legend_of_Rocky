@@ -99,8 +99,11 @@ MonoBehaviour:
   unitName: Knight 2
   maxHP: 90
   currentHP: 90
-  physicalAttack: 20
-  defense: 10
+  phyAtk: 25
+  phyDef: 0
+  magAtk: 20
+  magDef: 0
   init: 50
   playerCharacter: 0
   moves: []
+  lastTurnHP: 0

@@ -46,10 +46,10 @@ MonoBehaviour:
   moveName: Feuerball
   description: "Anwender schie\xDFt einen Feuerball auf einen Gegner."
   numberOfTargets: 1
-  targetTyp: enemy
+  targetTyp: 0
+  damageTyp: 1
   damage: 35
   healing: 0
-  damageTyp: magical
   canDebuff: 0
   debuffValue: 0
   debuffStat: 

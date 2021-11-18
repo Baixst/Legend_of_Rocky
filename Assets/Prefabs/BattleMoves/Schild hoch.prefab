@@ -46,10 +46,10 @@ MonoBehaviour:
   moveName: Schild hoch
   description: "Erh\xF6ht Verteidung des Anwenders um 10 f\xFCr 2 Runden."
   numberOfTargets: 1
-  targetTyp: self
+  targetTyp: 2
+  damageTyp: 0
   damage: 0
   healing: 0
-  damageTyp: 
   canDebuff: 0
   debuffValue: 0
   debuffStat: 

@@ -306,15 +306,15 @@ public class BattleSystem : MonoBehaviour
 
         if (playerUnit1.currentHP > 0)
         {
-            playerUnit1.TakeDamage(turnOrder[turnOrderIndex].physicalAttack);
+            playerUnit1.TakeDamage(turnOrder[turnOrderIndex].phyAtk);
         }
         else if (playerUnit2.currentHP > 0)
         {
-            playerUnit2.TakeDamage(turnOrder[turnOrderIndex].physicalAttack);
+            playerUnit2.TakeDamage(turnOrder[turnOrderIndex].phyAtk);
         }
         else
         {
-            playerUnit3.TakeDamage(turnOrder[turnOrderIndex].physicalAttack);
+            playerUnit3.TakeDamage(turnOrder[turnOrderIndex].phyAtk);
         }
 
         infoBox.SetActive(false);
