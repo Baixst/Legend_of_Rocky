@@ -12,6 +12,7 @@ public class BattleSystem : MonoBehaviour
 
     public GameObject infoBox;
     private TextMeshProUGUI infoText;
+    public GameObject damagePopUpPrefab;
 
     public GameObject playerPrefab1;
     public GameObject playerPrefab2;
@@ -40,8 +41,8 @@ public class BattleSystem : MonoBehaviour
     private List<BattleUnit> turnOrder = new List<BattleUnit>();
     private int turnOrderIndex = 0;
 
-    private int totalEnemyHP = 0;
     private int totalPlayerHP = 0;
+    private int totalEnemyHP = 0;
 
     // public Transform playerPosition;
     // public Transform enemyPosition;
@@ -188,7 +189,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public void OnMoveButtonWrapper(int moveIndex)
+    public void OnMoveButtonWrapper(int moveIndex) // gets called when player clicks on a attack button
     {
         StartCoroutine(OnMoveButton(moveIndex));
     }
@@ -211,10 +212,9 @@ public class BattleSystem : MonoBehaviour
         infoBox.SetActive(true);
         yield return new WaitForSeconds(2); // this wait would be replaced by an attack animation
 
-        UpdateAfterMove();
-        yield return new WaitForSeconds(1.5f);
         infoBox.SetActive(false);
-        yield return new WaitForSeconds(1.5f);
+        UpdateAfterMove();
+        yield return new WaitForSeconds(2);
         nextTurn();
     }
 
@@ -223,6 +223,25 @@ public class BattleSystem : MonoBehaviour
         // Update HP value in UI 
         updateHUDs();
         updateHPTrackers();
+
+        foreach (BattleUnit unit in turnOrder)
+        {
+            if (unit.currentHP < unit.lastTurnHP) // check if unit has taken damage
+            {
+                GameObject DamageText = Instantiate(damagePopUpPrefab);
+                DamageText.transform.position = unit.transform.position;
+                DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.lastTurnHP - unit.currentHP).ToString()));
+                unit.lastTurnHP = unit.currentHP;
+            }
+            else if (unit.currentHP > unit.lastTurnHP) // check if unit was healed
+            {
+                GameObject DamageText = Instantiate(damagePopUpPrefab);
+                DamageText.transform.position = unit.transform.position;
+                DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.currentHP - unit.lastTurnHP).ToString()));
+                DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = new Color32(32, 193, 51, 255); // set text color to green
+                unit.lastTurnHP = unit.currentHP;
+            }
+        } 
     }
 
     private void nextTurn()
@@ -299,9 +318,9 @@ public class BattleSystem : MonoBehaviour
         }
 
         infoBox.SetActive(false);
+        UpdateAfterMove();
         yield return new WaitForSeconds(1.5f);
 
-        UpdateAfterMove();
         nextTurn();
     }
 

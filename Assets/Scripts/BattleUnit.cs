@@ -8,6 +8,7 @@ public class BattleUnit : MonoBehaviour
     public string unitName;
     public int maxHP;
     public int currentHP;
+    public int lastTurnHP;
     public int physicalAttack;
     public int defense;
     public int init;
@@ -15,6 +16,11 @@ public class BattleUnit : MonoBehaviour
     public bool playerCharacter;
 
     public List<Move> moves = new List<Move>();
+
+    private void Start()
+    {
+        lastTurnHP = currentHP;
+    }
 
     public IEnumerator useMove(GameObject targetSelector, int moveIndex)
     {
