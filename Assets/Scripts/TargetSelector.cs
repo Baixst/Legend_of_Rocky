@@ -19,7 +19,7 @@ public class TargetSelector : MonoBehaviour
         {
             Debug.Log("target index: " + possibleTargetsIndex);
             
-            possibleTargets = battleSystem.getPartyUnits();
+            possibleTargets = battleSystem.getPlayerUnits();
         }
         else if (move.targetTyp == Move.TargetTyp.Enemy)
         {
