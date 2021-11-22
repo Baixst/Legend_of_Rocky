@@ -87,7 +87,8 @@ public class BattleSystem : MonoBehaviour
             nextTurn();
         }
         else
-        {
+        {   
+            utils.MoveUnitForward(turnOrder[turnOrderIndex]);
             utils.updateButtons();
             buttonsParent.SetActive(true);
         }
@@ -118,7 +119,9 @@ public class BattleSystem : MonoBehaviour
 
         infoBox.SetActive(false);
         utils.UpdateAfterMove();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+        utils.MoveUnitBack(turnOrder[turnOrderIndex]);
+        // yield return new WaitForSeconds(2);
         nextTurn();
     }
 
@@ -178,6 +181,7 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator EnemyAttack()
     {
+        yield return new WaitForSeconds(1f);
         infoText.SetText(turnOrder[turnOrderIndex].unitName + " is attacking");
         infoBox.SetActive(true);
         yield return new WaitForSeconds(1.5f);

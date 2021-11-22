@@ -20,9 +20,13 @@ public class BattleUnit : MonoBehaviour
     [HideInInspector]
     public int lastTurnHP;
 
+    [HideInInspector]
+    public Vector3 startPosition;
+
     private void Start()
     {
         lastTurnHP = currentHP;
+        startPosition = gameObject.transform.position;
     }
 
     public IEnumerator useMove(GameObject targetSelector, int moveIndex)

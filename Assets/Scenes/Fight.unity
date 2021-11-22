@@ -1472,7 +1472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618613404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09626584, y: -0.017146736, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2168,12 +2168,6 @@ MonoBehaviour:
   enemyPrefab1: {fileID: 8458079172482436847, guid: ca4958f746bc4084f8c5561d8796f7bc, type: 3}
   enemyPrefab2: {fileID: 1623135170202277112, guid: c0167923ebd554444a9c537034baf89a, type: 3}
   enemyPrefab3: {fileID: 4931159972729361344, guid: 1a43747b95b281948936fbfc29d2465e, type: 3}
-  playerUnit1: {fileID: 0}
-  playerUnit2: {fileID: 0}
-  playerUnit3: {fileID: 0}
-  enemyUnit1: {fileID: 0}
-  enemyUnit2: {fileID: 0}
-  enemyUnit3: {fileID: 0}
   playerHUD1: {fileID: 1674505354}
   playerHUD2: {fileID: 514692567}
   playerHUD3: {fileID: 1155826580}
@@ -2181,6 +2175,7 @@ MonoBehaviour:
   enemyHUD2: {fileID: 378738016}
   enemyHUD3: {fileID: 1459346949}
   buttonsParent: {fileID: 214945001}
+  battleButtons: []
   utils: {fileID: 1810196866}
   state: 0
 --- !u!4 &1588003167

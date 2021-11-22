@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -189,5 +190,28 @@ public class BattleUtils : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void MoveUnitForward(BattleUnit activeUnit)
+    {
+        StartCoroutine(MoveOverSeconds(activeUnit.gameObject, new Vector3 (-2f, 0f, 0f), 0.2f));
+    }
+
+    public void MoveUnitBack(BattleUnit activeUnit)
+    {
+        StartCoroutine(MoveOverSeconds(activeUnit.gameObject, activeUnit.startPosition, 0.2f));
+    }
+
+    public IEnumerator MoveOverSeconds (GameObject objectToMove, Vector3 endPosition, float seconds)
+    {
+        float elapsedTime = 0;
+        Vector3 startingPos = objectToMove.transform.position;
+        while (elapsedTime < seconds)
+        {
+            objectToMove.transform.position = Vector3.Lerp(startingPos, endPosition, (elapsedTime / seconds));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    objectToMove.transform.position = endPosition;
     }
 }
