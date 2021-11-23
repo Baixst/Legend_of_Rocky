@@ -19,13 +19,13 @@ public class TargetSelector : MonoBehaviour
         {
             Debug.Log("target index: " + possibleTargetsIndex);
             
-            possibleTargets = battleSystem.getPlayerUnits();
+            possibleTargets = battleSystem.GetPlayerUnits();
         }
         else if (move.targetTyp == Move.TargetTyp.Enemy)
         {
             Debug.Log("target index: " + possibleTargetsIndex);
 
-            List<BattleUnit> temp = battleSystem.getEnemyUnits();       // only add units to list when they are not dead yet
+            List<BattleUnit> temp = battleSystem.GetEnemyUnits();       // only add units to list when they are not dead yet
             foreach (BattleUnit unit in temp)
             {
                 if (unit.currentHP > 0)
@@ -36,7 +36,7 @@ public class TargetSelector : MonoBehaviour
         }
         else if (move.targetTyp == Move.TargetTyp.Self)
         {
-            possibleTargets.Add(battleSystem.getActiveUnit());
+            possibleTargets.Add(battleSystem.GetActiveUnit());
         }
         else
         {

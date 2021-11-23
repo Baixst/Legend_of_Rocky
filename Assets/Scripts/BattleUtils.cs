@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class BattleUtils : MonoBehaviour
@@ -67,15 +68,11 @@ public class BattleUtils : MonoBehaviour
             turnOrder.Add(unit);
         }
         
-        turnOrder = orderByInitiative(turnOrder);
-
-        Debug.Log("First in order: " + turnOrder[0].unitName);
-        Debug.Log("Speed of first unit: " + turnOrder[0].init);
-
+        turnOrder = OrderByInitiative(turnOrder);
         return turnOrder;
     }
 
-    public List<BattleUnit> orderByInitiative(List<BattleUnit> list)
+    public List<BattleUnit> OrderByInitiative(List<BattleUnit> list)
     {
         // orders list ascending by init stat -> unit with lowest init is first in list
         list.Sort((x, y) => x.init.CompareTo(y.init));
@@ -88,8 +85,8 @@ public class BattleUtils : MonoBehaviour
     public void UpdateAfterMove()
     {
         // Update HP value in UI 
-        updateHUDs();
-        updateHPTrackers();
+        UpdateHUDs();
+        UpdateHPTrackers();
 
         foreach (BattleUnit unit in units)
         {
@@ -111,7 +108,7 @@ public class BattleUtils : MonoBehaviour
         } 
     }
 
-    private void updateHPTrackers()
+    private void UpdateHPTrackers()
     {
         totalPlayerHP = 0;
         totalEnemyHP = 0;
@@ -128,7 +125,7 @@ public class BattleUtils : MonoBehaviour
         }
     }
 
-    private void updateHUDs()
+    public void UpdateHUDs()
     {
         for (int i = 0; i < units.Count; i++)
         {
@@ -137,15 +134,23 @@ public class BattleUtils : MonoBehaviour
         }
     }
 
-    public void updateButtons()
+    public void UpdateButtons()
     {
-        foreach (BattleButton b in battleSystem.battleButtons)
+        foreach (BattleButton button in battleSystem.battleButtons)
         {
-            b.changeTextToActiveUnit();
+            button.ChangeTextToActiveUnit();
+            
+            BattleUnit activeUnit = battleSystem.GetActiveUnit();
+            Move move = activeUnit.moves[button.moveIndex];
+
+            if (move.apCost > activeUnit.currentAP)
+            {
+                button.GetComponent<Button>().interactable = false;
+            }
         }
     }
 
-    public List<BattleUnit> getPlayerUnits()
+    public List<BattleUnit> GetPlayerUnits()
     {
         List<BattleUnit> playerUnits = new List<BattleUnit>();
         
@@ -159,7 +164,7 @@ public class BattleUtils : MonoBehaviour
         return playerUnits;
     }
 
-    public List<BattleUnit> getEnemyUnits()
+    public List<BattleUnit> GetEnemyUnits()
     {
         List<BattleUnit> enemyUnits = new List<BattleUnit>();
         

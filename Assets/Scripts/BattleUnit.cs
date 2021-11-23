@@ -151,6 +151,15 @@ public class BattleUnit : MonoBehaviour
                 break;
         }
     }
+
+    public void RegenerateAP()
+    {
+        currentAP += APregenartion;
+        if (currentAP > maxAP)
+        {
+            currentAP = maxAP;
+        }
+    }
 }
 
 

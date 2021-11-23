@@ -10,9 +10,9 @@ public class BattleButton : MonoBehaviour
     public BattleSystem battleSystem;
     public TextMeshProUGUI buttonText;
 
-    public void changeTextToActiveUnit()
+    public void ChangeTextToActiveUnit()
     {
-        Move move = battleSystem.getActiveUnit().moves[moveIndex];
-        buttonText.SetText(move.moveName);
+        Move move = battleSystem.GetActiveUnit().moves[moveIndex];
+        buttonText.SetText(move.moveName + " | " + (move.apCost).ToString() + " AP");
     }
 }
