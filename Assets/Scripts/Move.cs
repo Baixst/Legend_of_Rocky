@@ -21,9 +21,5 @@ public class Move : MonoBehaviour
    public bool canBuff;
    public int buffValue;        // how much a stat will be increased
    public string buffStat;      // stat to be increased
-
-   // Depending on system:
-
-        // public int manaCost;
-        // Public int cooldown;
+   public int apCost;           // how much AP does the move use up
 }

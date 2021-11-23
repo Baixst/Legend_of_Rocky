@@ -46,13 +46,14 @@ MonoBehaviour:
   moveName: Knallgasprobe
   description: Wirf dein erstes Chemieexperiment auf einen Gegner :)
   numberOfTargets: 1
-  targetTyp: enemy
+  targetTyp: 0
+  damageTyp: 0
   damage: 20
   healing: 0
-  damageTyp: physical
   canDebuff: 0
   debuffValue: 0
   debuffStat: 
   canBuff: 0
   buffValue: 0
   buffStat: 
+  apCost: 35

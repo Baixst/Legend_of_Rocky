@@ -47,13 +47,14 @@ MonoBehaviour:
   description: "Anwender wirft ein Fl\xE4schen S\xE4ure welches Schaden verurschacht
     R\xFCstung reduziert."
   numberOfTargets: 1
-  targetTyp: enemy
+  targetTyp: 0
+  damageTyp: 0
   damage: 15
   healing: 0
-  damageTyp: magical
   canDebuff: 1
   debuffValue: 10
   debuffStat: defense
   canBuff: 0
   buffValue: 0
   buffStat: 
+  apCost: 45

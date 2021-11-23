@@ -99,11 +99,18 @@ MonoBehaviour:
   unitName: Alchemist
   maxHP: 110
   currentHP: 110
-  physicalAttack: 18
-  defense: 15
+  phyAtk: 0
+  phyDef: 0
+  magAtk: 0
+  magDef: 0
   init: 45
+  maxAP: 100
+  currentAP: 0
+  APregenartion: 50
   playerCharacter: 1
   moves:
   - {fileID: 8585008820850507866, guid: 9913efca547d4b542a25fe398cadd938, type: 3}
   - {fileID: 2496256662235935077, guid: 0bd0084bd1a72704e8638ca3ec064568, type: 3}
   - {fileID: 1671986762978635345, guid: cc16308e24fe0c24996426dd6dfaf64d, type: 3}
+  lastTurnHP: 0
+  startPosition: {x: 0, y: 0, z: 0}

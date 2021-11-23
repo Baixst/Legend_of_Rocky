@@ -84,12 +84,15 @@ public class BattleSystem : MonoBehaviour
     {
         if (turnOrder[turnOrderIndex].currentHP == 0)
         {
-            nextTurn();
+            NextTurn();
         }
         else
         {   
+            turnOrder[turnOrderIndex].RegenerateAP();
+            utils.UpdateHUDs();
+
             utils.MoveUnitForward(turnOrder[turnOrderIndex]);
-            utils.updateButtons();
+            utils.UpdateButtons();
             buttonsParent.SetActive(true);
         }
     }
@@ -122,10 +125,10 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1);
         utils.MoveUnitBack(turnOrder[turnOrderIndex]);
         // yield return new WaitForSeconds(2);
-        nextTurn();
+        NextTurn();
     }
 
-    private void nextTurn()
+    private void NextTurn()
     {
         // only play next turn when battle is not won or lost
         if (state == BattleState.WON || state == BattleState.LOST) return;
@@ -146,7 +149,7 @@ public class BattleSystem : MonoBehaviour
         if (turnOrderIndex + 1 == turnOrder.Count)
         {
             // sort turn order again, a units init could have changed
-            turnOrder = utils.orderByInitiative(turnOrder);
+            turnOrder = utils.OrderByInitiative(turnOrder);
             turnOrderIndex = 0;
         }
         else
@@ -171,10 +174,11 @@ public class BattleSystem : MonoBehaviour
         // check if unit is still alive
         if (turnOrder[turnOrderIndex].currentHP == 0)
         {
-            nextTurn();
+            NextTurn();
         }
         else
         {
+            turnOrder[turnOrderIndex].RegenerateAP();
             StartCoroutine(EnemyAttack());
         }
     }
@@ -186,24 +190,24 @@ public class BattleSystem : MonoBehaviour
         infoBox.SetActive(true);
         yield return new WaitForSeconds(1.5f);
 
-        if (utils.getPlayerUnits()[0].currentHP > 0)
+        if (utils.GetPlayerUnits()[0].currentHP > 0)
         {
-            utils.getPlayerUnits()[0].TakeDamage(turnOrder[turnOrderIndex].phyAtk);
+            utils.GetPlayerUnits()[0].TakeDamage(turnOrder[turnOrderIndex].phyAtk);
         }
-        else if (utils.getPlayerUnits()[1].currentHP > 0)
+        else if (utils.GetPlayerUnits()[1].currentHP > 0)
         {
-            utils.getPlayerUnits()[1].TakeDamage(turnOrder[turnOrderIndex].phyAtk);
+            utils.GetPlayerUnits()[1].TakeDamage(turnOrder[turnOrderIndex].phyAtk);
         }
         else
         {
-            utils.getPlayerUnits()[2].TakeDamage(turnOrder[turnOrderIndex].phyAtk);
+            utils.GetPlayerUnits()[2].TakeDamage(turnOrder[turnOrderIndex].phyAtk);
         }
 
         infoBox.SetActive(false);
         utils.UpdateAfterMove();
         yield return new WaitForSeconds(1.5f);
 
-        nextTurn();
+        NextTurn();
     }
 
     private void EndBattle()
@@ -219,18 +223,18 @@ public class BattleSystem : MonoBehaviour
         infoBox.SetActive(true);
     }
 
-    public BattleUnit getActiveUnit()
+    public BattleUnit GetActiveUnit()
     {
         return turnOrder[turnOrderIndex];
     }
 
-    public List<BattleUnit> getPlayerUnits()
+    public List<BattleUnit> GetPlayerUnits()
     {
-        return utils.getPlayerUnits();
+        return utils.GetPlayerUnits();
     }
 
-    public List<BattleUnit> getEnemyUnits()
+    public List<BattleUnit> GetEnemyUnits()
     {
-        return utils.getEnemyUnits();
+        return utils.GetEnemyUnits();
     }
 }

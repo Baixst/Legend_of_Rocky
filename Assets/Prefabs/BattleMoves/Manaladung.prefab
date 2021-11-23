@@ -56,3 +56,4 @@ MonoBehaviour:
   canBuff: 1
   buffValue: 10
   buffStat: attack
+  apCost: 30
