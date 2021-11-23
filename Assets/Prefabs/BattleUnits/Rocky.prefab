@@ -99,11 +99,18 @@ MonoBehaviour:
   unitName: Rocky
   maxHP: 120
   currentHP: 120
-  physicalAttack: 35
-  defense: 20
+  phyAtk: 0
+  phyDef: 0
+  magAtk: 0
+  magDef: 0
   init: 65
+  maxAP: 90
+  currentAP: 0
+  APregenartion: 50
   playerCharacter: 1
   moves:
   - {fileID: 8607934247056443778, guid: ab6f8a129daad83428b2669649121f30, type: 3}
   - {fileID: 6273898198910531896, guid: 4b01476e29e271b448aa5da47862ac4f, type: 3}
   - {fileID: 6273898198910531896, guid: d1852d8574e5bd444baee6310aa62e57, type: 3}
+  lastTurnHP: 0
+  startPosition: {x: 0, y: 0, z: 0}

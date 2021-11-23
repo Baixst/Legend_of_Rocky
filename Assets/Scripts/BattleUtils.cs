@@ -36,13 +36,12 @@ public class BattleUtils : MonoBehaviour
             units.Add(temp.GetComponent<BattleUnit>());
         }
 
-        for (int i = 0; i < huds.Count; i++)
-        {
-            huds[i].SetHUD(units[i]);
-        }
-
         foreach (BattleUnit unit in units)
         {
+            // set currentAP to maxAP at start of battle
+            unit.currentAP = unit.maxAP;
+
+            // setup HP trackers
             if (unit.playerCharacter)
             {
                 totalPlayerHP += unit.currentHP;
@@ -51,6 +50,11 @@ public class BattleUtils : MonoBehaviour
             {
                 totalEnemyHP += unit.currentHP;
             }
+        }
+
+        for (int i = 0; i < huds.Count; i++)
+        {
+            huds[i].SetHUD(units[i]);
         }
     }
 
@@ -129,6 +133,7 @@ public class BattleUtils : MonoBehaviour
         for (int i = 0; i < units.Count; i++)
         {
             huds[i].SetHP(units[i].currentHP, units[i]);
+            huds[i].SetAP(units[i].currentAP, units[i]);
         }
     }
 

@@ -13,15 +13,15 @@ public class BattleUnit : MonoBehaviour
     public int magAtk;
     public int magDef;
     public int init;
+    public int maxAP;
+    [HideInInspector] public int currentAP;
+    public int APregenartion;
     public bool playerCharacter;
 
     public List<Move> moves = new List<Move>();
 
-    [HideInInspector]
-    public int lastTurnHP;
-
-    [HideInInspector]
-    public Vector3 startPosition;
+    [HideInInspector] public int lastTurnHP;
+    [HideInInspector] public Vector3 startPosition;
 
     private void Start()
     {
@@ -84,10 +84,10 @@ public class BattleUnit : MonoBehaviour
                 targets[i].DebuffStat(move.debuffStat, move.debuffValue);
             }
         }
-
+        
+        currentAP -= move.apCost;
         selector.selectedUnit = null;
         targetSelector.SetActive(false);
-        Debug.Log(unitName + " is using " + move.moveName);
     }
 
     public void TakeDamage(int dmg)
