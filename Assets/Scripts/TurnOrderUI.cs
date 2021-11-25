@@ -5,16 +5,38 @@ using UnityEngine.UI;
 
 public class TurnOrderUI : MonoBehaviour
 {
-    public BattleUnit playerUnit1;
-    // private Image unitIcon;
+    private List<GameObject> icons = new List<GameObject>();
+    private readonly Vector3 SCALE_CHANGE = new Vector3(0.8f, 0.8f, 0f);
 
-    private void Start()
+    public void AddUnit(BattleUnit unit)
     {
-        // unitIcon = playerUnit1.icon;
-        GameObject temp = Instantiate(playerUnit1.icon);
-        temp.transform.position = new Vector3(0, 4, 0);
+        GameObject temp = Instantiate(unit.icon);
         temp.transform.SetParent(gameObject.transform, false);
-        // temp.transform.parent = gameObject.transform;
+        icons.Add(temp);
     }
 
+    public void HighlightUnit(int turnOrderIndex)
+    {
+        icons[turnOrderIndex].transform.localScale += SCALE_CHANGE;
+    }
+
+    public void UnhighlightUnit(int turnOrderIndex)
+    {
+        icons[turnOrderIndex].transform.localScale -= SCALE_CHANGE;
+    }
+
+    public void UpdateAfterMove(List<BattleUnit> units)
+    {
+        for (int i = 0; i < units.Count; i++)
+        {
+            if (units[i].currentHP == 0) // set icon color of dead unit to grey
+            {
+                icons[i].GetComponent<Image>().color = new Color32(60, 60, 60, 255);
+            }
+            else    // set incon color of alive unit to default
+            {
+                icons[i].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            }
+        }
+    }
 }

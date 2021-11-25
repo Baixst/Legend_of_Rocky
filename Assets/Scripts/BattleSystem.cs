@@ -30,7 +30,9 @@ public class BattleSystem : MonoBehaviour
     [HideInInspector]
     public List<BattleButton> battleButtons = new List<BattleButton>();
 
-    private List<BattleUnit> turnOrder = new List<BattleUnit>();
+    public TurnOrderUI turnOrderUI;
+    [HideInInspector]
+    public List<BattleUnit> turnOrder = new List<BattleUnit>();
     private int turnOrderIndex = 0;
 
     public BattleUtils utils; // TO-DO: change to private
@@ -54,6 +56,9 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.START;
         utils.SetupBattle();
         turnOrder = utils.SetupTurnOrder();
+
+        utils.SetupTurnOrderUI(turnOrder);
+
         StartCoroutine(StartBattle());
     }
 
@@ -88,6 +93,7 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {   
+            turnOrderUI.HighlightUnit(turnOrderIndex);
             turnOrder[turnOrderIndex].RegenerateAP();
             utils.UpdateHUDs();
 
@@ -124,7 +130,7 @@ public class BattleSystem : MonoBehaviour
         utils.UpdateAfterMove();
         yield return new WaitForSeconds(1);
         utils.MoveUnitBack(turnOrder[turnOrderIndex]);
-        // yield return new WaitForSeconds(2);
+        turnOrderUI.UnhighlightUnit(turnOrderIndex);
         NextTurn();
     }
 
@@ -186,6 +192,7 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator EnemyAttack()
     {
         yield return new WaitForSeconds(1f);
+        turnOrderUI.HighlightUnit(turnOrderIndex);
         infoText.SetText(turnOrder[turnOrderIndex].unitName + " is attacking");
         infoBox.SetActive(true);
         yield return new WaitForSeconds(1.5f);
@@ -206,6 +213,7 @@ public class BattleSystem : MonoBehaviour
         infoBox.SetActive(false);
         utils.UpdateAfterMove();
         yield return new WaitForSeconds(1.5f);
+        turnOrderUI.UnhighlightUnit(turnOrderIndex);
 
         NextTurn();
     }

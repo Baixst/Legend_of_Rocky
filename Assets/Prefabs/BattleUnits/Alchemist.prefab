@@ -112,6 +112,6 @@ MonoBehaviour:
   - {fileID: 8585008820850507866, guid: 9913efca547d4b542a25fe398cadd938, type: 3}
   - {fileID: 2496256662235935077, guid: 0bd0084bd1a72704e8638ca3ec064568, type: 3}
   - {fileID: 1671986762978635345, guid: cc16308e24fe0c24996426dd6dfaf64d, type: 3}
-  icon: {fileID: 1437391441078432217, guid: 783d16c7d425c554a8e32d68e812ecff, type: 3}
+  icon: {fileID: 1807051587209615874, guid: 2347f89539431be49a70157d7be4c69b, type: 3}
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}

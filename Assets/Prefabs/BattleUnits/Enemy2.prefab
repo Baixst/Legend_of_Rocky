@@ -109,6 +109,6 @@ MonoBehaviour:
   APregenartion: 0
   playerCharacter: 0
   moves: []
-  icon: {fileID: 1437391441078432217, guid: 783d16c7d425c554a8e32d68e812ecff, type: 3}
+  icon: {fileID: 8863968617720456182, guid: dbbc5fdcebfbf6b4295425af8a481650, type: 3}
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
