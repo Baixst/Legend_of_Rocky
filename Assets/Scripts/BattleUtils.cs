@@ -189,7 +189,7 @@ public class BattleUtils : MonoBehaviour
 
     public bool PlayerWon()
     {
-        if (totalPlayerHP == 0)
+        if (totalEnemyHP == 0)
         {
             return true;
         }
@@ -201,7 +201,7 @@ public class BattleUtils : MonoBehaviour
 
     public bool EnemyWon()
     {
-        if (totalEnemyHP == 0)
+        if (totalPlayerHP == 0)
         {
             return true;
         }

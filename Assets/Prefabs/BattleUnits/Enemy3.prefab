@@ -100,9 +100,9 @@ MonoBehaviour:
   maxHP: 105
   currentHP: 105
   phyAtk: 24
-  phyDef: 0
+  phyDef: 35
   magAtk: 25
-  magDef: 0
+  magDef: 50
   init: 55
   maxAP: 0
   currentAP: 0

@@ -99,14 +99,14 @@ MonoBehaviour:
   unitName: Alchemist
   maxHP: 110
   currentHP: 110
-  phyAtk: 0
-  phyDef: 0
-  magAtk: 0
-  magDef: 0
+  phyAtk: 40
+  phyDef: 40
+  magAtk: 45
+  magDef: 35
   init: 45
   maxAP: 100
   currentAP: 0
-  APregenartion: 50
+  APregenartion: 45
   playerCharacter: 1
   moves:
   - {fileID: 8585008820850507866, guid: 9913efca547d4b542a25fe398cadd938, type: 3}
