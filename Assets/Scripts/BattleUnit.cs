@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleUnit : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class BattleUnit : MonoBehaviour
     public bool playerCharacter;
 
     public List<Move> moves = new List<Move>();
+
+    public GameObject icon;
 
     [HideInInspector] public int lastTurnHP;
     [HideInInspector] public Vector3 startPosition;

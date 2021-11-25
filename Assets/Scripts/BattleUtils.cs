@@ -82,11 +82,20 @@ public class BattleUtils : MonoBehaviour
         return list;
     }
 
+    public void SetupTurnOrderUI(List<BattleUnit> turnOrder)
+    {
+        foreach (BattleUnit unit in turnOrder)
+        {
+            battleSystem.turnOrderUI.AddUnit(unit);
+        }
+    }
+
     public void UpdateAfterMove()
     {
         // Update HP value in UI 
         UpdateHUDs();
         UpdateHPTrackers();
+        battleSystem.turnOrderUI.UpdateAfterMove(battleSystem.turnOrder);
 
         foreach (BattleUnit unit in units)
         {
