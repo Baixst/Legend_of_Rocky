@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3936882765863270556}
   - component: {fileID: 3936882765863270557}
   m_Layer: 0
-  m_Name: "Stein der Wei\xDFen"
+  m_Name: Stein der Weisen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,13 +96,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  unitName: "Stein der Wei\xDFen"
+  unitName: Stein der Weisen
   maxHP: 90
   currentHP: 90
-  phyAtk: 0
-  phyDef: 0
-  magAtk: 0
-  magDef: 0
+  phyAtk: 15
+  phyDef: 30
+  magAtk: 60
+  magDef: 50
   init: 40
   maxAP: 110
   currentAP: 0

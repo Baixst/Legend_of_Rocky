@@ -25,6 +25,7 @@ public class BattleUnit : MonoBehaviour
 
     [HideInInspector] public int lastTurnHP;
     [HideInInspector] public Vector3 startPosition;
+    [HideInInspector] public bool criticalHit = false;
 
     private void Start()
     {
@@ -72,7 +73,8 @@ public class BattleUnit : MonoBehaviour
             }
             else if (move.damage > 0) // move deals damage
             {
-                targets[i].TakeDamage(move.damage);
+                int damage = calculateDamage(move, targets[i]);
+                targets[i].TakeDamage(damage);
             }
 
             // check if move applies a buff
@@ -163,6 +165,61 @@ public class BattleUnit : MonoBehaviour
             currentAP = maxAP;
         }
     }
+
+    private int calculateDamage(Move move, BattleUnit target)
+    {
+        int movePower = move.damage;
+        int attack = 0;
+        int defense = 0;
+
+        // apply atk and def according to damage type
+        if (move.damageTyp == Move.DamageTyp.Physical)
+        {
+            attack = phyAtk;
+            defense = target.phyDef;
+        }
+        else
+        {
+            attack = magAtk;
+            defense = target.magDef;
+        }
+
+        if (defense <= 0)   defense = 1;    // defense can't be 0 (can't divide by 0)
+        if (attack <= 0)   attack = 1;    // negativ attack would be weird, let's not do that
+        
+        float crit = GetCritMultipier();
+        float random = GetRandomMultiplier();
+
+        // damage formular:
+        float damage = (movePower * attack / defense + 3) * crit * random;
+        
+        // mark if hit was critical, so that damage number becomes red
+        if (crit > 1f)  target.criticalHit = true;
+
+        return Mathf.RoundToInt(damage);
+    }
+
+    private float GetCritMultipier()
+    {
+        int critChange  = 15;
+        float critMultiplier = 1.25f;
+        
+        float randomValue = Random.Range(0f, 100f);
+        if (critChange >= randomValue)
+        {
+            Debug.Log("CRIT!");
+            return critMultiplier;
+        }
+        else
+        {
+            return 1f;
+        }
+    }
+
+    private float GetRandomMultiplier()
+    {
+        float retVal = Random.Range(0.9f, 1.1f);
+        Debug.Log("Random Multipier: " + retVal);
+        return retVal;
+    }
 }
-
-
