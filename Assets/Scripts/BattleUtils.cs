@@ -104,6 +104,11 @@ public class BattleUtils : MonoBehaviour
                 GameObject DamageText = Instantiate(damagePopUpPrefab);
                 DamageText.transform.position = unit.transform.position;
                 DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.lastTurnHP - unit.currentHP).ToString()));
+                if (unit.criticalHit)
+                {
+                    DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = new Color32(255, 133, 63, 255); // set text color to orange
+                    unit.criticalHit = false;
+                }
                 unit.lastTurnHP = unit.currentHP;
             }
             else if (unit.currentHP > unit.lastTurnHP) // check if unit was healed

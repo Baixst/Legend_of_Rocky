@@ -25,6 +25,7 @@ public class BattleUnit : MonoBehaviour
 
     [HideInInspector] public int lastTurnHP;
     [HideInInspector] public Vector3 startPosition;
+    [HideInInspector] public bool criticalHit = false;
 
     private void Start()
     {
@@ -167,8 +168,6 @@ public class BattleUnit : MonoBehaviour
 
     private int calculateDamage(Move move, BattleUnit target)
     {
-        // Damage = (MovePower * Attacker_AttackValue / Target_DefenseValue + 3) * Crit_Multiplier * Random_Multiplier
-
         int movePower = move.damage;
         int attack = 0;
         int defense = 0;
@@ -191,15 +190,19 @@ public class BattleUnit : MonoBehaviour
         float crit = GetCritMultipier();
         float random = GetRandomMultiplier();
 
+        // damage formular:
         float damage = (movePower * attack / defense + 3) * crit * random;
+        
+        // mark if hit was critical, so that damage number becomes red
+        if (crit > 1f)  target.criticalHit = true;
 
         return Mathf.RoundToInt(damage);
     }
 
     private float GetCritMultipier()
     {
-        int critChange  = 10;
-        float critMultiplier = 1.5f;
+        int critChange  = 15;
+        float critMultiplier = 1.25f;
         
         float randomValue = Random.Range(0f, 100f);
         if (critChange >= randomValue)
