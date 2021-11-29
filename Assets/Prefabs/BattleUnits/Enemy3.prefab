@@ -103,7 +103,7 @@ MonoBehaviour:
   phyDef: 35
   magAtk: 25
   magDef: 50
-  init: 55
+  init: 47
   maxAP: 0
   currentAP: 0
   APregenartion: 0
@@ -112,3 +112,5 @@ MonoBehaviour:
   icon: {fileID: 4799563382456124459, guid: d4377fca1d4d3a6419a169b07a2b4c1c, type: 3}
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
+  criticalHit: 0
+  isDefending: 0

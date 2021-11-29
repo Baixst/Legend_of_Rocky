@@ -26,6 +26,7 @@ public class BattleUnit : MonoBehaviour
     [HideInInspector] public int lastTurnHP;
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public bool criticalHit = false;
+    [HideInInspector] public bool isDefending = false;
 
     private void Start()
     {
@@ -190,8 +191,10 @@ public class BattleUnit : MonoBehaviour
         float crit = GetCritMultipier();
         float random = GetRandomMultiplier();
 
+
         // damage formular:
         float damage = (movePower * attack / defense + 3) * crit * random;
+        if (target.isDefending)     damage = damage / 2;
         
         // mark if hit was critical, so that damage number becomes red
         if (crit > 1f)  target.criticalHit = true;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class BattleSystem : MonoBehaviour
@@ -26,9 +27,12 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD enemyHUD2;
     public BattleHUD enemyHUD3;
 
-    public GameObject buttonsParent;
+    public GameObject combatButtonsParent;
+    public GameObject moveButtonsParent;
     [HideInInspector]
-    public List<BattleButton> battleButtons = new List<BattleButton>();
+    public List<Button> combatButtons = new List<Button>();
+    [HideInInspector]
+    public List<BattleButton> moveButtons = new List<BattleButton>();
 
     public TurnOrderUI turnOrderUI;
     [HideInInspector]
@@ -44,13 +48,21 @@ public class BattleSystem : MonoBehaviour
         infoText = infoBox.GetComponentInChildren<TextMeshProUGUI>();
         infoBox.SetActive(false);
         targetSelector.SetActive(false);
-        buttonsParent.SetActive(false);
+        combatButtonsParent.SetActive(false);
+        moveButtonsParent.SetActive(false);
 
-        // get all children from the battleButtons parent object
-        BattleButton[] allChildren = buttonsParent.GetComponentsInChildren<BattleButton>();
-        foreach (BattleButton child in allChildren)
+        // get all children from the combatButtons parent object
+        Button[] allCombatButtons = combatButtonsParent.GetComponentsInChildren<Button>();
+        foreach (Button child in allCombatButtons)
         {
-            battleButtons.Add(child);
+            combatButtons.Add(child);
+        }
+
+        // get all children from the moveButtons parent object
+        BattleButton[] allBattleButtons = moveButtonsParent.GetComponentsInChildren<BattleButton>();
+        foreach (BattleButton child in allBattleButtons)
+        {
+            moveButtons.Add(child);
         }
 
         state = BattleState.START;
@@ -95,12 +107,45 @@ public class BattleSystem : MonoBehaviour
         {   
             turnOrderUI.HighlightUnit(turnOrderIndex);
             turnOrder[turnOrderIndex].RegenerateAP();
+            turnOrder[turnOrderIndex].isDefending = false;
             utils.UpdateHUDs();
 
             utils.MoveUnitForward(turnOrder[turnOrderIndex]);
             utils.UpdateButtons();
-            buttonsParent.SetActive(true);
+            utils.EnableCombatButtons();
+            combatButtonsParent.SetActive(true);
         }
+    }
+
+    public void OnAttackButton()
+    {
+        if (state != BattleState.PLAYER_TURN)   return;
+        moveButtonsParent.SetActive(true);
+        utils.DisableCombatButtons();
+    }
+
+    public void OnDefendButtonButtonWrapper()
+    {
+        StartCoroutine(OnDefendButton());
+    }
+
+    public IEnumerator OnDefendButton()
+    {
+        if (state != BattleState.PLAYER_TURN)   yield break;
+        
+        // set defending variable of unit to true
+        turnOrder[turnOrderIndex].isDefending = true;
+
+        combatButtonsParent.SetActive(false);
+        infoText.SetText("defending");
+        infoBox.SetActive(true);
+        yield return new WaitForSeconds(1f); // this wait would be replaced by an attack animation
+
+        infoBox.SetActive(false);
+        yield return new WaitForSeconds(1);
+        utils.MoveUnitBack(turnOrder[turnOrderIndex]);
+        turnOrderUI.UnhighlightUnit(turnOrderIndex);
+        NextTurn();
     }
 
     public void OnMoveButtonWrapper(int moveIndex) // gets called when player clicks on a attack button
@@ -116,7 +161,8 @@ public class BattleSystem : MonoBehaviour
         }
 
         // disable buttons
-        buttonsParent.SetActive(false);
+        combatButtonsParent.SetActive(false);
+        moveButtonsParent.SetActive(false);
 
         // actually use move
         yield return StartCoroutine(turnOrder[turnOrderIndex].useMove(targetSelector, moveIndex));

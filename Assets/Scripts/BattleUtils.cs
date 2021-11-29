@@ -150,7 +150,7 @@ public class BattleUtils : MonoBehaviour
 
     public void UpdateButtons()
     {
-        foreach (BattleButton button in battleSystem.battleButtons)
+        foreach (BattleButton button in battleSystem.moveButtons)
         {
             button.ChangeTextToActiveUnit();
             
@@ -161,6 +161,22 @@ public class BattleUtils : MonoBehaviour
             {
                 button.GetComponent<Button>().interactable = false;
             }
+        }
+    }
+
+    public void DisableCombatButtons()
+    {
+        foreach (Button b in battleSystem.combatButtons)
+        {
+            b.GetComponent<Button>().interactable = false;
+        }
+    }
+
+    public void EnableCombatButtons()
+    {
+        foreach (Button b in battleSystem.combatButtons)
+        {
+            b.GetComponent<Button>().interactable = true;
         }
     }
 
