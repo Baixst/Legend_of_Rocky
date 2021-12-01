@@ -12504,6 +12504,7 @@ GameObject:
   - component: {fileID: 1626401336}
   - component: {fileID: 1626401335}
   - component: {fileID: 1626401343}
+  - component: {fileID: 1626401334}
   - component: {fileID: 1626401337}
   - component: {fileID: 1626401340}
   - component: {fileID: 1626401341}
@@ -12515,6 +12516,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!58 &1626401334
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626401333}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 4d5144f45d5d5d94c839eec64293b8b3, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1}
+  serializedVersion: 2
+  m_Radius: 0.06
 --- !u!61 &1626401335
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12583,7 +12600,9 @@ MonoBehaviour:
     m_Bits: 1
   m_GroundCheck: {fileID: 1809551870}
   m_CeilingCheck: {fileID: 1595330727}
-  m_CrouchDisableCollider: {fileID: 1626401335}
+  m_CrouchDisableColliderBox: {fileID: 1626401335}
+  m_CrouchDisableColliderCapsule: {fileID: 1626401343}
+  m_CrouchDisableColliderCircle: {fileID: 1626401334}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
