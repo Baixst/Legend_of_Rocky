@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9160424849528726312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.05, y: 0.1, z: 0}
+  m_LocalPosition: {x: 6.33, y: -0.85, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,12 +72,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.6603774, g: 0.27100393, b: 0.27100393, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7c86259b0f6fe1e439fe623f85ab3831, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.25, y: 2.69}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -112,3 +112,6 @@ MonoBehaviour:
   icon: {fileID: 8863968617720456182, guid: dbbc5fdcebfbf6b4295425af8a481650, type: 3}
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
+  criticalHit: 0
+  isDefending: 0
+  moveCanceled: 0
