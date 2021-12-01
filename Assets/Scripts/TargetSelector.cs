@@ -10,6 +10,8 @@ public class TargetSelector : MonoBehaviour
     public List<BattleUnit> possibleTargets = new List<BattleUnit>();
     private int possibleTargetsIndex = 0;
 
+    [HideInInspector] public bool canceled;
+
     public void findPossibleTargets(Move move)
     {
         Debug.Log("finding possible targets...");
@@ -81,6 +83,11 @@ public class TargetSelector : MonoBehaviour
         {
             selectedUnit = possibleTargets[possibleTargetsIndex];
             possibleTargetsIndex = 0;
+        }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            canceled = true;
         }
     }
 }

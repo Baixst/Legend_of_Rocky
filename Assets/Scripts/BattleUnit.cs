@@ -27,6 +27,7 @@ public class BattleUnit : MonoBehaviour
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public bool criticalHit = false;
     [HideInInspector] public bool isDefending = false;
+    [HideInInspector] public bool moveCanceled = false;
 
     private void Start()
     {
@@ -50,8 +51,15 @@ public class BattleUnit : MonoBehaviour
             tmp.y += 0.5f;
             targetSelector.transform.position = tmp;
 
-            // wait until target is selected by user
-            yield return new WaitUntil(() => selector.selectedUnit != null);
+            // wait until target is selected by user or selection gets canceled
+            yield return new WaitUntil(() => selector.selectedUnit != null || selector.canceled);
+            if (selector.canceled)
+            {
+                selector.canceled = false;  // reset bool
+                targetSelector.SetActive(false);
+                moveCanceled = true;
+                yield break;
+            }
         }
 
         if (move.numberOfTargets > 1)

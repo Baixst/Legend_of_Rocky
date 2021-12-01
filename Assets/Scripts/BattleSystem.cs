@@ -39,6 +39,8 @@ public class BattleSystem : MonoBehaviour
     public List<BattleUnit> turnOrder = new List<BattleUnit>();
     private int turnOrderIndex = 0;
 
+    private bool cancelable = false;
+
     public BattleUtils utils; // TO-DO: change to private
 
     public BattleState state;
@@ -122,6 +124,7 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PLAYER_TURN)   return;
         moveButtonsParent.SetActive(true);
         utils.DisableCombatButtons();
+        cancelable = true;
     }
 
     public void OnDefendButtonButtonWrapper()
@@ -163,9 +166,19 @@ public class BattleSystem : MonoBehaviour
         // disable buttons
         combatButtonsParent.SetActive(false);
         moveButtonsParent.SetActive(false);
+        cancelable = false;
 
         // actually use move
         yield return StartCoroutine(turnOrder[turnOrderIndex].useMove(targetSelector, moveIndex));
+        // check if move got canceled by player
+        if (turnOrder[turnOrderIndex].moveCanceled)
+        {
+            turnOrder[turnOrderIndex].moveCanceled = false;
+            combatButtonsParent.SetActive(true);
+            moveButtonsParent.SetActive(true);
+            cancelable = true;
+            yield break;
+        }
 
         // show move name in infobox
         infoText.SetText(turnOrder[turnOrderIndex].moves[moveIndex].moveName);
@@ -290,5 +303,15 @@ public class BattleSystem : MonoBehaviour
     public List<BattleUnit> GetEnemyUnits()
     {
         return utils.GetEnemyUnits();
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel") && cancelable)
+        {
+            moveButtonsParent.SetActive(false);
+            utils.EnableCombatButtons();
+            cancelable = false;
+        }
     }
 }
