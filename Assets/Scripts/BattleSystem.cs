@@ -45,6 +45,13 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
 
+    private GameObject eventSystem;
+
+    void Awake()
+    {
+        eventSystem = GameObject.Find("EventSystem");
+    }
+
     void Start()
     {
         infoText = infoBox.GetComponentInChildren<TextMeshProUGUI>();
@@ -116,14 +123,16 @@ public class BattleSystem : MonoBehaviour
             utils.UpdateButtons();
             utils.EnableCombatButtons();
             combatButtonsParent.SetActive(true);
+            eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(combatButtons[0].gameObject);
         }
     }
 
     public void OnAttackButton()
     {
         if (state != BattleState.PLAYER_TURN)   return;
-        moveButtonsParent.SetActive(true);
         utils.DisableCombatButtons();
+        moveButtonsParent.SetActive(true);
+        eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(moveButtons[0].gameObject);
         cancelable = true;
     }
 
@@ -311,6 +320,7 @@ public class BattleSystem : MonoBehaviour
         {
             moveButtonsParent.SetActive(false);
             utils.EnableCombatButtons();
+            eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(combatButtons[0].gameObject);
             cancelable = false;
         }
     }

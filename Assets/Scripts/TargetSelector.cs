@@ -49,7 +49,7 @@ public class TargetSelector : MonoBehaviour
     void Update()
     {
         // check for button inputs
-        if (Input.GetButtonUp("TargetorUp"))
+        if (Input.GetButtonDown("TargetorUp"))
         {
             if (possibleTargetsIndex == 0)
             {
@@ -64,7 +64,7 @@ public class TargetSelector : MonoBehaviour
             transform.position = tmp;
         }
 
-        if (Input.GetButtonUp("TargetorDown"))
+        if (Input.GetButtonDown("TargetorDown"))
         {
             if (possibleTargetsIndex + 1 == possibleTargets.Count)
             {
@@ -79,7 +79,7 @@ public class TargetSelector : MonoBehaviour
             transform.position = tmp;
         }
 
-        if (Input.GetButtonUp("Submit"))
+        if (Input.GetButtonDown("Submit"))
         {
             selectedUnit = possibleTargets[possibleTargetsIndex];
             possibleTargetsIndex = 0;
