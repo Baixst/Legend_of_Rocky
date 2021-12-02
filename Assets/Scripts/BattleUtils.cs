@@ -161,6 +161,10 @@ public class BattleUtils : MonoBehaviour
             {
                 button.GetComponent<Button>().interactable = false;
             }
+            else
+            {
+                button.GetComponent<Button>().interactable = true;
+            }
         }
     }
 
