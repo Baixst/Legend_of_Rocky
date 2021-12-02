@@ -1,0 +1,44 @@
+{
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "Platforming",
+            "id": "e1715de3-0d33-4ca2-96cb-7faab87f1885",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "0d076275-f955-4677-b755-4ed67de86ae0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f8fcaf24-2e1e-4082-9252-bd63346885b5",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3ed6b5e-7aef-400c-8e91-b80b7a5e6986",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
