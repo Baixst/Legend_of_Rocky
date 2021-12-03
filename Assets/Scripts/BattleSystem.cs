@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class BattleSystem : MonoBehaviour
@@ -314,9 +315,9 @@ public class BattleSystem : MonoBehaviour
         return utils.GetEnemyUnits();
     }
 
-    void Update()
+    public void GoBack(InputAction.CallbackContext context)
     {
-        if (Input.GetButtonDown("Cancel") && cancelable)
+        if (context.performed && cancelable)
         {
             moveButtonsParent.SetActive(false);
             utils.EnableCombatButtons();
