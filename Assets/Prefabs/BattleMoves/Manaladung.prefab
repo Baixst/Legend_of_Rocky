@@ -48,12 +48,15 @@ MonoBehaviour:
   numberOfTargets: 1
   targetTyp: 2
   damageTyp: 1
+  buffsToApply: 0100000000000000
+  debuffsToApply: 
   damage: 0
   healing: 0
-  canDebuff: 0
-  debuffValue: 0
-  debuffStat: 
-  canBuff: 1
-  buffValue: 10
-  buffStat: attack
   apCost: 30
+  removeBuffs: 0
+  removeDebuffs: 0
+  buffs:
+  - ManaRush
+  - ManaRush
+  - ManaRush
+  debuffs: []

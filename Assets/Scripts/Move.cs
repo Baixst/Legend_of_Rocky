@@ -13,13 +13,34 @@ public class Move : MonoBehaviour
    public enum DamageTyp { Physical, Magical}
    public DamageTyp damageTyp;
 
+   public enum Buff { Might, ManaRush, Barrier }
+   public List<Buff> buffsToApply;
+
+   public enum Debuff { ArmorBreak }
+   public List<Debuff> debuffsToApply;
+
    public int damage;
    public int healing;
-   public bool canDebuff;
-   public int debuffValue;      // how much a stat will be reduced
-   public string debuffStat;    // stat to be reduced, can be "attack", "defense" or "init"
-   public bool canBuff;
-   public int buffValue;        // how much a stat will be increased
-   public string buffStat;      // stat to be increased
-   public int apCost;           // how much AP does the move use up
+   public int apCost;          // how much AP does the move use up
+   public int removeBuffs;     // how many buffs the moves removes from the target
+   public int removeDebuffs;   // how many debuffs the moves removes from the target
+
+   [HideInInspector] public List<string> buffs = new List<string>();
+   [HideInInspector] public List<string> debuffs = new List<string>();
+
+   public void WakeUp()
+   {
+      Debug.Log("Awake called from a move");
+      foreach (Buff buff in buffsToApply)
+      {
+         if (buff == Buff.Might)       buffs.Add("Might");
+         if (buff == Buff.ManaRush)    buffs.Add("ManaRush");
+         if (buff == Buff.Barrier)     buffs.Add("Barrier");
+      }
+
+      foreach (Debuff debuff in debuffsToApply)
+      {
+         if (debuff == Debuff.ArmorBreak)   debuffs.Add("ArmorBreak");
+      }
+   }
 }

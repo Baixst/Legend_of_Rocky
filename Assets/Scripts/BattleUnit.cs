@@ -18,6 +18,8 @@ public class BattleUnit : MonoBehaviour
     [HideInInspector] public int currentAP;
     public int APregenartion;
     public bool playerCharacter;
+    public List<string> buffs = new List<string>();
+    public List<string> debuffs = new List<string>();
 
     public List<Move> moves = new List<Move>();
 
@@ -27,12 +29,18 @@ public class BattleUnit : MonoBehaviour
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public bool criticalHit = false;
     [HideInInspector] public bool isDefending = false;
+    public bool hasMight, hasManaRush, hasBarrier, hasArmorBreak = false;
+
     [HideInInspector] public bool moveCanceled = false;
 
     private void Start()
     {
         lastTurnHP = currentHP;
         startPosition = gameObject.transform.position;
+        foreach (Move move in moves)
+        {
+            move.WakeUp();
+        }
     }
 
     public IEnumerator useMove(GameObject targetSelector, int moveIndex)
@@ -87,15 +95,33 @@ public class BattleUnit : MonoBehaviour
             }
 
             // check if move applies a buff
-            if (move.canBuff)
+            if (move.buffs.Count > 0)
             {
-                targets[i].BuffStat(move.buffStat, move.buffValue);
+                foreach (string buff in move.buffs)
+                {
+                    targets[i].AddBuff(buff);
+                }
             }
 
             // check if move applies a Debuff
-            if (move.canDebuff)
+            if (move.debuffs.Count > 0)
             {
-                targets[i].DebuffStat(move.debuffStat, move.debuffValue);
+                foreach (string debuff in move.debuffs)
+                {
+                    targets[i].AddDebuff(debuff);
+                }
+            }
+
+            // check if move removes a Buff
+            if (move.removeBuffs > 0)
+            {
+                targets[i].RemoveBuffs(move.removeBuffs);
+            }
+
+            // check if move removes a Debuff
+            if (move.removeDebuffs > 0)
+            {
+                targets[i].RemoveDebuffs(move.removeDebuffs);
             }
         }
         
@@ -122,53 +148,106 @@ public class BattleUnit : MonoBehaviour
         }
     }
 
-    public void BuffStat(string stat, int buffValue)
+    public void AddBuff(string effect)
     {
-        switch (stat)
+        switch (effect)
         {
-            case "attack":
-                phyAtk += buffValue;
+            case "Might":
+                if (!hasMight)
+                {
+                    hasMight = true;
+                    buffs.Add(effect);
+                }
                 break;
 
-            case "defense":
-                phyDef += buffValue;
+            case "ManaRush":
+                if (!hasManaRush)
+                {
+                    hasManaRush = true;
+                    buffs.Add(effect);
+                }
                 break;
 
-            case "init":
-                init += buffValue;
+            case "Barrier":
+                if (!hasBarrier)
+                {
+                    hasBarrier = true;
+                    buffs.Add(effect);
+                }
                 break;
 
             default:
-                Debug.Log("Unable to find stat: " + stat);
+                Debug.Log("Unable to find buff: " + effect);
                 break;
         }
     }
 
-    public void DebuffStat(string stat, int debuffValue)
+    public void AddDebuff(string effect)
     {
-        switch (stat)
+        switch (effect)
         {
-            case "attack":
-                phyAtk -= debuffValue;
-                break;
-
-            case "defense":
-                phyDef -= debuffValue;
-                break;
-
-            case "init":
-                init -= debuffValue;
+            case "ArmorBreak":
+                if (!hasArmorBreak)
+                {
+                    hasArmorBreak = true;
+                    debuffs.Add(effect);
+                }
                 break;
 
             default:
-                Debug.Log("Unable to find stat: " + stat);
+                Debug.Log("Unable to find stat: " + effect);
                 break;
+        }
+    }
+
+    public void RemoveBuffs(int amount)
+    {
+        if (buffs.Count == 0)    return;
+
+        for (int i = 0; i < amount; i++)
+        {
+            if (buffs[0] == "Might")
+            {
+                hasMight = false;
+                buffs.RemoveAt(0);
+            }
+            else if (buffs[0] == "ManaRush")
+            {
+                hasManaRush = false;
+                buffs.RemoveAt(0);
+            }
+            else if (buffs[0] == "Barrier")
+            {
+                hasBarrier = false;
+                buffs.RemoveAt(0);
+            }
+        }
+    }
+
+    public void RemoveDebuffs(int amount)
+    {
+        if (debuffs.Count == 0)    return;
+
+        for (int i = 0; i < amount; i++)
+        {
+            if (debuffs[0] == "ArmorBreak")
+            {
+                hasArmorBreak = false;
+                debuffs.RemoveAt(0);
+            }
         }
     }
 
     public void RegenerateAP()
     {
-        currentAP += APregenartion;
+        if (hasManaRush)
+        {
+            currentAP = currentAP + APregenartion + Mathf.RoundToInt(APregenartion * 0.25f);
+        }
+        else
+        {
+            currentAP += APregenartion;
+        }
         if (currentAP > maxAP)
         {
             currentAP = maxAP;
@@ -198,10 +277,10 @@ public class BattleUnit : MonoBehaviour
         
         float crit = GetCritMultipier();
         float random = GetRandomMultiplier();
-
+        float statusEffects = GetStatusEffectsMultiplier(target);
 
         // damage formular:
-        float damage = (movePower * attack / defense + 3) * crit * random;
+        float damage = (movePower * attack / defense + 3) * crit * random * statusEffects;
         if (target.isDefending)     damage = damage / 2;
         
         // mark if hit was critical, so that damage number becomes red
@@ -212,8 +291,8 @@ public class BattleUnit : MonoBehaviour
 
     private float GetCritMultipier()
     {
-        int critChange  = 15;
-        float critMultiplier = 1.25f;
+        int critChange  = 10;
+        float critMultiplier = 1.2f;
         
         float randomValue = Random.Range(0f, 100f);
         if (critChange >= randomValue)
@@ -231,6 +310,15 @@ public class BattleUnit : MonoBehaviour
     {
         float retVal = Random.Range(0.9f, 1.1f);
         Debug.Log("Random Multipier: " + retVal);
+        return retVal;
+    }
+
+    private float GetStatusEffectsMultiplier(BattleUnit target)
+    {
+        float retVal = 1.0f;
+        if (target.hasArmorBreak)   retVal += 0.2f;
+        if (target.hasBarrier)      retVal -= 0.2f;
+        if (hasMight)               retVal += 0.2f;
         return retVal;
     }
 }
