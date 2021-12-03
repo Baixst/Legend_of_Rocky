@@ -48,12 +48,12 @@ MonoBehaviour:
   numberOfTargets: 1
   targetTyp: 0
   damageTyp: 0
+  buffsToApply: 00000000
+  debuffsToApply: 
   damage: 35
   healing: 0
-  canDebuff: 0
-  debuffValue: 0
-  debuffStat: 
-  canBuff: 0
-  buffValue: 0
-  buffStat: 
   apCost: 40
+  removeBuffs: 0
+  removeDebuffs: 0
+  buffs: []
+  debuffs: []
