@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class BattleSystem : MonoBehaviour
@@ -44,6 +45,13 @@ public class BattleSystem : MonoBehaviour
     public BattleUtils utils; // TO-DO: change to private
 
     public BattleState state;
+
+    private GameObject eventSystem;
+
+    void Awake()
+    {
+        eventSystem = GameObject.Find("EventSystem");
+    }
 
     void Start()
     {
@@ -116,14 +124,16 @@ public class BattleSystem : MonoBehaviour
             utils.UpdateButtons();
             utils.EnableCombatButtons();
             combatButtonsParent.SetActive(true);
+            eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(combatButtons[0].gameObject);
         }
     }
 
     public void OnAttackButton()
     {
         if (state != BattleState.PLAYER_TURN)   return;
-        moveButtonsParent.SetActive(true);
         utils.DisableCombatButtons();
+        moveButtonsParent.SetActive(true);
+        eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(moveButtons[0].gameObject);
         cancelable = true;
     }
 
@@ -305,12 +315,13 @@ public class BattleSystem : MonoBehaviour
         return utils.GetEnemyUnits();
     }
 
-    void Update()
+    public void GoBack(InputAction.CallbackContext context)
     {
-        if (Input.GetButtonDown("Cancel") && cancelable)
+        if (context.performed && cancelable)
         {
             moveButtonsParent.SetActive(false);
             utils.EnableCombatButtons();
+            eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(combatButtons[0].gameObject);
             cancelable = false;
         }
     }

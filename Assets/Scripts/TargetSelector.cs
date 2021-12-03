@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TargetSelector : MonoBehaviour
 {
@@ -46,10 +47,10 @@ public class TargetSelector : MonoBehaviour
         }
     }
 
-    void Update()
+    // Inputs:
+    public void MoveOneUp(InputAction.CallbackContext context)
     {
-        // check for button inputs
-        if (Input.GetButtonUp("TargetorUp"))
+        if (context.started)
         {
             if (possibleTargetsIndex == 0)
             {
@@ -63,8 +64,11 @@ public class TargetSelector : MonoBehaviour
             tmp.y += 0.5f;
             transform.position = tmp;
         }
+    }
 
-        if (Input.GetButtonUp("TargetorDown"))
+    public void MoveOneDown(InputAction.CallbackContext context)
+    {
+        if (context.started)
         {
             if (possibleTargetsIndex + 1 == possibleTargets.Count)
             {
@@ -78,14 +82,20 @@ public class TargetSelector : MonoBehaviour
             tmp.y += 0.5f;
             transform.position = tmp;
         }
+    }
 
-        if (Input.GetButtonUp("Submit"))
+    public void Submit(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
             selectedUnit = possibleTargets[possibleTargetsIndex];
             possibleTargetsIndex = 0;
         }
+    }
 
-        if (Input.GetButtonDown("Cancel"))
+    public void GoBack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
             canceled = true;
         }
