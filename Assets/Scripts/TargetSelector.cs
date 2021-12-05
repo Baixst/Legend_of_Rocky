@@ -7,8 +7,8 @@ public class TargetSelector : MonoBehaviour
 {
 
     public BattleSystem battleSystem;
-    public BattleUnit selectedUnit;
-    public List<BattleUnit> possibleTargets = new List<BattleUnit>();
+    [HideInInspector] public BattleUnit selectedUnit;
+    [HideInInspector] public List<BattleUnit> possibleTargets = new List<BattleUnit>();
     private int possibleTargetsIndex = 0;
 
     [HideInInspector] public bool canceled;

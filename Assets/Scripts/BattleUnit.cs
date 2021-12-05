@@ -29,7 +29,7 @@ public class BattleUnit : MonoBehaviour
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public bool criticalHit = false;
     [HideInInspector] public bool isDefending = false;
-    public bool hasMight, hasManaRush, hasBarrier, hasArmorBreak = false;
+    [HideInInspector] public bool hasMight, hasManaRush, hasBarrier, hasArmorBreak = false;
 
     [HideInInspector] public bool moveCanceled = false;
 

@@ -25,8 +25,8 @@ public class Move : MonoBehaviour
    public int removeBuffs;     // how many buffs the moves removes from the target
    public int removeDebuffs;   // how many debuffs the moves removes from the target
 
-   public List<string> buffs = new List<string>();
-   public List<string> debuffs = new List<string>();
+   [HideInInspector] public List<string> buffs = new List<string>();
+   [HideInInspector] public List<string> debuffs = new List<string>();
 
    public void WakeUp()
    {
