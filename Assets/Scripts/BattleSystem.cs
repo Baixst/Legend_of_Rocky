@@ -9,24 +9,14 @@ public class BattleSystem : MonoBehaviour
 {
     public enum BattleState { START, PLAYER_TURN, ENEMY_TURN, WON, LOST }
 
+    public StatusEffectHandler statusEffectHandler;
     public GameObject targetSelector;
 
     public GameObject infoBox;
     private TextMeshProUGUI infoText;
 
-    public GameObject playerPrefab1;
-    public GameObject playerPrefab2;
-    public GameObject playerPrefab3;
-    public GameObject enemyPrefab1;
-    public GameObject enemyPrefab2;
-    public GameObject enemyPrefab3;
-
-    public BattleHUD playerHUD1;
-    public BattleHUD playerHUD2;
-    public BattleHUD playerHUD3;
-    public BattleHUD enemyHUD1;
-    public BattleHUD enemyHUD2;
-    public BattleHUD enemyHUD3;
+    public List<BattleUnit> battleUnits;
+    public List<BattleHUD> huds;
 
     public GameObject combatButtonsParent;
     public GameObject moveButtonsParent;
@@ -43,9 +33,7 @@ public class BattleSystem : MonoBehaviour
     private bool cancelable = false;
 
     public BattleUtils utils; // TO-DO: change to private
-
-    public BattleState state;
-
+    [HideInInspector] public BattleState state;
     private GameObject eventSystem;
 
     void Awake()

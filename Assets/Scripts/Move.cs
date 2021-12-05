@@ -25,12 +25,13 @@ public class Move : MonoBehaviour
    public int removeBuffs;     // how many buffs the moves removes from the target
    public int removeDebuffs;   // how many debuffs the moves removes from the target
 
-   [HideInInspector] public List<string> buffs = new List<string>();
-   [HideInInspector] public List<string> debuffs = new List<string>();
+   public List<string> buffs = new List<string>();
+   public List<string> debuffs = new List<string>();
 
    public void WakeUp()
    {
-      Debug.Log("Awake called from a move");
+      buffs.Clear();
+      debuffs.Clear();
       foreach (Buff buff in buffsToApply)
       {
          if (buff == Buff.Might)       buffs.Add("Might");

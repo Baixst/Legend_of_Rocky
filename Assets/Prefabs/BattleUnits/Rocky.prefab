@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9151407074274657397
+--- !u!1 &7349571688247746058
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9151407074274657394}
-  - component: {fileID: 9151407074274657395}
-  - component: {fileID: 9151407074274657396}
+  - component: {fileID: 7349571688247746061}
+  - component: {fileID: 7349571688247746060}
+  - component: {fileID: 7349571688247746059}
   m_Layer: 0
   m_Name: Rocky
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9151407074274657394
+--- !u!4 &7349571688247746061
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9151407074274657397}
+  m_GameObject: {fileID: 7349571688247746058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.87, y: -2.48, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.7}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9151407074274657395
+--- !u!212 &7349571688247746060
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9151407074274657397}
+  m_GameObject: {fileID: 7349571688247746058}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -83,13 +83,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9151407074274657396
+--- !u!114 &7349571688247746059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9151407074274657397}
+  m_GameObject: {fileID: 7349571688247746058}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf22b0840fb33034badcdaf7ecd12e6f, type: 3}
@@ -108,13 +108,19 @@ MonoBehaviour:
   currentAP: 0
   APregenartion: 50
   playerCharacter: 1
+  buffs: []
+  debuffs: []
   moves:
-  - {fileID: 8607934247056443778, guid: ab6f8a129daad83428b2669649121f30, type: 3}
-  - {fileID: 6273898198910531896, guid: 4b01476e29e271b448aa5da47862ac4f, type: 3}
-  - {fileID: 6273898198910531896, guid: d1852d8574e5bd444baee6310aa62e57, type: 3}
+  - {fileID: 5590815549108191979, guid: ab6f8a129daad83428b2669649121f30, type: 3}
+  - {fileID: 1390771738580983607, guid: 4b01476e29e271b448aa5da47862ac4f, type: 3}
+  - {fileID: 5778972962783638198, guid: d1852d8574e5bd444baee6310aa62e57, type: 3}
   icon: {fileID: 4159816097365652664, guid: a91351a37f35a2041aa5d9b60eeb874b, type: 3}
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
   criticalHit: 0
   isDefending: 0
+  hasMight: 0
+  hasManaRush: 0
+  hasBarrier: 0
+  hasArmorBreak: 0
   moveCanceled: 0

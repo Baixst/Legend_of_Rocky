@@ -9,7 +9,6 @@ public class BattleUtils : MonoBehaviour
     public BattleSystem battleSystem;
     public GameObject damagePopUpPrefab;
 
-    private List<GameObject> unitPrefabs = new List<GameObject>();
     private List<BattleUnit> units = new List<BattleUnit>();
     private List<BattleHUD> huds = new List<BattleHUD>();
     private int totalPlayerHP = 0;
@@ -17,24 +16,14 @@ public class BattleUtils : MonoBehaviour
 
     public void SetupBattle()
     {
-        if (battleSystem.playerPrefab1 != null)  unitPrefabs.Add(battleSystem.playerPrefab1);
-        if (battleSystem.playerPrefab2 != null)   unitPrefabs.Add(battleSystem.playerPrefab2);
-        if (battleSystem.playerPrefab3 != null)   unitPrefabs.Add(battleSystem.playerPrefab3);
-        if (battleSystem.enemyPrefab1 != null)   unitPrefabs.Add(battleSystem.enemyPrefab1);
-        if (battleSystem.enemyPrefab2 != null)   unitPrefabs.Add(battleSystem.enemyPrefab2);
-        if (battleSystem.enemyPrefab3 != null)   unitPrefabs.Add(battleSystem.enemyPrefab3);
-
-        if (battleSystem.playerHUD1 != null)   huds.Add(battleSystem.playerHUD1);
-        if (battleSystem.playerHUD2 != null)   huds.Add(battleSystem.playerHUD2);
-        if (battleSystem.playerHUD3 != null)   huds.Add(battleSystem.playerHUD3);
-        if (battleSystem.enemyHUD1 != null)   huds.Add(battleSystem.enemyHUD1);
-        if (battleSystem.enemyHUD2 != null)   huds.Add(battleSystem.enemyHUD2);
-        if (battleSystem.enemyHUD3 != null)   huds.Add(battleSystem.enemyHUD3);
-
-        foreach (GameObject unitPrefab in unitPrefabs)
+        foreach (BattleUnit unit in battleSystem.battleUnits)
         {
-            GameObject temp = Instantiate(unitPrefab);
-            units.Add(temp.GetComponent<BattleUnit>());
+            units.Add(unit);
+        }
+
+        foreach (BattleHUD hud in battleSystem.huds)
+        {
+            huds.Add(hud);
         }
 
         foreach (BattleUnit unit in units)
@@ -146,6 +135,7 @@ public class BattleUtils : MonoBehaviour
             huds[i].SetHP(units[i].currentHP, units[i]);
             huds[i].SetAP(units[i].currentAP, units[i]);
         }
+        battleSystem.statusEffectHandler.UpdateStatusEffects();
     }
 
     public void UpdateButtons()

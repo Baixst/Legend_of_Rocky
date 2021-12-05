@@ -12748,7 +12748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d277d6609220bb45bf28060c35453ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadFightScene: 0
+  loadFightScene: 1
 --- !u!70 &1626401343
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

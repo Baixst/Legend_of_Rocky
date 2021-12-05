@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3936882765863270554
+--- !u!1 &4638508187819063778
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3936882765863270559}
-  - component: {fileID: 3936882765863270556}
-  - component: {fileID: 3936882765863270557}
+  - component: {fileID: 4638508187819063783}
+  - component: {fileID: 4638508187819063780}
+  - component: {fileID: 4638508187819063781}
   m_Layer: 0
   m_Name: Stein der Weisen
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3936882765863270559
+--- !u!4 &4638508187819063783
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3936882765863270554}
+  m_GameObject: {fileID: 4638508187819063778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.43, y: -2.75, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3936882765863270556
+--- !u!212 &4638508187819063780
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3936882765863270554}
+  m_GameObject: {fileID: 4638508187819063778}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -83,13 +83,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3936882765863270557
+--- !u!114 &4638508187819063781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3936882765863270554}
+  m_GameObject: {fileID: 4638508187819063778}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf22b0840fb33034badcdaf7ecd12e6f, type: 3}
@@ -108,13 +108,19 @@ MonoBehaviour:
   currentAP: 0
   APregenartion: 45
   playerCharacter: 1
+  buffs: []
+  debuffs: []
   moves:
-  - {fileID: 4664661398628708366, guid: fff2b0d6c1db6834d86e4e73c113480e, type: 3}
-  - {fileID: 6273898198910531896, guid: 4b01476e29e271b448aa5da47862ac4f, type: 3}
-  - {fileID: 6569501063299088427, guid: 4d8e49e0b7d2e0c4ea05ac50a7eee527, type: 3}
+  - {fileID: 475082925009404434, guid: fff2b0d6c1db6834d86e4e73c113480e, type: 3}
+  - {fileID: 1390771738580983607, guid: 4b01476e29e271b448aa5da47862ac4f, type: 3}
+  - {fileID: 7850197355749694381, guid: 4d8e49e0b7d2e0c4ea05ac50a7eee527, type: 3}
   icon: {fileID: 6577724086024381578, guid: 48897f1d6886ab047b9c267a44a9614d, type: 3}
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
   criticalHit: 0
   isDefending: 0
+  hasMight: 0
+  hasManaRush: 0
+  hasBarrier: 0
+  hasArmorBreak: 0
   moveCanceled: 0
