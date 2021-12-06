@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9160424849528726312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.47, y: -0.85, z: 0}
+  m_LocalPosition: {x: 8.31, y: -0.85, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,10 +108,16 @@ MonoBehaviour:
   currentAP: 0
   APregenartion: 0
   playerCharacter: 0
+  buffs: []
+  debuffs: []
   moves: []
   icon: {fileID: 8863968617720456182, guid: dbbc5fdcebfbf6b4295425af8a481650, type: 3}
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
   criticalHit: 0
   isDefending: 0
+  hasMight: 0
+  hasManaRush: 0
+  hasBarrier: 0
+  hasArmorBreak: 0
   moveCanceled: 0
