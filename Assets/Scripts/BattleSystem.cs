@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
 
+// nur ein test
+
 public class BattleSystem : MonoBehaviour
 {
     public enum BattleState { START, PLAYER_TURN, ENEMY_TURN, WON, LOST }
