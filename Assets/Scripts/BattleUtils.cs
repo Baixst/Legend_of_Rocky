@@ -90,8 +90,10 @@ public class BattleUtils : MonoBehaviour
         {
             if (unit.currentHP < unit.lastTurnHP) // check if unit has taken damage
             {
+                var spawnPosition = unit.transform.position;
+                spawnPosition.z -= 5f; // without that, the damage number is behind the unite sprite
                 GameObject DamageText = Instantiate(damagePopUpPrefab);
-                DamageText.transform.position = unit.transform.position;
+                DamageText.transform.position = spawnPosition;
                 DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.lastTurnHP - unit.currentHP).ToString()));
                 if (unit.criticalHit)
                 {
@@ -102,8 +104,10 @@ public class BattleUtils : MonoBehaviour
             }
             else if (unit.currentHP > unit.lastTurnHP) // check if unit was healed
             {
+                var spawnPosition = unit.transform.position;
+                spawnPosition.z -= 5f; // without that, the damage number is behind the unite sprite
                 GameObject DamageText = Instantiate(damagePopUpPrefab);
-                DamageText.transform.position = unit.transform.position;
+                DamageText.transform.position = spawnPosition;
                 DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.currentHP - unit.lastTurnHP).ToString()));
                 DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = new Color32(32, 193, 51, 255); // set text color to green
                 unit.lastTurnHP = unit.currentHP;

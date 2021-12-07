@@ -5,8 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
 
-// nur ein test
-
 public class BattleSystem : MonoBehaviour
 {
     public enum BattleState { START, PLAYER_TURN, ENEMY_TURN, WON, LOST }
@@ -22,14 +20,11 @@ public class BattleSystem : MonoBehaviour
 
     public GameObject combatButtonsParent;
     public GameObject moveButtonsParent;
-    [HideInInspector]
-    public List<Button> combatButtons = new List<Button>();
-    [HideInInspector]
-    public List<BattleButton> moveButtons = new List<BattleButton>();
+    [HideInInspector] public List<Button> combatButtons = new List<Button>();
+    [HideInInspector] public List<BattleButton> moveButtons = new List<BattleButton>();
 
     public TurnOrderUI turnOrderUI;
-    [HideInInspector]
-    public List<BattleUnit> turnOrder = new List<BattleUnit>();
+    [HideInInspector] public List<BattleUnit> turnOrder = new List<BattleUnit>();
     private int turnOrderIndex = 0;
 
     private bool cancelable = false;

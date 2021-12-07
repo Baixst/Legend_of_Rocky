@@ -1657,12 +1657,12 @@ SpriteRenderer:
   m_SortingLayerID: -1329557639
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 9421f41e50c2b4b4785355bd0dc22f2c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6154e4e47caca1c4487a5d14a7f8ea52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.8828125}
+  m_Size: {x: 0.7, y: 0.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5235,7 +5235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleSystem: {fileID: 1588003166}
-  damagePopUpPrefab: {fileID: 2049934910132001141, guid: 29d3aff4bb93c3e48a3e41cb1f413d2d, type: 3}
+  damagePopUpPrefab: {fileID: 133841219135701384, guid: 29d3aff4bb93c3e48a3e41cb1f413d2d, type: 3}
 --- !u!4 &1812337375 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4627102122883696, guid: 96007914994b8514b87c835104b855e1, type: 3}

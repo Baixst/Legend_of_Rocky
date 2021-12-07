@@ -20,7 +20,6 @@ public class BattleUnit : MonoBehaviour
     public bool playerCharacter;
     public List<string> buffs = new List<string>();
     public List<string> debuffs = new List<string>();
-    public Vector3 enemyPosition;
 
     public List<Move> moves = new List<Move>();
 
@@ -37,8 +36,7 @@ public class BattleUnit : MonoBehaviour
     private void Start()
     {
         lastTurnHP = currentHP;
-        enemyPosition = gameObject.transform.position;
-        startPosition = enemyPosition;
+        startPosition = gameObject.transform.position;
         foreach (Move move in moves)
         {
             move.WakeUp();
