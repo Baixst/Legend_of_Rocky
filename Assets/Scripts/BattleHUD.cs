@@ -36,7 +36,7 @@ public class BattleHUD : MonoBehaviour
         {
             return null;
         }
-        if (currentSprite + 1 == statusIconList.Count)
+        if (currentSprite + 1 >= statusIconList.Count)
         {
             currentSprite = 0;
             return statusIconList[currentSprite];

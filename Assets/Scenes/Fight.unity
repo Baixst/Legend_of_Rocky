@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Heal
+  m_text: Attack 2 / Buff
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2523,7 +2523,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buff
+  m_text: Mighty Attack
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3002,7 +3002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack
+  m_text: Attack 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4573,6 +4573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusEffectHandler: {fileID: 1725306970}
+  enemyController: {fileID: 1983021042}
   targetSelector: {fileID: 618613404}
   infoBox: {fileID: 1707030126}
   battleUnits:
@@ -4610,6 +4611,7 @@ Transform:
   m_Children:
   - {fileID: 1810196865}
   - {fileID: 1725306969}
+  - {fileID: 1983021041}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5190,7 +5192,7 @@ MonoBehaviour:
   manaRushIcon: {fileID: 21300000, guid: 249b094e2731b2349b7c87c7513128bb, type: 3}
   barrierIcon: {fileID: 21300000, guid: 6c4e5b9a71b2e9a4abd69905fc7df559, type: 3}
   armorBreakIcon: {fileID: 21300000, guid: 8a68551734bdccf4e8103f6691cc45ae, type: 3}
-  REFRESH_TIME: 4
+  REFRESH_TIME: 3
 --- !u!1 &1810196864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5903,6 +5905,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946245128}
   m_CullTransparentMesh: 1
+--- !u!1 &1983021040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1983021041}
+  - component: {fileID: 1983021042}
+  m_Layer: 0
+  m_Name: EnemyController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1983021041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983021040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1588003167}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1983021042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983021040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fdd5bac3955d5e4bbf0ab291641a739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleSystem: {fileID: 1588003166}
+  chanceToDefendAtLowAp: 10
+  considerDefendingAtApPercentage: 40
 --- !u!1 &2042353868
 GameObject:
   m_ObjectHideFlags: 0
@@ -6178,11 +6226,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   unitName: Stein der Weisen
-  maxHP: 90
-  currentHP: 90
+  maxHP: 95
+  currentHP: 95
   phyAtk: 15
-  phyDef: 30
-  magAtk: 60
+  phyDef: 35
+  magAtk: 55
   magDef: 50
   init: 40
   maxAP: 110
@@ -6355,18 +6403,21 @@ MonoBehaviour:
   unitName: Basaltwache
   maxHP: 100
   currentHP: 100
-  phyAtk: 22
-  phyDef: 50
-  magAtk: 10
-  magDef: 35
-  init: 60
-  maxAP: 0
+  phyAtk: 35
+  phyDef: 45
+  magAtk: 30
+  magDef: 50
+  init: 59
+  maxAP: 85
   currentAP: 0
-  APregenartion: 0
+  APregenartion: 35
   playerCharacter: 0
   buffs: []
   debuffs: []
-  moves: []
+  moves:
+  - {fileID: 5568293343534328300, guid: a8bd124aa0b555b4e9312c38cf9b6332, type: 3}
+  - {fileID: 1601287009213639887, guid: d526381545d02bf4c9c2dea23a1140dd, type: 3}
+  - {fileID: 3756952481585323286, guid: a524f992de44db04faa5c91551ce6945, type: 3}
   icon: {fileID: 298116072069037195, guid: 1aebd37ce02796542bb4200a0560aafa, type: 3}
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
@@ -6474,20 +6525,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   unitName: Wurfstein
-  maxHP: 105
-  currentHP: 105
-  phyAtk: 24
-  phyDef: 35
+  maxHP: 90
+  currentHP: 90
+  phyAtk: 40
+  phyDef: 40
   magAtk: 25
   magDef: 50
   init: 47
-  maxAP: 0
+  maxAP: 125
   currentAP: 0
-  APregenartion: 0
+  APregenartion: 40
   playerCharacter: 0
   buffs: []
   debuffs: []
-  moves: []
+  moves:
+  - {fileID: 674384442738050226, guid: 7001d7bd3beef11408b5524b75a398b5, type: 3}
+  - {fileID: 674384442738050226, guid: 7001d7bd3beef11408b5524b75a398b5, type: 3}
+  - {fileID: 3624240806440095957, guid: 1bcdb253e2566f546a342208e38683af, type: 3}
   icon: {fileID: 4799563382456124459, guid: d4377fca1d4d3a6419a169b07a2b4c1c, type: 3}
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
@@ -6530,20 +6584,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   unitName: Ritterstein
-  maxHP: 90
-  currentHP: 90
-  phyAtk: 25
-  phyDef: 40
-  magAtk: 20
-  magDef: 40
+  maxHP: 120
+  currentHP: 120
+  phyAtk: 45
+  phyDef: 55
+  magAtk: 10
+  magDef: 55
   init: 50
-  maxAP: 0
+  maxAP: 90
   currentAP: 0
-  APregenartion: 0
+  APregenartion: 35
   playerCharacter: 0
   buffs: []
   debuffs: []
-  moves: []
+  moves:
+  - {fileID: 5590815549108191979, guid: ab6f8a129daad83428b2669649121f30, type: 3}
+  - {fileID: 5778972962783638198, guid: d1852d8574e5bd444baee6310aa62e57, type: 3}
+  - {fileID: 2388324102278800439, guid: c57a0dfc82b4c974da4f583438f1b0a7, type: 3}
   icon: {fileID: 8863968617720456182, guid: dbbc5fdcebfbf6b4295425af8a481650, type: 3}
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
@@ -6736,20 +6793,20 @@ MonoBehaviour:
   unitName: Rocky
   maxHP: 120
   currentHP: 120
-  phyAtk: 55
+  phyAtk: 50
   phyDef: 50
   magAtk: 25
   magDef: 40
-  init: 65
+  init: 60
   maxAP: 90
   currentAP: 0
-  APregenartion: 50
+  APregenartion: 40
   playerCharacter: 1
   buffs: []
   debuffs: []
   moves:
   - {fileID: 5590815549108191979, guid: ab6f8a129daad83428b2669649121f30, type: 3}
-  - {fileID: 1390771738580983607, guid: 4b01476e29e271b448aa5da47862ac4f, type: 3}
+  - {fileID: 2388324102278800439, guid: c57a0dfc82b4c974da4f583438f1b0a7, type: 3}
   - {fileID: 5778972962783638198, guid: d1852d8574e5bd444baee6310aa62e57, type: 3}
   icon: {fileID: 4159816097365652664, guid: a91351a37f35a2041aa5d9b60eeb874b, type: 3}
   lastTurnHP: 0
@@ -6795,8 +6852,8 @@ MonoBehaviour:
   phyDef: 40
   magAtk: 45
   magDef: 35
-  init: 55
-  maxAP: 100
+  init: 65
+  maxAP: 120
   currentAP: 0
   APregenartion: 45
   playerCharacter: 1

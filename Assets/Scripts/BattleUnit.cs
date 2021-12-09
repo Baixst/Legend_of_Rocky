@@ -78,11 +78,17 @@ public class BattleUnit : MonoBehaviour
         {
             targets.Add(selector.selectedUnit);
         }
-        
+
+        ResolveMove(move, targets);
+
+        selector.selectedUnit = null;
+        targetSelector.SetActive(false);
+    }
+
+    private void ResolveMove(Move move, List<BattleUnit> targets)
+    {        
         for (int i = 0; i < targets.Count; i++)
         {
-            Debug.Log("Attacking " + targets[i].unitName);
-
             // check if move heals or deals damage
             if (move.healing > 0) // move heals
             {
@@ -126,8 +132,11 @@ public class BattleUnit : MonoBehaviour
         }
         
         currentAP -= move.apCost;
-        selector.selectedUnit = null;
-        targetSelector.SetActive(false);
+    }
+
+    public void EnemyUseMove(Move move, List<BattleUnit> targets)
+    {
+        ResolveMove(move, targets);
     }
 
     public void TakeDamage(int dmg)
@@ -297,7 +306,6 @@ public class BattleUnit : MonoBehaviour
         float randomValue = Random.Range(0f, 100f);
         if (critChange >= randomValue)
         {
-            Debug.Log("CRIT!");
             return critMultiplier;
         }
         else
@@ -309,7 +317,6 @@ public class BattleUnit : MonoBehaviour
     private float GetRandomMultiplier()
     {
         float retVal = Random.Range(0.9f, 1.1f);
-        Debug.Log("Random Multipier: " + retVal);
         return retVal;
     }
 
