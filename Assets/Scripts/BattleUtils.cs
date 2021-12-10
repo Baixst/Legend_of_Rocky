@@ -232,7 +232,14 @@ public class BattleUtils : MonoBehaviour
 
     public void MoveUnitForward(BattleUnit activeUnit)
     {
-        StartCoroutine(MoveOverSeconds(activeUnit.gameObject, new Vector3 (-2f, 0f, 0f), 0.2f));
+        if (activeUnit.playerCharacter)
+        {
+            StartCoroutine(MoveOverSeconds(activeUnit.gameObject, new Vector3 (-2f, 0f, 0f), 0.2f));
+        }
+        else
+        {
+            StartCoroutine(MoveOverSeconds(activeUnit.gameObject, new Vector3 (2f, 0f, 0f), 0.2f));
+        }
     }
 
     public void MoveUnitBack(BattleUnit activeUnit)

@@ -10,6 +10,7 @@ public class BattleSystem : MonoBehaviour
     public enum BattleState { START, PLAYER_TURN, ENEMY_TURN, WON, LOST }
 
     public StatusEffectHandler statusEffectHandler;
+    public EnemyController enemyController;
     public GameObject targetSelector;
 
     public GameObject infoBox;
@@ -238,6 +239,7 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
+            turnOrder[turnOrderIndex].isDefending = false;
             turnOrder[turnOrderIndex].RegenerateAP();
             StartCoroutine(EnemyAttack());
         }
@@ -247,27 +249,42 @@ public class BattleSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         turnOrderUI.HighlightUnit(turnOrderIndex);
-        infoText.SetText(turnOrder[turnOrderIndex].unitName + " is attacking");
-        infoBox.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
 
-        if (utils.GetPlayerUnits()[0].currentHP > 0)
+        // Move Unit forward
+        utils.MoveUnitForward(turnOrder[turnOrderIndex]);
+
+        // Choose Move the unit should use
+        Move move = enemyController.ChooseMove(turnOrder[turnOrderIndex]);
+        
+        if (turnOrder[turnOrderIndex].isDefending)
         {
-            utils.GetPlayerUnits()[0].TakeDamage(turnOrder[turnOrderIndex].phyAtk);
-        }
-        else if (utils.GetPlayerUnits()[1].currentHP > 0)
-        {
-            utils.GetPlayerUnits()[1].TakeDamage(turnOrder[turnOrderIndex].phyAtk);
+            infoText.SetText(turnOrder[turnOrderIndex].unitName + " verteidigt");
         }
         else
         {
-            utils.GetPlayerUnits()[2].TakeDamage(turnOrder[turnOrderIndex].phyAtk);
+            // Choose Target
+            List<BattleUnit> targets = enemyController.ChooseTargets(move, turnOrder[turnOrderIndex]);
+
+            // Use move on target list
+            turnOrder[turnOrderIndex].EnemyUseMove(move, targets);
+
+            infoText.SetText(turnOrder[turnOrderIndex].unitName + " is using " + move.moveName);
         }
+        
+
+
+        infoBox.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+
+        // TO-DO: Resolve attack on target
 
         infoBox.SetActive(false);
         utils.UpdateAfterMove();
         yield return new WaitForSeconds(1.5f);
         turnOrderUI.UnhighlightUnit(turnOrderIndex);
+
+        // Move Unit back
+        utils.MoveUnitBack(turnOrder[turnOrderIndex]);
 
         NextTurn();
     }
