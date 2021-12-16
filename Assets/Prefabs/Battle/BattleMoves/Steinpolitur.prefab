@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390771738580983606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09626584, y: -0.017146736, z: 373.5453}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,15 +44,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Steinpolitur
-  description: Heilt das Ziel um 15 HP und entwert einen Debuff.
+  description: Heilt das Ziel um 35 HP und entwert einen Debuff.
   numberOfTargets: 1
   targetTyp: 1
   damageTyp: 0
   buffsToApply: 
   debuffsToApply: 
   damage: 0
-  healing: 15
-  apCost: 65
+  healing: 35
+  apCost: 75
   removeBuffs: 0
   removeDebuffs: 1
   buffs: []
