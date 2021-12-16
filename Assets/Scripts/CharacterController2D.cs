@@ -12,10 +12,10 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
     [SerializeField] private Collider2D m_CrouchDisableColliderBox;             // Boxcollider that will be disabled when crouching
     [SerializeField] private Collider2D m_CrouchDisableColliderCapsule;         // Capsulecollider that will be disabled when crouching
-    [SerializeField] private Collider2D m_CrouchDisableColliderCircle;          // Circlecollider that will be enabled when crouching
+    [SerializeField] private Collider2D m_CrouchEnableColliderCircle;          // Circlecollider that will be enabled when crouching
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-    private bool m_Grounded;            // Whether or not the player is grounded.
+    public bool m_Grounded;            // Whether or not the player is grounded.
     const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -96,8 +96,8 @@ public class CharacterController2D : MonoBehaviour
                     m_CrouchDisableColliderBox.enabled = false;
                 if (m_CrouchDisableColliderCapsule != null)
                     m_CrouchDisableColliderCapsule.enabled = false;
-                if (m_CrouchDisableColliderCircle != null)
-                    m_CrouchDisableColliderCircle.enabled = true;
+                if (m_CrouchEnableColliderCircle != null)
+                    m_CrouchEnableColliderCircle.enabled = true;
             }
             else
             {
@@ -106,8 +106,8 @@ public class CharacterController2D : MonoBehaviour
                     m_CrouchDisableColliderBox.enabled = true;
                 if (m_CrouchDisableColliderCapsule != null)
                     m_CrouchDisableColliderCapsule.enabled = true;
-                if (m_CrouchDisableColliderCircle != null)
-                    m_CrouchDisableColliderCircle.enabled = false;
+                if (m_CrouchEnableColliderCircle != null)
+                    m_CrouchEnableColliderCircle.enabled = false;
 
                 if (m_wasCrouching)
                 {
