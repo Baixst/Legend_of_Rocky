@@ -14,12 +14,20 @@ Springen: Leertaste oder W
 
 Ducken: C
 
+Pause: Escape
+
+Party Info: I
+
 #### Controller:
 Laufen: Linker Joystick
 
 Springen: Button South (z.B. A bei Xbox, X bei Playstation)
 
 Ducken: Linker Trigger
+
+Pause: Start
+
+Party Info: Button North (z.B. Y bei Xbox, Dreieck bei Playstation)
 
 ### Kampf:
 
