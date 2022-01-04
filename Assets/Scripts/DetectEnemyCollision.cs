@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class DetectEnemyCollision : MonoBehaviour
 {
-
     public bool loadFightScene;
+    public bool triggerDialogue;
+    public DialogueTrigger dialogueTrigger;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -17,7 +19,11 @@ public class DetectEnemyCollision : MonoBehaviour
             {
                 SceneManager.LoadScene("Fight");
             }
+
+            if (triggerDialogue)
+            {
+                dialogueTrigger.TriggerDialogue();
+            }
         }
     }
-
 }
