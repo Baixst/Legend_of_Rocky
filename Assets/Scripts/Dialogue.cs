@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Dialog
+public class Dialogue
 {
-    public string name;
-    public string[] lines;
-    public int nextDialogIndex;
+    public string charName;
+
+    [TextArea(3, 10)]
+    public string[] sentences;
 }
