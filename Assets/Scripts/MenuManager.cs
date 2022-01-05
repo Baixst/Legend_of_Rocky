@@ -8,6 +8,8 @@ public class MenuManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject partyMenu;
     public PlayerInput playerMovementInputs;
+    public PlayerMovement playerMovement;
+    public PlayerInput dialogueInputs;
     private bool pauseMenuOpen = false;
     private bool partyMenuOpen = false;
 
@@ -26,7 +28,9 @@ public class MenuManager : MonoBehaviour
 
     public void OpenPartyMenu()
     {
-        playerMovementInputs.enabled = false;
+        if (playerMovementInputs != null)   playerMovementInputs.enabled = false;
+        if (playerMovement != null)         playerMovement.allowMovement = false;
+        if (dialogueInputs != null)         dialogueInputs.enabled = false;
         partyMenu.SetActive(true);
         partyMenuOpen = true;
         Time.timeScale = 0;
@@ -35,7 +39,9 @@ public class MenuManager : MonoBehaviour
     public void ClosePartyMenu()
     {
         partyMenu.SetActive(false);
-        playerMovementInputs.enabled = true;
+        if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
+        if (playerMovement != null)         playerMovement.allowMovement = true;
+        if (dialogueInputs != null)         dialogueInputs.enabled = true;
         partyMenuOpen = false;
         Time.timeScale = 1;
     }
@@ -49,7 +55,9 @@ public class MenuManager : MonoBehaviour
 
     public void OpenPauseMenu()
     {
-        playerMovementInputs.enabled = false;
+        if (playerMovementInputs != null)   playerMovementInputs.enabled = false;
+        if (playerMovement != null)         playerMovement.allowMovement = false;
+        if (dialogueInputs != null)         dialogueInputs.enabled = false;
         pauseMenu.SetActive(true);
         pauseMenuOpen = true;
         Time.timeScale = 0;
@@ -58,7 +66,9 @@ public class MenuManager : MonoBehaviour
     public void ClosePauseMenu()
     {
         pauseMenu.SetActive(false);
-        playerMovementInputs.enabled = true;
+        if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
+        if (playerMovement != null)         playerMovement.allowMovement = true;
+        if (dialogueInputs != null)         dialogueInputs.enabled = true;
         pauseMenuOpen = false;
         Time.timeScale = 1;
     }
