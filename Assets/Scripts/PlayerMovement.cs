@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
-    float horizontalMove = 0f;
+    public float horizontalMove = 0f;
     private bool jump = false;
     private bool crouch = false;
     public bool allowMovement = true;

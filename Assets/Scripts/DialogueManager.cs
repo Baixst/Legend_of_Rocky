@@ -7,6 +7,7 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     public GameObject dialogueWindow;
+    public GameObject dialogueArrow;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
@@ -24,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     void Awake()
     {
         dialogueWindow.SetActive(false);
+        dialogueArrow.SetActive(false);
         sentences = new Queue<string>();
         dialogueInputs.enabled = false;
     }
@@ -37,6 +39,7 @@ public class DialogueManager : MonoBehaviour
 
         nextDialogueTrigger = nextPartToTrigger;
         nameText.text = dialogue.charName;
+        nameText.color = dialogue.charNameFontColor;
         sentences.Clear();
 
         foreach (string sentence in dialogue.sentences)
@@ -64,6 +67,7 @@ public class DialogueManager : MonoBehaviour
     {
         currentSentence = sentence;
         typingText = true;
+        dialogueArrow.SetActive(false);
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
@@ -71,6 +75,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
         typingText = false;
+        dialogueArrow.SetActive(true);
     }
 
     private void EndDialogue()
@@ -91,7 +96,12 @@ public class DialogueManager : MonoBehaviour
         dialogueWindow.SetActive(true);
         dialogueActive = true;
         if (playerMovementInputs != null)   playerMovementInputs.enabled = false;
-        if (playerMovement != null)         playerMovement.allowMovement = false;
+        if (playerMovement != null)
+        {
+            playerMovement.allowMovement = false;
+            playerMovement.horizontalMove = 0f;
+            playerMovement.animator.SetFloat("Speed", Mathf.Abs(0f));
+        }        
         dialogueInputs.enabled = true;
     }
 
@@ -113,6 +123,7 @@ public class DialogueManager : MonoBehaviour
                 StopAllCoroutines();
                 dialogueText.text = currentSentence;
                 typingText = false;
+                dialogueArrow.SetActive(true);
             }
             else
             {

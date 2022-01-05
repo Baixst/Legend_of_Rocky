@@ -92,12 +92,12 @@ public class BattleUtils : MonoBehaviour
             {
                 var spawnPosition = unit.transform.position;
                 spawnPosition.z -= 5f; // without that, the damage number is behind the unite sprite
-                GameObject DamageText = Instantiate(damagePopUpPrefab);
-                DamageText.transform.position = spawnPosition;
-                DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.lastTurnHP - unit.currentHP).ToString()));
+                GameObject damageText = Instantiate(damagePopUpPrefab);
+                damageText.transform.position = spawnPosition;
+                damageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.lastTurnHP - unit.currentHP).ToString()));
                 if (unit.criticalHit)
                 {
-                    DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = new Color32(255, 133, 63, 255); // set text color to orange
+                    damageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = new Color32(255, 133, 63, 255); // set text color to orange
                     unit.criticalHit = false;
                 }
                 unit.lastTurnHP = unit.currentHP;
@@ -106,10 +106,10 @@ public class BattleUtils : MonoBehaviour
             {
                 var spawnPosition = unit.transform.position;
                 spawnPosition.z -= 5f; // without that, the damage number is behind the unite sprite
-                GameObject DamageText = Instantiate(damagePopUpPrefab);
-                DamageText.transform.position = spawnPosition;
-                DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.currentHP - unit.lastTurnHP).ToString()));
-                DamageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = new Color32(32, 193, 51, 255); // set text color to green
+                GameObject damageText = Instantiate(damagePopUpPrefab);
+                damageText.transform.position = spawnPosition;
+                damageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.currentHP - unit.lastTurnHP).ToString()));
+                damageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = new Color32(32, 193, 51, 255); // set text color to green
                 unit.lastTurnHP = unit.currentHP;
             }
         } 

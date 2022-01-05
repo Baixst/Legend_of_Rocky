@@ -6,6 +6,7 @@ using UnityEngine;
 public class Dialogue
 {
     public string charName;
+    public Color32 charNameFontColor;
 
     [TextArea(3, 10)]
     public string[] sentences;
