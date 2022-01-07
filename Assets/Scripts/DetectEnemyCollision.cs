@@ -11,7 +11,8 @@ public class DetectEnemyCollision : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        GameObject otherObject = collision.gameObject;
+        if (otherObject.CompareTag("Enemy"))
         {
             Debug.Log("Collision with enemy happend.");
 
