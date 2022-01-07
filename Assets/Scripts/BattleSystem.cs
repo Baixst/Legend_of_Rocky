@@ -179,10 +179,21 @@ public class BattleSystem : MonoBehaviour
         // show move name in infobox
         infoText.SetText(turnOrder[turnOrderIndex].moves[moveIndex].moveName);
         infoBox.SetActive(true);
-        yield return new WaitForSeconds(2); // this wait would be replaced by an attack animation
+        yield return new WaitForSeconds(1); // this wait would be replaced by an attack animation
 
-        infoBox.SetActive(false);
+        Animator unitAnimator = turnOrder[turnOrderIndex].gameObject.GetComponent<Animator>();
+        if (unitAnimator != null)
+        {
+            // play the attack animation
+            unitAnimator.SetTrigger("Attack");
+            turnOrder[turnOrderIndex].isIdeling = false;
+
+            // wait until animation is finished
+            yield return new WaitUntil(() => turnOrder[turnOrderIndex].isIdeling);
+        }
+
         utils.UpdateAfterMove();
+        infoBox.SetActive(false);
         yield return new WaitForSeconds(1);
         utils.MoveUnitBack(turnOrder[turnOrderIndex]);
         turnOrderUI.UnhighlightUnit(turnOrderIndex);

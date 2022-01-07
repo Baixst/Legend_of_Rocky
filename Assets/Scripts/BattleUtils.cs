@@ -9,6 +9,9 @@ public class BattleUtils : MonoBehaviour
     public BattleSystem battleSystem;
     public GameObject damagePopUpPrefab;
 
+    public Color32 criticalDamageColor;
+    public Color32 healingNumbersColor;
+
     private List<BattleUnit> units = new List<BattleUnit>();
     private List<BattleHUD> huds = new List<BattleHUD>();
     private int totalPlayerHP = 0;
@@ -90,17 +93,7 @@ public class BattleUtils : MonoBehaviour
         {
             if (unit.currentHP < unit.lastTurnHP) // check if unit has taken damage
             {
-                var spawnPosition = unit.transform.position;
-                spawnPosition.z -= 5f; // without that, the damage number is behind the unite sprite
-                GameObject damageText = Instantiate(damagePopUpPrefab);
-                damageText.transform.position = spawnPosition;
-                damageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.lastTurnHP - unit.currentHP).ToString()));
-                if (unit.criticalHit)
-                {
-                    damageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = new Color32(255, 133, 63, 255); // set text color to orange
-                    unit.criticalHit = false;
-                }
-                unit.lastTurnHP = unit.currentHP;
+                StartCoroutine(PlayDamageTakeAnimations(unit));
             }
             else if (unit.currentHP > unit.lastTurnHP) // check if unit was healed
             {
@@ -109,10 +102,33 @@ public class BattleUtils : MonoBehaviour
                 GameObject damageText = Instantiate(damagePopUpPrefab);
                 damageText.transform.position = spawnPosition;
                 damageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.currentHP - unit.lastTurnHP).ToString()));
-                damageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = new Color32(32, 193, 51, 255); // set text color to green
+                damageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = healingNumbersColor;
                 unit.lastTurnHP = unit.currentHP;
             }
         } 
+    }
+
+    private IEnumerator PlayDamageTakeAnimations(BattleUnit unit)
+    {
+        if (unit.gameObject.GetComponent<Animator>() != null)
+        {
+            unit.gameObject.GetComponent<Animator>().SetTrigger("TakeDamage");
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        // damage popup
+        var spawnPosition = unit.transform.position;
+        spawnPosition.z -= 5f; // without that, the damage number is behind the unite sprite
+        GameObject damageText = Instantiate(damagePopUpPrefab);
+        damageText.transform.position = spawnPosition;
+        damageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.lastTurnHP - unit.currentHP).ToString()));
+        if (unit.criticalHit)
+        {
+            damageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = criticalDamageColor;
+            unit.criticalHit = false;
+        }
+        unit.lastTurnHP = unit.currentHP;
     }
 
     private void UpdateHPTrackers()
