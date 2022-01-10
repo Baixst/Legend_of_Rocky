@@ -32,6 +32,7 @@ public class BattleUnit : MonoBehaviour
     [HideInInspector] public bool hasMight, hasManaRush, hasBarrier, hasArmorBreak = false;
 
     [HideInInspector] public bool moveCanceled = false;
+    [HideInInspector] public bool isIdeling = true;
 
     private void Start()
     {
@@ -327,5 +328,14 @@ public class BattleUnit : MonoBehaviour
         if (target.hasBarrier)      retVal -= 0.2f;
         if (hasMight)               retVal += 0.2f;
         return retVal;
+    }
+
+    public void GoToIdleAnimation() // gets called from animation Events
+    {
+        isIdeling = true;
+        if (gameObject.GetComponent<Animator>() != null)
+        {
+            gameObject.GetComponent<Animator>().SetTrigger("Idle");
+        }
     }
 }
