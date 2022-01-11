@@ -74,7 +74,7 @@ public class BattleSystem : MonoBehaviour
     {
         // show initial info text
         yield return new WaitForSeconds(1);
-        infoText.SetText("Fight the enemy");
+        infoText.SetText("Besiege alle Gegner!");
         infoBox.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         infoBox.SetActive(false);
@@ -136,7 +136,7 @@ public class BattleSystem : MonoBehaviour
         turnOrder[turnOrderIndex].isDefending = true;
 
         combatButtonsParent.SetActive(false);
-        infoText.SetText("defending");
+        infoText.SetText(turnOrder[turnOrderIndex].name + " schützt sich");
         infoBox.SetActive(true);
         yield return new WaitForSeconds(1f); // this wait would be replaced by an attack animation
 
@@ -269,7 +269,7 @@ public class BattleSystem : MonoBehaviour
         
         if (turnOrder[turnOrderIndex].isDefending)
         {
-            infoText.SetText(turnOrder[turnOrderIndex].unitName + " verteidigt");
+            infoText.SetText(turnOrder[turnOrderIndex].unitName + " schützt sich");
         }
         else
         {
@@ -279,7 +279,7 @@ public class BattleSystem : MonoBehaviour
             // Use move on target list
             turnOrder[turnOrderIndex].EnemyUseMove(move, targets);
 
-            infoText.SetText(turnOrder[turnOrderIndex].unitName + " is using " + move.moveName);
+            infoText.SetText(turnOrder[turnOrderIndex].unitName + " setzt " + move.moveName + " ein.");
         }
         
 
@@ -304,11 +304,11 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.WON)
         {
-            infoText.SetText("You won :)");
+            infoText.SetText("Rocky ist siegreich!");
         }
         else if (state == BattleState.LOST)
         {
-            infoText.SetText("Rocky was defeated :(");
+            infoText.SetText("Rocky wurde geschlagen!");
         }
         infoBox.SetActive(true);
     }

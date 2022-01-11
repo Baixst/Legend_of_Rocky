@@ -15,19 +15,15 @@ public class TargetSelector : MonoBehaviour
 
     public void findPossibleTargets(Move move)
     {
-        Debug.Log("finding possible targets...");
         possibleTargets.Clear();
 
         if (move.targetTyp == Move.TargetTyp.Ally)
         {
-            Debug.Log("target index: " + possibleTargetsIndex);
             
             possibleTargets = battleSystem.GetPlayerUnits();
         }
         else if (move.targetTyp == Move.TargetTyp.Enemy)
         {
-            Debug.Log("target index: " + possibleTargetsIndex);
-
             List<BattleUnit> temp = battleSystem.GetEnemyUnits();       // only add units to list when they are not dead yet
             foreach (BattleUnit unit in temp)
             {
