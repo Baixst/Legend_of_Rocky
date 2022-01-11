@@ -13,6 +13,11 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadSceneByIndex(sceneIndex));
     }
 
+    public void LoadSceneByName(string sceneName)
+    {
+        StartCoroutine(LoadSceneByString(sceneName));
+    }
+
     public void LoadNextScene()
     {
         StartCoroutine(LoadSceneByIndex(SceneManager.GetActiveScene().buildIndex + 1));
@@ -23,5 +28,12 @@ public class SceneLoader : MonoBehaviour
         transition.SetTrigger("StartTransition");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    IEnumerator LoadSceneByString(string sceneName)
+    {
+        transition.SetTrigger("StartTransition");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(sceneName);
     }
 }

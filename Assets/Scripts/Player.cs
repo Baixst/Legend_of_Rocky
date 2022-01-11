@@ -3,21 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DetectEnemyCollision : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public bool loadFightScene;
     public bool triggerDialogue;
     public DialogueTrigger dialogueTrigger;
+    public bool loadPositionFromSaveData;
     private bool forceWalkRight = false;
-    private SceneLoader sceneLoader;
     private Camera camera;
     private PlayerMovement playerMovement;
+    private RockyGameManager gameManager;
 
-    void Start()
+    void Awake()
     {
-        sceneLoader = FindObjectOfType<SceneLoader>();
         camera = FindObjectOfType<Camera>();
         playerMovement = FindObjectOfType<PlayerMovement>();
+        gameManager = FindObjectOfType<RockyGameManager>();
+        
+        // set spawn position
+        if (loadPositionFromSaveData && gameManager.playerStartPositionSet) 
+        {
+            gameObject.transform.position = gameManager.playerStartPosition;
+        }
     }
 
     void Update()
@@ -37,7 +44,7 @@ public class DetectEnemyCollision : MonoBehaviour
 
             if (loadFightScene)
             {
-                SceneManager.LoadScene("Fight");
+                gameManager.sceneLoader.LoadSceneByName("Fight");
             }
 
             if (triggerDialogue)
@@ -52,9 +59,14 @@ public class DetectEnemyCollision : MonoBehaviour
         GameObject otherObject = other.gameObject;
         if (otherObject.CompareTag("SceneEnd"))
         {
-            sceneLoader.LoadNextScene();
+            gameManager.sceneLoader.LoadNextScene();
             camera.transform.SetParent(null);
             forceWalkRight = true;
+        }
+
+        if (otherObject.CompareTag("Checkpoint"))
+        {
+            otherObject.GetComponent<Checkpoint>().SaveGame(this);
         }
     }
 }

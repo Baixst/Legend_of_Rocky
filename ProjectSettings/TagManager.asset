@@ -9,6 +9,7 @@ TagManager:
   - Background
   - Lever
   - SceneEnd
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

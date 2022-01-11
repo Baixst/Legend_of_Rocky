@@ -48,3 +48,10 @@ Hoch/Runter: Linker Joystick oder Steuerkreuz
 Auswählen: Button South (z.B. A bei Xbox, X bei Playstation)
 
 Zurück: Button East (z.B. B bei Xbox, O bei Playstation)
+
+---
+
+## Savefiles
+Als Savefile wird eine eigene Binary-Datei mit der Endung ".rocky" verwendet.
+
+**Pfad:** C:\Users\ >UserName< \AppData\LocalLow\Namen\The Legend of Rocky
