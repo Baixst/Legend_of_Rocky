@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: adbb19012fb780d48a86ff2a7e3aec93
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Granstander Clean
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4a3b231890d270f48b7176642cb27c15, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
