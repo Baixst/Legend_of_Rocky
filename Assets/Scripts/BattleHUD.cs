@@ -7,6 +7,8 @@ public class BattleHUD : MonoBehaviour
 {
     public Text nameText;
     public Text hpText;
+    public Slider hpBar;
+    public Image hpBarFill;
     public Text apText;
     public SpriteRenderer statusEffectDisplay;
     [HideInInspector] public List<Sprite> statusIconList = new List<Sprite>();
@@ -18,11 +20,22 @@ public class BattleHUD : MonoBehaviour
         nameText.text = battleUnit.unitName;
         hpText.text = "HP: " + battleUnit.currentHP + " / " + battleUnit.maxHP;
         apText.text = "AP: " + battleUnit.currentAP + " / " + battleUnit.maxAP;
+
+        if (hpBar != null)
+        {
+            hpBar.maxValue = battleUnit.maxHP;
+            hpBar.value = battleUnit.currentHP;
+        }
     }
 
     public void SetHP(int hp, BattleUnit battleUnit)
     {
         hpText.text = "HP: " + hp + " / " + battleUnit.maxHP;
+        if (hpBar != null)
+        {
+            hpBar.value = battleUnit.currentHP;
+            hpBarFill.fillAmount = hpBar.normalizedValue;
+        }
     }
 
     public void SetAP(int ap, BattleUnit battleUnit)
