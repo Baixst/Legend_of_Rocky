@@ -7,9 +7,11 @@ using TMPro;
 
 public class Healthbar : MonoBehaviour
 {
-    public Slider slider;
+    [HideInInspector] public Slider slider;
     public Image fill;
     private TextMeshProUGUI textMesh;
+    public bool useGradient;
+    public Gradient gradient;
 
     private void Awake()
     {
@@ -26,6 +28,11 @@ public class Healthbar : MonoBehaviour
     {
         slider.value = value;
         fill.fillAmount = slider.normalizedValue;
+
+        if (gradient != null && useGradient)
+        {
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+        }
         if (textMesh != null)
         {
             textMesh.text = value + " / " + slider.maxValue;
