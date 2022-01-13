@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public Button pauseFirstSelected;
     public GameObject partyMenu;
+    public Button partyFirstSelected;
     public PlayerInput playerMovementInputs;
     public PlayerMovement playerMovement;
     public PlayerInput dialogueInputs;
     private bool pauseMenuOpen = false;
     private bool partyMenuOpen = false;
+    private EventSystem eventSystem;
 
     public void Awake()
     {
         pauseMenu.SetActive(false);
         partyMenu.SetActive(false);
+        GameObject temp = GameObject.Find("EventSystem");
+        eventSystem = temp.GetComponent<EventSystem>();
     }
 
     public void TogglePartyMenu()
@@ -33,6 +40,10 @@ public class MenuManager : MonoBehaviour
         if (dialogueInputs != null)         dialogueInputs.enabled = false;
         partyMenu.SetActive(true);
         partyMenuOpen = true;
+        if (partyFirstSelected != null)
+        {
+            StartCoroutine(SelectButton(partyFirstSelected));
+        }
         Time.timeScale = 0;
     }
 
@@ -60,6 +71,10 @@ public class MenuManager : MonoBehaviour
         if (dialogueInputs != null)         dialogueInputs.enabled = false;
         pauseMenu.SetActive(true);
         pauseMenuOpen = true;
+        if (pauseFirstSelected != null)
+        {
+            StartCoroutine(SelectButton(pauseFirstSelected));
+        }
         Time.timeScale = 0;
     }
 
@@ -71,5 +86,12 @@ public class MenuManager : MonoBehaviour
         if (dialogueInputs != null)         dialogueInputs.enabled = true;
         pauseMenuOpen = false;
         Time.timeScale = 1;
+    }
+
+    private IEnumerator SelectButton(Button button)
+    {
+        yield return null;
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(button.gameObject);
     }
 }

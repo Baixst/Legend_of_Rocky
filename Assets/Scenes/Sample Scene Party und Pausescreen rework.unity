@@ -16757,8 +16757,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 956155064}
-  - {fileID: 1257135182}
   - {fileID: 1458021250}
+  - {fileID: 1257135182}
   - {fileID: 1667534847}
   - {fileID: 2032524698}
   m_Father: {fileID: 705243241}
@@ -17489,7 +17489,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 423909582}
+  pauseFirstSelected: {fileID: 1257135183}
   partyMenu: {fileID: 1640898354}
+  partyFirstSelected: {fileID: 0}
   playerMovementInputs: {fileID: 1626401344}
   playerMovement: {fileID: 1626401340}
   dialogueInputs: {fileID: 1886270012}
@@ -19165,7 +19167,7 @@ RectTransform:
   m_Children:
   - {fileID: 1095803980}
   m_Father: {fileID: 423909583}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19194,9 +19196,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.654902, g: 0.8784314, b: 0.4862745, a: 1}
+    m_PressedColor: {r: 0.44942215, g: 0.735849, b: 0.23255605, a: 1}
+    m_SelectedColor: {r: 0.654902, g: 0.8784314, b: 0.4862745, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -19215,7 +19217,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1257135184}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 705243237}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ClosePauseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1257135184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20651,7 +20665,7 @@ GameObject:
   - component: {fileID: 1458021252}
   - component: {fileID: 1458021251}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Titel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20671,7 +20685,7 @@ RectTransform:
   - {fileID: 22493073}
   - {fileID: 389796677}
   m_Father: {fileID: 423909583}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21454,9 +21468,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.627451, g: 0.8431373, b: 0.4666667, a: 1}
+    m_PressedColor: {r: 0.4509804, g: 0.7372549, b: 0.23137255, a: 1}
+    m_SelectedColor: {r: 0.627451, g: 0.8431373, b: 0.4666667, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -22583,9 +22597,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.627451, g: 0.8431373, b: 0.4666667, a: 1}
+    m_PressedColor: {r: 0.4509804, g: 0.7372549, b: 0.23137255, a: 1}
+    m_SelectedColor: {r: 0.627451, g: 0.8431373, b: 0.4666667, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -22604,7 +22618,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2032524700}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 994878646}
+        m_TargetAssemblyTypeName: RockyGameManager, Assembly-CSharp
+        m_MethodName: OpenQuitGameDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2032524700
 MonoBehaviour:
   m_ObjectHideFlags: 0

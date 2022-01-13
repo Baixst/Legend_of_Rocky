@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class BattleSystem : MonoBehaviour
@@ -32,11 +33,13 @@ public class BattleSystem : MonoBehaviour
 
     public BattleUtils utils; // TO-DO: change to private
     [HideInInspector] public BattleState state;
-    private GameObject eventSystem;
 
-    void Awake()
+    private EventSystem eventSystem;
+
+    public void Awake()
     {
-        eventSystem = GameObject.Find("EventSystem");
+        GameObject temp = GameObject.Find("EventSystem");
+        eventSystem = temp.GetComponent<EventSystem>();
     }
 
     void Start()
@@ -110,7 +113,7 @@ public class BattleSystem : MonoBehaviour
             utils.UpdateButtons();
             utils.EnableCombatButtons();
             combatButtonsParent.SetActive(true);
-            eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(combatButtons[0].gameObject);
+            StartCoroutine(SelectButton(combatButtons[0].gameObject));
         }
     }
 
@@ -119,7 +122,7 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PLAYER_TURN)   return;
         utils.DisableCombatButtons();
         moveButtonsParent.SetActive(true);
-        eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(moveButtons[0].gameObject);
+        StartCoroutine(SelectButton(moveButtons[0].gameObject));
         cancelable = true;
     }
 
@@ -334,8 +337,16 @@ public class BattleSystem : MonoBehaviour
         {
             moveButtonsParent.SetActive(false);
             utils.EnableCombatButtons();
-            eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(combatButtons[0].gameObject);
+
+            StartCoroutine(SelectButton(combatButtons[0].gameObject));
             cancelable = false;
         }
+    }
+
+    private IEnumerator SelectButton(GameObject button)
+    {
+        yield return null;
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(button);
     }
 }
