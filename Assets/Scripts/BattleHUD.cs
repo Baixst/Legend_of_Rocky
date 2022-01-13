@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BattleHUD : MonoBehaviour
 {
-    public Text nameText;
-    public Text hpText;
-    public Slider hpBar;
-    public Image hpBarFill;
-    public Text apText;
+    public TextMeshProUGUI nameText;
+    public Healthbar hpBar;
+    public Healthbar apBar;
     public SpriteRenderer statusEffectDisplay;
     [HideInInspector] public List<Sprite> statusIconList = new List<Sprite>();
 
@@ -18,29 +17,33 @@ public class BattleHUD : MonoBehaviour
     public void SetHUD(BattleUnit battleUnit)
     {
         nameText.text = battleUnit.unitName;
-        hpText.text = "HP: " + battleUnit.currentHP + " / " + battleUnit.maxHP;
-        apText.text = "AP: " + battleUnit.currentAP + " / " + battleUnit.maxAP;
 
         if (hpBar != null)
         {
-            hpBar.maxValue = battleUnit.maxHP;
-            hpBar.value = battleUnit.currentHP;
+            hpBar.SetMaxValue(battleUnit.maxHP);
+            hpBar.SetValue(battleUnit.currentHP);
+        }
+        if (apBar != null)
+        {
+            apBar.SetMaxValue(battleUnit.maxAP);
+            apBar.SetValue(battleUnit.currentAP);
         }
     }
 
-    public void SetHP(int hp, BattleUnit battleUnit)
+    public void SetHP(int hp)
     {
-        hpText.text = "HP: " + hp + " / " + battleUnit.maxHP;
         if (hpBar != null)
         {
-            hpBar.value = battleUnit.currentHP;
-            hpBarFill.fillAmount = hpBar.normalizedValue;
+            hpBar.SetValue(hp);
         }
     }
 
-    public void SetAP(int ap, BattleUnit battleUnit)
+    public void SetAP(int ap)
     {
-        apText.text = "AP: " + ap + " / " + battleUnit.maxAP;
+        if (apBar != null)
+        {
+            apBar.SetValue(ap);
+        }
     }
 
     public Sprite GetNextSprite()

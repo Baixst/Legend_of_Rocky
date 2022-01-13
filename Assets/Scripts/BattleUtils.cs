@@ -12,6 +12,12 @@ public class BattleUtils : MonoBehaviour
     public Color32 criticalDamageColor;
     public Color32 healingNumbersColor;
 
+    public float activePlayerUnitX = -0.53f;
+    public float activePlayerUnitY = -0.53f;
+    public float activeEnemyUnitX = 0.53f;
+    public float activeEnemyUnitY = -0.53f;
+    public float timeToMoveUnit = 0.3f;
+
     private List<BattleUnit> units = new List<BattleUnit>();
     private List<BattleHUD> huds = new List<BattleHUD>();
     private int totalPlayerHP = 0;
@@ -152,8 +158,8 @@ public class BattleUtils : MonoBehaviour
     {
         for (int i = 0; i < units.Count; i++)
         {
-            huds[i].SetHP(units[i].currentHP, units[i]);
-            huds[i].SetAP(units[i].currentAP, units[i]);
+            huds[i].SetHP(units[i].currentHP);
+            huds[i].SetAP(units[i].currentAP);
         }
         battleSystem.statusEffectHandler.UpdateStatusEffects();
     }
@@ -250,17 +256,17 @@ public class BattleUtils : MonoBehaviour
     {
         if (activeUnit.playerCharacter)
         {
-            StartCoroutine(MoveOverSeconds(activeUnit.gameObject, new Vector3 (-2f, 0f, 0f), 0.2f));
+            StartCoroutine(MoveOverSeconds(activeUnit.gameObject, new Vector3 (activePlayerUnitX, activePlayerUnitY, 0f), timeToMoveUnit));
         }
         else
         {
-            StartCoroutine(MoveOverSeconds(activeUnit.gameObject, new Vector3 (2f, 0f, 0f), 0.2f));
+            StartCoroutine(MoveOverSeconds(activeUnit.gameObject, new Vector3 (activeEnemyUnitX, activeEnemyUnitY, 0f), timeToMoveUnit));
         }
     }
 
     public void MoveUnitBack(BattleUnit activeUnit)
     {
-        StartCoroutine(MoveOverSeconds(activeUnit.gameObject, activeUnit.startPosition, 0.2f));
+        StartCoroutine(MoveOverSeconds(activeUnit.gameObject, activeUnit.startPosition, timeToMoveUnit));
     }
 
     public IEnumerator MoveOverSeconds (GameObject objectToMove, Vector3 endPosition, float seconds)
