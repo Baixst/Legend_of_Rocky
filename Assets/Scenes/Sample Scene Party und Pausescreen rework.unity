@@ -20536,7 +20536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692206240}
   m_Layer: 5
-  m_Name: Party Menu Basti
+  m_Name: Party Menu V2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
