@@ -80,7 +80,6 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        Debug.Log("End of dialogue");
         if (nextDialogueTrigger != null)
         {
             StartDialogue(nextDialogueTrigger.dialogue, nextDialogueTrigger.nextPartToTrigger);

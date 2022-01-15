@@ -16,14 +16,11 @@ public class MenuManager : MonoBehaviour
     public PlayerInput dialogueInputs;
     private bool pauseMenuOpen = false;
     private bool partyMenuOpen = false;
-    private EventSystem eventSystem;
 
     public void Awake()
     {
         pauseMenu.SetActive(false);
         partyMenu.SetActive(false);
-        GameObject temp = GameObject.Find("EventSystem");
-        eventSystem = temp.GetComponent<EventSystem>();
     }
 
     public void TogglePartyMenu()
@@ -39,10 +36,14 @@ public class MenuManager : MonoBehaviour
         if (playerMovement != null)         playerMovement.allowMovement = false;
         if (dialogueInputs != null)         dialogueInputs.enabled = false;
         partyMenu.SetActive(true);
+        partyMenu.GetComponent<PartyMenu>().charInfoPanel.SetActive(false);
+        partyMenu.GetComponent<PartyMenu>().SetCharButtons();
+        partyMenu.GetComponent<PartyMenu>().partyMenuInput.enabled = true;
         partyMenuOpen = true;
         if (partyFirstSelected != null)
         {
-            StartCoroutine(SelectButton(partyFirstSelected));
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(partyFirstSelected.gameObject);
         }
         Time.timeScale = 0;
     }
@@ -53,6 +54,7 @@ public class MenuManager : MonoBehaviour
         if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
         if (playerMovement != null)         playerMovement.allowMovement = true;
         if (dialogueInputs != null)         dialogueInputs.enabled = true;
+        partyMenu.GetComponent<PartyMenu>().partyMenuInput.enabled = false;
         partyMenuOpen = false;
         Time.timeScale = 1;
     }
@@ -73,7 +75,8 @@ public class MenuManager : MonoBehaviour
         pauseMenuOpen = true;
         if (pauseFirstSelected != null)
         {
-            StartCoroutine(SelectButton(pauseFirstSelected));
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(pauseFirstSelected.gameObject);
         }
         Time.timeScale = 0;
     }
@@ -86,12 +89,5 @@ public class MenuManager : MonoBehaviour
         if (dialogueInputs != null)         dialogueInputs.enabled = true;
         pauseMenuOpen = false;
         Time.timeScale = 1;
-    }
-
-    private IEnumerator SelectButton(Button button)
-    {
-        yield return null;
-        eventSystem.SetSelectedGameObject(null);
-        eventSystem.SetSelectedGameObject(button.gameObject);
     }
 }

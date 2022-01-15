@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Steinpolitur
-  description: Heilt das Ziel um 35 HP und entwert einen Debuff.
+  description: Heilt das Ziel und entfernt einen negativen Statuseffekt..
   numberOfTargets: 1
   targetTyp: 1
   damageTyp: 0

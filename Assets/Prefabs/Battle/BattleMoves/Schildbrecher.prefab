@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Schildbrecher
-  description: Wirkt ArmorBreak auf alle Gegner.
+  description: Wirkt Schildbruch auf alle Gegner.
   numberOfTargets: 3
   targetTyp: 0
   damageTyp: 0

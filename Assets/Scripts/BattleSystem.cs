@@ -34,14 +34,6 @@ public class BattleSystem : MonoBehaviour
     public BattleUtils utils; // TO-DO: change to private
     [HideInInspector] public BattleState state;
 
-    private EventSystem eventSystem;
-
-    public void Awake()
-    {
-        GameObject temp = GameObject.Find("EventSystem");
-        eventSystem = temp.GetComponent<EventSystem>();
-    }
-
     void Start()
     {
         infoText = infoBox.GetComponentInChildren<TextMeshProUGUI>();
@@ -113,7 +105,8 @@ public class BattleSystem : MonoBehaviour
             utils.UpdateButtons();
             utils.EnableCombatButtons();
             combatButtonsParent.SetActive(true);
-            StartCoroutine(SelectButton(combatButtons[0].gameObject));
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(combatButtons[0].gameObject);
         }
     }
 
@@ -122,7 +115,9 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PLAYER_TURN)   return;
         utils.DisableCombatButtons();
         moveButtonsParent.SetActive(true);
-        StartCoroutine(SelectButton(moveButtons[0].gameObject));
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(moveButtons[0].gameObject);
+
         cancelable = true;
     }
 
@@ -338,15 +333,9 @@ public class BattleSystem : MonoBehaviour
             moveButtonsParent.SetActive(false);
             utils.EnableCombatButtons();
 
-            StartCoroutine(SelectButton(combatButtons[0].gameObject));
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(combatButtons[0].gameObject);
             cancelable = false;
         }
-    }
-
-    private IEnumerator SelectButton(GameObject button)
-    {
-        yield return null;
-        eventSystem.SetSelectedGameObject(null);
-        eventSystem.SetSelectedGameObject(button);
     }
 }

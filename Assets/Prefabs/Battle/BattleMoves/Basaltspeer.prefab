@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Basaltspeer
-  description: Trifft ein Ziel mit moderaten Schaden und ArmorBreak
+  description: "Trifft ein Ziel mit moderaten Schaden und f\xFCgt Schildbruch zu."
   numberOfTargets: 1
   targetTyp: 0
   damageTyp: 0

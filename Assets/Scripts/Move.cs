@@ -5,6 +5,8 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
    public string moveName;
+   
+   [TextArea(2, 3)]
    public string description;
    public int numberOfTargets;
 

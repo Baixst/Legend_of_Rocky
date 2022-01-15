@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: "S\xE4ure"
-  description: "Anwender wirft ein Fl\xE4schen S\xE4ure welches Schaden und Armor
-    Break verurschacht."
+  description: "Anwender wirft ein Fl\xE4schen mit S\xE4ure, welches Schaden und
+    Schildbruch verurschacht."
   numberOfTargets: 1
   targetTyp: 0
   damageTyp: 0
@@ -57,4 +57,5 @@ MonoBehaviour:
   removeBuffs: 0
   removeDebuffs: 0
   buffs: []
-  debuffs: []
+  debuffs:
+  - ArmorBreak

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Manaladung
-  description: "Anwender zieht Mana aus der Umgebung und erh\xF6t seinen Angriffwert"
+  description: "Anwender zieht Mana aus der Umgebung und erh\xF6t seinen Angriff."
   numberOfTargets: 1
   targetTyp: 2
   damageTyp: 1

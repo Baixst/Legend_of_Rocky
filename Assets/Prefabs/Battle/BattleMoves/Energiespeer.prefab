@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Energiespeer
-  description: Magischer Speerangriff mit schwachen Schaden, der einen Buff entfernt.
+  description: Magischer Speerangriff mit schwachen Schaden, der einen positiven
+    Statuseffekt entfernt.
   numberOfTargets: 1
   targetTyp: 0
   damageTyp: 1

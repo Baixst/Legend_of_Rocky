@@ -25,6 +25,9 @@ public class BattleUnit : MonoBehaviour
 
     public GameObject icon;
 
+    [TextArea(2, 3)]
+    public string description;
+
     [HideInInspector] public int lastTurnHP;
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public bool criticalHit = false;
@@ -40,7 +43,7 @@ public class BattleUnit : MonoBehaviour
         startPosition = gameObject.transform.position;
         foreach (Move move in moves)
         {
-            move.WakeUp();
+            if (move != null)   move.WakeUp();
         }
     }
 
