@@ -179,6 +179,7 @@ public class BattleSystem : MonoBehaviour
         infoBox.SetActive(true);
         yield return new WaitForSeconds(1); // this wait would be replaced by an attack animation
 
+        // play attack animation
         Animator unitAnimator = turnOrder[turnOrderIndex].gameObject.GetComponent<Animator>();
         if (unitAnimator != null)
         {
@@ -192,7 +193,7 @@ public class BattleSystem : MonoBehaviour
 
         utils.UpdateAfterMove();
         infoBox.SetActive(false);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         utils.MoveUnitBack(turnOrder[turnOrderIndex]);
         turnOrderUI.UnhighlightUnit(turnOrderIndex);
         NextTurn();
@@ -279,22 +280,27 @@ public class BattleSystem : MonoBehaviour
 
             infoText.SetText(turnOrder[turnOrderIndex].unitName + " setzt " + move.moveName + " ein.");
         }
-        
-
-
         infoBox.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
-        // TO-DO: Resolve attack on target
+        // play attack animation
+        Animator unitAnimator = turnOrder[turnOrderIndex].gameObject.GetComponent<Animator>();
+        if (unitAnimator != null)
+        {
+            // play the attack animation
+            unitAnimator.SetTrigger("Attack");
+            turnOrder[turnOrderIndex].isIdeling = false;
 
-        infoBox.SetActive(false);
+            // wait until animation is finished
+            yield return new WaitUntil(() => turnOrder[turnOrderIndex].isIdeling);
+        }
+
         utils.UpdateAfterMove();
+        yield return new WaitForSeconds(0.5f);
+        infoBox.SetActive(false);
         yield return new WaitForSeconds(1.5f);
-        turnOrderUI.UnhighlightUnit(turnOrderIndex);
-
-        // Move Unit back
         utils.MoveUnitBack(turnOrder[turnOrderIndex]);
-
+        turnOrderUI.UnhighlightUnit(turnOrderIndex);
         NextTurn();
     }
 
