@@ -23573,6 +23573,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1007110408140697668, guid: 6b36030e0e1a2004bad93a6f6b661afe, type: 3}
+      propertyPath: description
+      value: Ein steinharter Krieger der vor nichts Angst.
+      objectReference: {fileID: 0}
     - target: {fileID: 1007110408140697669, guid: 6b36030e0e1a2004bad93a6f6b661afe, type: 3}
       propertyPath: m_Name
       value: Rocky
@@ -29494,7 +29498,7 @@ MonoBehaviour:
   battleUnits:
   - {fileID: 1581070199}
   - {fileID: 1104303471}
-  - {fileID: 1988115464}
+  - {fileID: 0}
 --- !u!4 &1840165891
 Transform:
   m_ObjectHideFlags: 0
@@ -29953,17 +29957,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956448964}
   m_CullTransparentMesh: 1
---- !u!114 &1988115464 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3785011422836199143, guid: 3dbadabbc80e2284f93ec57226b7df69, type: 3}
-  m_PrefabInstance: {fileID: 305780475}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf22b0840fb33034badcdaf7ecd12e6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2002332443
 GameObject:
   m_ObjectHideFlags: 0
