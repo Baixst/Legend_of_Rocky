@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Heilbombe
-  description: Eine kleine Bombe mit Schutzlack die das gesamte Team leicht heilt.
+  description: "Eine kleine Bombe die das gesamte Team mit Schutzlack \xFCberzieht
+    und  leicht heilt."
   numberOfTargets: 3
   targetTyp: 1
   damageTyp: 1
