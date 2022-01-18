@@ -109,6 +109,12 @@ public class BattleUtils : MonoBehaviour
                 damageText.transform.position = spawnPosition;
                 damageText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(((unit.currentHP - unit.lastTurnHP).ToString()));
                 damageText.transform.GetChild(0).GetComponent<TextMeshPro>().color = healingNumbersColor;
+
+                if (unit.lastTurnHP == 0 && unit.gameObject.GetComponent<Animator>())
+                {
+                    unit.gameObject.GetComponent<Animator>().SetTrigger("Idle");
+                    unit.isIdeling = true;
+                }
                 unit.lastTurnHP = unit.currentHP;
             }
         } 
@@ -135,6 +141,12 @@ public class BattleUtils : MonoBehaviour
             unit.criticalHit = false;
         }
         unit.lastTurnHP = unit.currentHP;
+
+        if (unit.currentHP == 0 && unit.gameObject.GetComponent<Animator>() !=  null)
+        {
+            unit.gameObject.GetComponent<Animator>().SetTrigger("Dead");
+            unit.isIdeling = false;
+        }
     }
 
     private void UpdateHPTrackers()

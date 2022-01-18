@@ -57,7 +57,7 @@ public class PartyMenu : MonoBehaviour
         currentBattleUnit = unit;
         canGoBack = true;
 
-        charIcon.sprite = unit.icon.GetComponent<Image>().sprite;
+        charIcon.sprite = unit.menuIcon.GetComponent<Image>().sprite;
         charName.text = unit.unitName;
         charDescription.text = unit.description;
         hp.text = unit.maxHP.ToString();

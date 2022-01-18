@@ -24,6 +24,7 @@ public class BattleUnit : MonoBehaviour
     public List<Move> moves = new List<Move>();
 
     public GameObject icon;
+    public GameObject menuIcon;
 
     [TextArea(2, 3)]
     public string description;
