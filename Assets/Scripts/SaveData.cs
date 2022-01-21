@@ -7,7 +7,6 @@ public class SaveData
 {
     public int sceneIndex;
     public float[] playerPosition;
-    private float y_position;
 
     public SaveData(Player player, float playerPositionY, int sceneIndex)
     {

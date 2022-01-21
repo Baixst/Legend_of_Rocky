@@ -52,6 +52,11 @@ Zurück: Button East (z.B. B bei Xbox, O bei Playstation)
 ---
 
 ## Savefiles
-Als Savefile wird eine eigene Binary-Datei mit der Endung ".rocky" verwendet.
+Für alle Savefiles werden eigene Binary-Datein verwendet. Es gibt zwei Arten von Savefiles:
+
+1. "savedata.rocky" für Spielerdaten (Szenenindex und Position)
+2. "userSettings.rockpref" für Audiosettings
+
+Beide Savefiles sind unter dem selben Pfad zu finden.
 
 **Pfad:** C:\Users\ >UserName< \AppData\LocalLow\Namen\The Legend of Rocky

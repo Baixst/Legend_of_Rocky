@@ -11,7 +11,6 @@ public class RockyGameManager : MonoBehaviour
     public Vector3 playerStartPosition;
     public bool playerStartPositionSet = false;
     public Button resumeButton;
-    public GameObject quitGameDialogue;
     private SaveData saveData;
 
     [HideInInspector] public SceneLoader sceneLoader;
@@ -39,12 +38,6 @@ public class RockyGameManager : MonoBehaviour
                 playerStartPositionSet = false;
             }
         }
-
-        if (quitGameDialogue != null)
-        {
-            quitGameDialogue.SetActive(false);
-        }
-
     }
 
     private void LoadPlayerSaveData()
@@ -57,7 +50,6 @@ public class RockyGameManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        SaveSystem.Reset();
         sceneLoader.LoadNextScene();
     }
 
@@ -66,16 +58,6 @@ public class RockyGameManager : MonoBehaviour
         if (saveData == null)   return;
 
         sceneLoader.LoadScene(saveData.sceneIndex);
-    }
-
-    public void OpenQuitGameDialogue()
-    {
-        quitGameDialogue.SetActive(true);
-    }
-
-    public void CloseQuitGameDialogue()
-    {
-        quitGameDialogue.SetActive(false);
     }
 
     public void QuitGame()
