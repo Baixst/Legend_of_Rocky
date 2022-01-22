@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
             jump = true;
             animator.SetBool("IsJumping", true);
