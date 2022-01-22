@@ -10965,8 +10965,8 @@ MonoBehaviour:
     rgba: 3188303
   activePlayerUnitX: -2.8
   activePlayerUnitY: -2
-  activeEnemyUnitX: 0.53
-  activeEnemyUnitY: -0.53
+  activeEnemyUnitX: 0.92
+  activeEnemyUnitY: -2
   timeToMoveUnit: 0.3
 --- !u!4 &1812337375 stripped
 Transform:
