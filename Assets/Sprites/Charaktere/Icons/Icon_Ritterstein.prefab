@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8863968617720456186}
   - component: {fileID: 8863968617720456181}
   m_Layer: 0
-  m_Name: Icon_Enemy2
+  m_Name: Icon_Ritterstein
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

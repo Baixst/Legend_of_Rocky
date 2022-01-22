@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4799563382456124455}
   - component: {fileID: 4799563382456124452}
   m_Layer: 0
-  m_Name: Icon_Enemy3
+  m_Name: "Icon_Sch\xFCtze"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -86,6 +86,7 @@ public class MenuManager : MonoBehaviour
         if (playerMovement != null)         playerMovement.allowMovement = true;
         if (dialogueInputs != null)         dialogueInputs.enabled = true;
         partyMenu.GetComponent<PartyMenu>().partyMenuInput.enabled = false;
+        partyMenu.GetComponent<PartyMenu>().ChangeCharButtonsState(true);
         partyMenuOpen = false;
         Time.timeScale = 1;
     }

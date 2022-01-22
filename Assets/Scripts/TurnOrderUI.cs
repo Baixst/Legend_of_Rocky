@@ -6,7 +6,18 @@ using UnityEngine.UI;
 public class TurnOrderUI : MonoBehaviour
 {
     private List<GameObject> icons = new List<GameObject>();
-    private readonly Vector3 SCALE_CHANGE = new Vector3(0.2f, 0.2f, 0f);
+    private Vector3 SCALE_CHANGE = new Vector3(0.2f, 0.2f, 0f);
+    public float scaleChangeX;
+    public float scaleChangeY;
+
+    void Start()
+    {
+        if (scaleChangeX != 0 && scaleChangeY != 0)
+        {
+            SCALE_CHANGE.x = scaleChangeX;
+            SCALE_CHANGE.y = scaleChangeY;
+        }
+    }
 
     public void AddUnit(BattleUnit unit)
     {
