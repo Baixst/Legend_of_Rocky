@@ -91,9 +91,8 @@ public class BattleUtils : MonoBehaviour
     public void UpdateAfterMove()
     {
         // Update HP value in UI 
-        UpdateHUDs();
+        StartCoroutine(UpdateHUDsAfterMove());
         UpdateHPTrackers();
-        battleSystem.turnOrderUI.UpdateAfterMove(battleSystem.turnOrder);
 
         foreach (BattleUnit unit in units)
         {
@@ -174,6 +173,19 @@ public class BattleUtils : MonoBehaviour
             huds[i].SetAP(units[i].currentAP);
         }
         battleSystem.statusEffectHandler.UpdateStatusEffects();
+    }
+
+    public IEnumerator UpdateHUDsAfterMove()
+    {
+        battleSystem.statusEffectHandler.UpdateStatusEffects();
+        yield return new WaitForSeconds(1.5f);
+
+        for (int i = 0; i < units.Count; i++)
+        {
+            huds[i].SetHP(units[i].currentHP);
+            huds[i].SetAP(units[i].currentAP);
+        }
+        battleSystem.turnOrderUI.UpdateAfterMove(battleSystem.turnOrder);
     }
 
     public void UpdateButtons()

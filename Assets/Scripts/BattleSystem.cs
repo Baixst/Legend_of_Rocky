@@ -34,8 +34,11 @@ public class BattleSystem : MonoBehaviour
     public BattleUtils utils; // TO-DO: change to private
     [HideInInspector] public BattleState state;
 
+    private SceneLoader sceneLoader;
+
     void Start()
     {
+        sceneLoader = FindObjectOfType<SceneLoader>();
         infoText = infoBox.GetComponentInChildren<TextMeshProUGUI>();
         infoBox.SetActive(false);
         targetSelector.SetActive(false);
@@ -206,13 +209,13 @@ public class BattleSystem : MonoBehaviour
         if (utils.PlayerWon())
         {
             state = BattleState.WON;
-            EndBattle();
+            StartCoroutine(EndBattle());
             return;
         }
         else if (utils.EnemyWon())
         {
             state = BattleState.LOST;
-            EndBattle();
+            StartCoroutine(EndBattle());
             return;
         }
 
@@ -304,17 +307,22 @@ public class BattleSystem : MonoBehaviour
         NextTurn();
     }
 
-    private void EndBattle()
+    private IEnumerator EndBattle()
     {
         if (state == BattleState.WON)
         {
             infoText.SetText("Rocky ist siegreich!");
+            infoBox.SetActive(true);
+            yield return new WaitForSeconds(4f);
+            sceneLoader.LoadNextScene();
         }
         else if (state == BattleState.LOST)
         {
             infoText.SetText("Rocky wurde geschlagen!");
+            infoBox.SetActive(true);
+            yield return new WaitForSeconds(4f);
+            sceneLoader.LoadPreviousScene();
         }
-        infoBox.SetActive(true);
     }
 
     public BattleUnit GetActiveUnit()

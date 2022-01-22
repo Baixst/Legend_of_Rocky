@@ -23,6 +23,11 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadSceneByIndex(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
+    public void LoadPreviousScene()
+    {
+        StartCoroutine(LoadSceneByIndex(SceneManager.GetActiveScene().buildIndex - 1));
+    }
+
     IEnumerator LoadSceneByIndex(int sceneIndex)
     {
         transition.SetTrigger("StartTransition");
