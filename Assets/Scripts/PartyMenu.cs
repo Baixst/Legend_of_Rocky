@@ -121,7 +121,7 @@ public class PartyMenu : MonoBehaviour
         SelectMove(currentBattleUnit.moves[moveIndex]);
     }
 
-    private void ChangeCharButtonsState(bool state)
+    public void ChangeCharButtonsState(bool state)
     {
         foreach (Button button in charButtons)
         {

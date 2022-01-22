@@ -8984,6 +8984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a89c297eb5d004eb89a90c192736c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleChangeX: 0.3
+  scaleChangeY: 0.3
 --- !u!222 &1420522836
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9007,10 +9009,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 6
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 6
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
