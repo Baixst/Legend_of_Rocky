@@ -15,11 +15,13 @@ public class MenuManager : MonoBehaviour
     public GameObject optionsFirstSelected;
     public Button controlsFirstSelected;
     public Button quitFirstSelected;
+    public GameObject menuCloseFirstSelected;
     public GameObject partyMenu;
     public PlayerInput playerMovementInputs;
     public PlayerMovement playerMovement;
     public PlayerInput dialogueInputs;
     public Slider masterVol, musicVol, soundVol;
+    public bool menuInBattle;
 
     private bool pauseMenuOpen = false;
     private bool partyMenuOpen = false;
@@ -68,6 +70,7 @@ public class MenuManager : MonoBehaviour
 
     public void OpenPartyMenu()
     {
+        if (menuInBattle) menuCloseFirstSelected = EventSystem.current.currentSelectedGameObject;
         if (playerMovementInputs != null)   playerMovementInputs.enabled = false;
         if (playerMovement != null)         playerMovement.allowMovement = false;
         if (dialogueInputs != null)         dialogueInputs.enabled = false;
@@ -88,6 +91,12 @@ public class MenuManager : MonoBehaviour
         partyMenu.GetComponent<PartyMenu>().partyMenuInput.enabled = false;
         partyMenu.GetComponent<PartyMenu>().ChangeCharButtonsState(true);
         partyMenuOpen = false;
+
+        if (menuCloseFirstSelected != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(menuCloseFirstSelected);
+        }
         Time.timeScale = 1;
     }
 
@@ -103,6 +112,7 @@ public class MenuManager : MonoBehaviour
 
     public void OpenPauseMenu()
     {
+        if (menuInBattle) menuCloseFirstSelected = EventSystem.current.currentSelectedGameObject;
         if (playerMovementInputs != null)   playerMovementInputs.enabled = false;
         if (playerMovement != null)         playerMovement.allowMovement = false;
         if (dialogueInputs != null)         dialogueInputs.enabled = false;
@@ -132,6 +142,12 @@ public class MenuManager : MonoBehaviour
             SaveAudioSettings();
         }
         optionsPanelOpen = false;
+
+        if (menuCloseFirstSelected != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(menuCloseFirstSelected);
+        }
 
         Time.timeScale = 1;
     }
