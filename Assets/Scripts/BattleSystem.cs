@@ -31,7 +31,7 @@ public class BattleSystem : MonoBehaviour
 
     private bool cancelable = false;
 
-    public BattleUtils utils; // TO-DO: change to private
+    public BattleUtils utils;
     [HideInInspector] public BattleState state;
 
     private SceneLoader sceneLoader;
@@ -137,9 +137,9 @@ public class BattleSystem : MonoBehaviour
         turnOrder[turnOrderIndex].isDefending = true;
 
         combatButtonsParent.SetActive(false);
-        infoText.SetText(turnOrder[turnOrderIndex].name + " schützt sich");
+        infoText.SetText(turnOrder[turnOrderIndex].unitName + " schützt sich");
         infoBox.SetActive(true);
-        yield return new WaitForSeconds(1f); // this wait would be replaced by an attack animation
+        yield return new WaitForSeconds(1.5f); // this wait would be replaced by an defending animation
 
         infoBox.SetActive(false);
         yield return new WaitForSeconds(1);
@@ -254,6 +254,7 @@ public class BattleSystem : MonoBehaviour
         {
             turnOrder[turnOrderIndex].isDefending = false;
             turnOrder[turnOrderIndex].RegenerateAP();
+            utils.UpdateHUDs();
             StartCoroutine(EnemyAttack());
         }
     }

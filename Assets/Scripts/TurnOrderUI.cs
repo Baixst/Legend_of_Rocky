@@ -44,7 +44,7 @@ public class TurnOrderUI : MonoBehaviour
             {
                 icons[i].GetComponent<Image>().color = new Color32(60, 60, 60, 255);
             }
-            else    // set incon color of alive unit to default
+            else    // set icon color of alive unit to default
             {
                 icons[i].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }

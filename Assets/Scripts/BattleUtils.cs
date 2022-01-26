@@ -113,6 +113,7 @@ public class BattleUtils : MonoBehaviour
                 {
                     unit.gameObject.GetComponent<Animator>().SetTrigger("Idle");
                     unit.isIdeling = true;
+                    unit.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
                 }
                 unit.lastTurnHP = unit.currentHP;
             }
