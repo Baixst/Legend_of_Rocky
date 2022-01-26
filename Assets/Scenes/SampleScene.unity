@@ -2676,6 +2676,7 @@ MonoBehaviour:
   optionsFirstSelected: {fileID: 346432640}
   controlsFirstSelected: {fileID: 749449076}
   quitFirstSelected: {fileID: 117339359}
+  menuCloseFirstSelected: {fileID: 0}
   partyMenu: {fileID: 1477699212}
   playerMovementInputs: {fileID: 1626401344}
   playerMovement: {fileID: 1626401340}
@@ -2683,6 +2684,7 @@ MonoBehaviour:
   masterVol: {fileID: 346432642}
   musicVol: {fileID: 142896257}
   soundVol: {fileID: 602713500}
+  menuInBattle: 0
 --- !u!114 &219867026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35375,7 +35377,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 22ea248792f29534c9634331d2ec8a3a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a03f4e4f5e68804cadf129ecd68c56c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
