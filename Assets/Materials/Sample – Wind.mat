@@ -42,7 +42,7 @@ Material:
     - Vector1_162853FC: 1.5
     - Vector1_8C17A949: 5
     - _AlphaCutoff: 0.5
-    - _Fog: 1
+    - _Fog: 0
     - _WindNoise: 0
     - _WindSpeed: 1
     - _WindSway: 0.2
@@ -57,3 +57,4 @@ Material:
     - _ForegroundColor: {r: 0.19607843, g: 0.21568628, b: 0.32941177, a: 1}
     - _ForegroundRange: {r: -1, g: -8, b: 0, a: 0}
     - _WindMapping: {r: -0.01, g: 0.01, b: -0.01, a: 0.01}
+  m_BuildTextureStacks: []
