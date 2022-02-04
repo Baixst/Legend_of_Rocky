@@ -13,7 +13,9 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
     private DialogueTrigger nextDialogueTrigger;
+
     private bool dialogueActive = false;
+    public bool loadNextSceneAfterDialogue;
 
     public PlayerInput playerMovementInputs;
     public PlayerInput dialogueInputs;
@@ -21,6 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     private bool typingText;
     private string currentSentence;
+    private SceneLoader sceneLoader;
 
     void Awake()
     {
@@ -28,6 +31,7 @@ public class DialogueManager : MonoBehaviour
         dialogueArrow.SetActive(false);
         sentences = new Queue<string>();
         dialogueInputs.enabled = false;
+        sceneLoader = FindObjectOfType<SceneLoader>();
     }
 
     public void StartDialogue(Dialogue dialogue, DialogueTrigger nextPartToTrigger)
@@ -72,7 +76,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.035f);
         }
         typingText = false;
         dialogueArrow.SetActive(true);
@@ -111,6 +115,10 @@ public class DialogueManager : MonoBehaviour
         if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
         if (playerMovement != null)         playerMovement.allowMovement = true;
         dialogueInputs.enabled = false;
+        if (loadNextSceneAfterDialogue)
+        {
+            sceneLoader.LoadNextScene();
+        }
     }
 
     public void SubmitPressed(InputAction.CallbackContext context)

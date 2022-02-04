@@ -117,7 +117,7 @@ MonoBehaviour:
   - {fileID: 5778972962783638198, guid: d1852d8574e5bd444baee6310aa62e57, type: 3}
   icon: {fileID: 4159816097365652664, guid: 612903b3212e0924b9f72039b420ab4f, type: 3}
   menuIcon: {fileID: 4159816097365652664, guid: 886e25d50c043744da2c9c4ffd9c39a1, type: 3}
-  description: 
+  description: Ein steinharter Krieger der vor nichts Angst hat.
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
   criticalHit: 0
