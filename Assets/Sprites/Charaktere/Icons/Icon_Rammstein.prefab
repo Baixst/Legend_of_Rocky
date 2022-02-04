@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 298116072069037199}
   - component: {fileID: 298116072069037198}
   m_Layer: 0
-  m_Name: Icon_Basaltwache
+  m_Name: Icon_Rammstein
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ba39695d9955c564bb5ad41073b4c7dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0663276163aef0d4aa4469581b08d9d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
