@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Querschlag
   description: "Rocky setzt einen m\xE4chtigen, fl\xE4chendeckenden Schwertschlag
-    ein. Dieser f\xFCgt allen Gegner Schaden zu."
+    ein. Dieser f\xFCgt allen Gegnern Schaden zu."
   numberOfTargets: 3
   targetTyp: 0
   damageTyp: 0

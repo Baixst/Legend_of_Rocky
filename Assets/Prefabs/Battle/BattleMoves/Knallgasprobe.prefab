@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Feuerball
   description: "Fred F. b\xFCndelt die enstehenden Funken zu einem gro\xDFen Feuerball,
-    der Gegner Schaden zuf\xFCgt. "
+    der Gegnern Schaden zuf\xFCgt. "
   numberOfTargets: 1
   targetTyp: 0
   damageTyp: 0

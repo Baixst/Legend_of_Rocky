@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Heibombe
   description: "Fred F. wirft eine magische Bombe, die das gesamte Team mit heilender
-    Steinkonsverierung \xFCberzieht.\nBelebt zudem gefallene Helden wieder. "
+    Steinkonsverierung \xFCberzieht.\nSie belebt auch gefallene Helden wieder. "
   numberOfTargets: 3
   targetTyp: 1
   damageTyp: 1
