@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Schild hoch
-  description: Verleiht dem Anwender Barriere.
+  description: "Rocky verh\xE4rtet seine sowieso schon harte Oberfl\xE4che. Dies
+    verleiht ihm den Statuseffekt  \"Barriere\" und erh\xF6ht seine Verteidigung."
   numberOfTargets: 1
   targetTyp: 2
   damageTyp: 0
@@ -55,5 +56,6 @@ MonoBehaviour:
   apCost: 35
   removeBuffs: 0
   removeDebuffs: 0
-  buffs: []
+  buffs:
+  - Barrier
   debuffs: []

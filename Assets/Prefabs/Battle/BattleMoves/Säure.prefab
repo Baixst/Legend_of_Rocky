@@ -43,9 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f8169c5caaf634cbadd15cf462684a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: "S\xE4ure"
-  description: "Anwender wirft ein Fl\xE4schen mit S\xE4ure, welches Schaden und
-    Schildbruch verurschacht."
+  moveName: Korrosion
+  description: "Fred F. erzeugt Flammen, die bei Gegnern Korrosion ausl\xF6sen. So
+    sind sie anf\xE4lliger f\xFCr Angriffe.  Gegner erleiden den Statuseffekt Schildbruch
+    (Verteidigung sinkt) "
   numberOfTargets: 1
   targetTyp: 0
   damageTyp: 0

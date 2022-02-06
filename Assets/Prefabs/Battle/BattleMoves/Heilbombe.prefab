@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f8169c5caaf634cbadd15cf462684a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Heilbombe
-  description: "Eine kleine Bombe die das gesamte Team mit Schutzlack \xFCberzieht
-    und  leicht heilt."
+  moveName: Heibombe
+  description: "Fred F. wirft eine magische Bombe, die das gesamte Team mit heilender
+    Steinkonsverierung \xFCberzieht.\nBelebt zudem gefallene Helden wieder. "
   numberOfTargets: 3
   targetTyp: 1
   damageTyp: 1

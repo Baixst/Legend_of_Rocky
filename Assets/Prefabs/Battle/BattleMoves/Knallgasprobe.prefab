@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f8169c5caaf634cbadd15cf462684a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Knallgasprobe
-  description: Wirf dein erstes Chemieexperiment auf einen Gegner :)
+  moveName: Feuerball
+  description: "Fred F. b\xFCndelt die enstehenden Funken zu einem gro\xDFen Feuerball,
+    der Gegner Schaden zuf\xFCgt. "
   numberOfTargets: 1
   targetTyp: 0
   damageTyp: 0

@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Querschlag
-  description: "M\xE4chtiger Schwertschlag der alle Gegner trifft"
+  description: "Rocky setzt einen m\xE4chtigen, fl\xE4chendeckenden Schwertschlag
+    ein. Dieser f\xFCgt allen Gegner Schaden zu."
   numberOfTargets: 3
   targetTyp: 0
   damageTyp: 0

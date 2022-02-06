@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Schwerthieb
-  description: "Anwender f\xFChrt einen Schlag mit seinem krassen Schwert aus."
+  description: "Rocky f\xFChrt einen Schlag mit dem legend\xE4ren Schwert Excalibur
+    auf einen einzelnen Gegner aus."
   numberOfTargets: 1
   targetTyp: 0
   damageTyp: 0
