@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3771577864193658245
+--- !u!1 &335395970763592438
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2422962169205242255}
-  - component: {fileID: 475082925009404434}
+  - component: {fileID: 1247727509198038780}
+  - component: {fileID: 3920123618520030561}
   m_Layer: 0
   m_Name: Feuerball
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2422962169205242255
+--- !u!4 &1247727509198038780
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3771577864193658245}
+  m_GameObject: {fileID: 335395970763592438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,29 +31,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &475082925009404434
+--- !u!114 &3920123618520030561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3771577864193658245}
+  m_GameObject: {fileID: 335395970763592438}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79f8169c5caaf634cbadd15cf462684a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Steinzauber
-  description: "Der Stein der Weisen nutzt seinen Zauberstab, um den Gegnern mit
-    Magie Schaden zuzuf\xFCgen. "
+  moveName: Feuerball
+  description: "Fred F. b\xFCndelt die enstehenden Funken zu einem gro\xDFen Feuerball,
+    der Gegnern Schaden zuf\xFCgt. "
   numberOfTargets: 1
   targetTyp: 0
-  damageTyp: 1
+  damageTyp: 0
   buffsToApply: 
   debuffsToApply: 
-  damage: 35
+  damage: 20
   healing: 0
-  apCost: 60
+  apCost: 35
   removeBuffs: 0
   removeDebuffs: 0
   buffs: []
