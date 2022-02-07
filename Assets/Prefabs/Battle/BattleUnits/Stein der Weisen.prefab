@@ -112,7 +112,7 @@ MonoBehaviour:
   buffs: []
   debuffs: []
   moves:
-  - {fileID: 475082925009404434, guid: fff2b0d6c1db6834d86e4e73c113480e, type: 3}
+  - {fileID: 475082925009404434, guid: 8cd52477364c65e4d8542dde2451d882, type: 3}
   - {fileID: 1390771738580983607, guid: 4b01476e29e271b448aa5da47862ac4f, type: 3}
   - {fileID: 7850197355749694381, guid: 4d8e49e0b7d2e0c4ea05ac50a7eee527, type: 3}
   icon: {fileID: 6577724086024381578, guid: 48897f1d6886ab047b9c267a44a9614d, type: 3}

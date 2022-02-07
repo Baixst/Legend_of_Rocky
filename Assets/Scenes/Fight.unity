@@ -26103,7 +26103,7 @@ MonoBehaviour:
   buffs: []
   debuffs: []
   moves:
-  - {fileID: 475082925009404434, guid: fff2b0d6c1db6834d86e4e73c113480e, type: 3}
+  - {fileID: 475082925009404434, guid: 8cd52477364c65e4d8542dde2451d882, type: 3}
   - {fileID: 1390771738580983607, guid: 4b01476e29e271b448aa5da47862ac4f, type: 3}
   - {fileID: 7850197355749694381, guid: 4d8e49e0b7d2e0c4ea05ac50a7eee527, type: 3}
   icon: {fileID: 6577724086024381578, guid: 48897f1d6886ab047b9c267a44a9614d, type: 3}
@@ -26558,7 +26558,7 @@ MonoBehaviour:
   init: 50
   maxAP: 90
   currentAP: 0
-  APregenartion: 35
+  APregenartion: 0
   playerCharacter: 0
   buffs: []
   debuffs: []
@@ -26945,7 +26945,7 @@ MonoBehaviour:
   buffs: []
   debuffs: []
   moves:
-  - {fileID: 3920123618520030561, guid: 9913efca547d4b542a25fe398cadd938, type: 3}
+  - {fileID: 3920123618520030561, guid: fff2b0d6c1db6834d86e4e73c113480e, type: 3}
   - {fileID: 5970843664230899384, guid: 0bd0084bd1a72704e8638ca3ec064568, type: 3}
   - {fileID: 4175550404168007115, guid: cc16308e24fe0c24996426dd6dfaf64d, type: 3}
   icon: {fileID: 1807051587209615874, guid: 2347f89539431be49a70157d7be4c69b, type: 3}

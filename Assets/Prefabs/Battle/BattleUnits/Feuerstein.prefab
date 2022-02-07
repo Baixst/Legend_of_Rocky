@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  unitName: F. Feuerstein
+  unitName: Fred F.
   maxHP: 110
   currentHP: 110
   phyAtk: 40
@@ -112,7 +112,7 @@ MonoBehaviour:
   buffs: []
   debuffs: []
   moves:
-  - {fileID: 3920123618520030561, guid: 9913efca547d4b542a25fe398cadd938, type: 3}
+  - {fileID: 3920123618520030561, guid: fff2b0d6c1db6834d86e4e73c113480e, type: 3}
   - {fileID: 5970843664230899384, guid: 0bd0084bd1a72704e8638ca3ec064568, type: 3}
   - {fileID: 4175550404168007115, guid: cc16308e24fe0c24996426dd6dfaf64d, type: 3}
   icon: {fileID: 1807051587209615874, guid: 2347f89539431be49a70157d7be4c69b, type: 3}

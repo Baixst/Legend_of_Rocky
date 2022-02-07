@@ -90540,6 +90540,7 @@ MonoBehaviour:
   dialogueArrow: {fileID: 1151250412}
   nameText: {fileID: 52276290}
   dialogueText: {fileID: 2122442042}
+  loadNextSceneAfterDialogue: 0
   playerMovementInputs: {fileID: 1626401344}
   dialogueInputs: {fileID: 1886270012}
   playerMovement: {fileID: 1626401340}
@@ -97901,7 +97902,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 1272084872}
-  transitionTime: 1
+  transitionTime: 1.5
+  music: {fileID: 1972546845}
 --- !u!1 &7744385943789817400
 GameObject:
   m_ObjectHideFlags: 0
