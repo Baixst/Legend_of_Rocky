@@ -2452,8 +2452,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: This is a dialogue bla bla bla. Nicht sehr spannend was hier steht.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}
+  m_sharedMaterial: {fileID: -7634311092574477392, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2477,8 +2477,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2489,7 +2489,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 10
+  m_lineSpacing: 30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2513,7 +2513,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 5, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3480,7 +3480,7 @@ MonoBehaviour:
     charName: 'Kieselsteinchen 1:'
     charNameFontColor:
       serializedVersion: 2
-      rgba: 4288069887
+      rgba: 4283819519
     sentences:
     - "Opa, kannst du uns nochmal die Legende von Rocky erz\xE4hlen?"
   nextPartToTrigger: {fileID: 1464041972}
@@ -3536,11 +3536,13 @@ MonoBehaviour:
     charName: 'Opa Stein:'
     charNameFontColor:
       serializedVersion: 2
-      rgba: 4294961001
+      rgba: 4294020158
     sentences:
     - "Ihr m\xFCsst die Geschichte doch fast auswendig k\xF6nnen."
     - "Aber na gut... einmal erz\xE4hle ich sie euch noch."
     - Aber danach geht es dann auch ab ins Flussbett!
+    - ... Es war vor nicht allzu langer Zeit in einem Land nicht weit weg von hier.
+    - "Da traf sich ein junges, ungleiches P\xE4rchen auf einer Waldlichtung..."
   nextPartToTrigger: {fileID: 0}
 --- !u!1 &492117400
 GameObject:
@@ -4942,8 +4944,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Charakter name:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}
+  m_sharedMaterial: {fileID: -7634311092574477392, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4967,8 +4969,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5003,7 +5005,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 5, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5776,10 +5778,11 @@ MonoBehaviour:
   dialogueArrow: {fileID: 1122968833}
   nameText: {fileID: 741628077}
   dialogueText: {fileID: 329977029}
-  loadNextSceneAfterDialogue: 1
+  dialoguesFinished: 0
   playerMovementInputs: {fileID: 0}
   dialogueInputs: {fileID: 810045296}
   playerMovement: {fileID: 0}
+  cutsceneManager: {fileID: 1331978950}
 --- !u!4 &810045298
 Transform:
   m_ObjectHideFlags: 0
@@ -9705,7 +9708,7 @@ GameObject:
   - component: {fileID: 1331978951}
   - component: {fileID: 1331978950}
   m_Layer: 0
-  m_Name: IntroSceneManager
+  m_Name: CutsceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9723,9 +9726,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a01cec147510b74790b79969f285db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 810045297}
+  dialogueTriggers:
+  - {fileID: 470030108}
+  timelines: []
+  startWithDialogue: 1
   waitUntilDialogueStart: 3
+  loadNextSceneAfterDialogue: 1
+  loadNextSceneAfterTimeline: 0
   waitUntilNextScene: 2
-  firstDialoguePart: {fileID: 470030108}
+  triggerTimelineAfterDialogue: 0
 --- !u!4 &1331978951
 Transform:
   m_ObjectHideFlags: 0

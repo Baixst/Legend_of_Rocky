@@ -15,15 +15,18 @@ public class DialogueManager : MonoBehaviour
     private DialogueTrigger nextDialogueTrigger;
 
     private bool dialogueActive = false;
-    public bool loadNextSceneAfterDialogue;
+    
+    [HideInInspector]
+    public int dialoguesFinished = 0;
 
     public PlayerInput playerMovementInputs;
     public PlayerInput dialogueInputs;
     public PlayerMovement playerMovement;
 
+    public CutsceneManager cutsceneManager;
+
     private bool typingText;
     private string currentSentence;
-    private SceneLoader sceneLoader;
 
     void Awake()
     {
@@ -31,7 +34,6 @@ public class DialogueManager : MonoBehaviour
         dialogueArrow.SetActive(false);
         sentences = new Queue<string>();
         dialogueInputs.enabled = false;
-        sceneLoader = FindObjectOfType<SceneLoader>();
     }
 
     public void StartDialogue(Dialogue dialogue, DialogueTrigger nextPartToTrigger)
@@ -91,6 +93,8 @@ public class DialogueManager : MonoBehaviour
         else
         {
             CloseDialogueWindow();
+            dialoguesFinished++;
+            if(cutsceneManager != null) cutsceneManager.UpdateAfterDialogue();
         }
     }
 
@@ -115,10 +119,6 @@ public class DialogueManager : MonoBehaviour
         if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
         if (playerMovement != null)         playerMovement.allowMovement = true;
         dialogueInputs.enabled = false;
-        if (loadNextSceneAfterDialogue)
-        {
-            sceneLoader.LoadNextScene();
-        }
     }
 
     public void SubmitPressed(InputAction.CallbackContext context)

@@ -32,7 +32,7 @@ public class MenuManager : MonoBehaviour
     void Awake()
     {
         pauseMenu.SetActive(false);
-        partyMenu.SetActive(false);
+        if (partyMenu != null)  partyMenu.SetActive(false);
         optionsPanel.SetActive(false);
         controlsPanel.SetActive(false);
         quitGameDialogue.SetActive(false);
