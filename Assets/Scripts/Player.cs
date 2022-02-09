@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public bool loadFightScene;
     public bool triggerDialogue;
     public DialogueTrigger dialogueTrigger;
     public bool loadPositionFromSaveData;
@@ -38,15 +37,8 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject otherObject = collision.gameObject;
-        if (otherObject.CompareTag("Enemy"))
+        if (otherObject.CompareTag("DialogueTrigger"))
         {
-            Debug.Log("Collision with enemy happend.");
-
-            if (loadFightScene)
-            {
-                gameManager.sceneLoader.LoadSceneByName("Fight");
-            }
-
             if (triggerDialogue)
             {
                 dialogueTrigger.TriggerDialogue();

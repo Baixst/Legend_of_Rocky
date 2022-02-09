@@ -50,6 +50,7 @@ public class RockyGameManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        SaveSystem.DeleteSaveFile();
         sceneLoader.LoadNextScene();
     }
 

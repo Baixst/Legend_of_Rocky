@@ -38,9 +38,18 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, DialogueTrigger nextPartToTrigger)
     {
+        StartCoroutine(StartDialogueCoroutine(dialogue, nextPartToTrigger));
+    }
+
+    private IEnumerator StartDialogueCoroutine(Dialogue dialogue, DialogueTrigger nextPartToTrigger)
+    {
         if (!dialogueActive)
         {
             OpenDialogueWindow();
+            yield return new WaitForSeconds(0.75f);
+            dialogueText.gameObject.SetActive(true);
+            nameText.gameObject.SetActive(true);
+            dialogueInputs.enabled = true;
         }
 
         nextDialogueTrigger = nextPartToTrigger;
@@ -92,9 +101,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            CloseDialogueWindow();
-            dialoguesFinished++;
-            if(cutsceneManager != null) cutsceneManager.UpdateAfterDialogue();
+            StartCoroutine(CloseDialogueWindow());
         }
     }
 
@@ -108,17 +115,25 @@ public class DialogueManager : MonoBehaviour
             playerMovement.allowMovement = false;
             playerMovement.horizontalMove = 0f;
             playerMovement.animator.SetFloat("Speed", Mathf.Abs(0f));
-        }        
-        dialogueInputs.enabled = true;
+        }
+        dialogueWindow.GetComponent<Animator>().SetTrigger("open");
     }
 
-    private void CloseDialogueWindow()
+    private IEnumerator CloseDialogueWindow()
     {
+        dialogueText.gameObject.SetActive(false);
+        nameText.gameObject.SetActive(false);
+        dialogueWindow.GetComponent<Animator>().SetTrigger("close");
+        yield return new WaitForSeconds(0.75f);
+
         dialogueWindow.SetActive(false);
         dialogueActive = false;
         if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
         if (playerMovement != null)         playerMovement.allowMovement = true;
         dialogueInputs.enabled = false;
+
+        dialoguesFinished++;
+        if(cutsceneManager != null) cutsceneManager.UpdateAfterDialogue();
     }
 
     public void SubmitPressed(InputAction.CallbackContext context)

@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Enemy
   - Background
   - Lever
   - SceneEnd
   - Checkpoint
+  - DialogueTrigger
   layers:
   - Default
   - TransparentFX

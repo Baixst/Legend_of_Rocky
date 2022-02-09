@@ -70,4 +70,9 @@ public static class SaveSystem
             return null;
         }
     }
+
+    public static void DeleteSaveFile()
+    {
+        File.Delete (saveFilePath);
+    }
 }
