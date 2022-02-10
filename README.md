@@ -12,8 +12,6 @@ Laufen: A und D, oder Pfeil Rechts und Links
 
 Springen: Leertaste oder W
 
-Ducken: C (nicht mehr funktional, wurde gestrichen)
-
 Interagieren: E
 
 Pause: Escape
@@ -24,8 +22,6 @@ Party Info: I
 Laufen: Linker Joystick
 
 Springen: Button South (z.B. A bei Xbox, X bei Playstation)
-
-Ducken: Linker Trigger
 
 Interagieren: Button West (z.B. X bei Xbox, ▢ bei Playstation)
 
