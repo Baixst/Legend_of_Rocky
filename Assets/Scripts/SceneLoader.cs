@@ -8,12 +8,17 @@ public class SceneLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
     public AudioSource music;
+    public AudioSource sound;
 
-    void Start()
+    void Awake()
     {
         if(music != null)
         {
             StartCoroutine(FadeInAudio(music, transitionTime));
+        }
+        if(sound != null)
+        {
+            StartCoroutine(EnableSoundAfter(sound, 0.5f));
         }
     }
 
@@ -81,6 +86,14 @@ public class SceneLoader : MonoBehaviour
             audioSource.volume += startVolume * Time.deltaTime / fadeTime;
             yield return null;
         }
+        audioSource.volume = startVolume;
+    }
+
+    private IEnumerator EnableSoundAfter(AudioSource audioSource, float waitTime)
+    {
+        float startVolume = audioSource.volume;
+        audioSource.volume = 0;
+        yield return new WaitForSeconds(waitTime);
         audioSource.volume = startVolume;
     }
 }
