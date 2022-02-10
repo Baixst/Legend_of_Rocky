@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     private DialogueTrigger nextDialogueTrigger;
 
-    private bool dialogueActive = false;
+    public bool dialogueActive;
     
     [HideInInspector]
     public int dialoguesFinished = 0;
@@ -30,6 +30,7 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
+        dialogueActive = false;
         dialogueWindow.SetActive(false);
         dialogueArrow.SetActive(false);
         sentences = new Queue<string>();
@@ -49,6 +50,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.75f);
             dialogueText.gameObject.SetActive(true);
             nameText.gameObject.SetActive(true);
+            Debug.Log("soweit so gut");
             dialogueInputs.enabled = true;
         }
 
@@ -101,6 +103,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            dialogueInputs.enabled = false;
             StartCoroutine(CloseDialogueWindow());
         }
     }
@@ -130,7 +133,6 @@ public class DialogueManager : MonoBehaviour
         dialogueActive = false;
         if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
         if (playerMovement != null)         playerMovement.allowMovement = true;
-        dialogueInputs.enabled = false;
 
         dialoguesFinished++;
         if(cutsceneManager != null) cutsceneManager.UpdateAfterDialogue();

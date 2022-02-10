@@ -19,6 +19,7 @@ public class MenuManager : MonoBehaviour
     public GameObject partyMenu;
     public PlayerInput playerMovementInputs;
     public PlayerMovement playerMovement;
+    public DialogueManager dialogueManager;
     public PlayerInput dialogueInputs;
     public Slider masterVol, musicVol, soundVol;
     public bool menuInBattle;
@@ -28,6 +29,8 @@ public class MenuManager : MonoBehaviour
     private bool optionsPanelOpen = false;
     private RockyGameManager gameManager;
     private SaveSettings settings;
+
+    public AudioSource buttonHoverSound;
 
     void Awake()
     {
@@ -85,9 +88,12 @@ public class MenuManager : MonoBehaviour
     public void ClosePartyMenu()
     {
         partyMenu.SetActive(false);
-        if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
-        if (playerMovement != null)         playerMovement.allowMovement = true;
-        if (dialogueInputs != null)         dialogueInputs.enabled = true;
+        if (dialogueManager != null && !dialogueManager.dialogueActive)
+        {
+            if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
+            if (playerMovement != null)         playerMovement.allowMovement = true;
+        }
+        if (dialogueInputs != null && dialogueManager.dialogueActive) dialogueInputs.enabled = true;
         partyMenu.GetComponent<PartyMenu>().partyMenuInput.enabled = false;
         partyMenu.GetComponent<PartyMenu>().ChangeCharButtonsState(true);
         partyMenuOpen = false;
@@ -132,9 +138,12 @@ public class MenuManager : MonoBehaviour
     public void ClosePauseMenu()
     {
         pauseMenu.SetActive(false);
-        if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
-        if (playerMovement != null)         playerMovement.allowMovement = true;
-        if (dialogueInputs != null)         dialogueInputs.enabled = true;
+        if (dialogueManager != null && !dialogueManager.dialogueActive)
+        {
+            if (playerMovementInputs != null)   playerMovementInputs.enabled = true;
+            if (playerMovement != null)         playerMovement.allowMovement = true;
+        }
+        if (dialogueInputs != null && dialogueManager.dialogueActive) dialogueInputs.enabled = true;
         pauseMenuOpen = false;
 
         if (optionsPanelOpen)
@@ -160,6 +169,7 @@ public class MenuManager : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(optionsFirstSelected);
+            if (buttonHoverSound != null)   buttonHoverSound.Stop();
         }
     }
 
@@ -169,6 +179,7 @@ public class MenuManager : MonoBehaviour
         BackToPausePanel();
         SaveAudioSettings();
         optionsPanelOpen = false;
+        if (buttonHoverSound != null)   buttonHoverSound.Stop();
     }
 
     public void OpenControlsPanel()
@@ -178,6 +189,7 @@ public class MenuManager : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(controlsFirstSelected.gameObject);
+            if (buttonHoverSound != null)   buttonHoverSound.Stop();
         }
     }
 
@@ -185,6 +197,7 @@ public class MenuManager : MonoBehaviour
     {
         controlsPanel.SetActive(false);
         BackToPausePanel();
+        if (buttonHoverSound != null)   buttonHoverSound.Stop();
     }
 
     public void OpenQuitGameDialogue()
@@ -194,6 +207,7 @@ public class MenuManager : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(quitFirstSelected.gameObject);
+            if (buttonHoverSound != null)   buttonHoverSound.Stop();
         }
     }
 
@@ -201,6 +215,7 @@ public class MenuManager : MonoBehaviour
     {
         quitGameDialogue.SetActive(false);
         BackToPausePanel();
+        if (buttonHoverSound != null)   buttonHoverSound.Stop();
     }
 
     private void BackToPausePanel()
