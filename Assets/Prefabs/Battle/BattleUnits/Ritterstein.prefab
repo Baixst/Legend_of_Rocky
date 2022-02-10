@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098304577368762227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.43, y: -1.73, z: 0}
+  m_LocalPosition: {x: 4.37, y: -1.91, z: 0}
   m_LocalScale: {x: 0.24, y: 0.26, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,6 +116,7 @@ MonoBehaviour:
   - {fileID: 5778972962783638198, guid: d1852d8574e5bd444baee6310aa62e57, type: 3}
   - {fileID: 2388324102278800439, guid: c57a0dfc82b4c974da4f583438f1b0a7, type: 3}
   icon: {fileID: 8863968617720456182, guid: dbbc5fdcebfbf6b4295425af8a481650, type: 3}
+  menuIcon: {fileID: 0}
   description: 
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}

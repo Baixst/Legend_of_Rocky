@@ -32,6 +32,8 @@ public class BattleSystem : MonoBehaviour
     private bool cancelable = false;
 
     public BattleUtils utils;
+    public AudioSource buttonHoverSound;
+    public bool waitForTutorial;
     [HideInInspector] public BattleState state;
 
     private SceneLoader sceneLoader;
@@ -65,6 +67,14 @@ public class BattleSystem : MonoBehaviour
 
         utils.SetupTurnOrderUI(turnOrder);
 
+        if (!waitForTutorial)
+        {
+            StartCoroutine(StartBattle());
+        }
+    }
+
+    public void StartBattleAfterTutorial()
+    {
         StartCoroutine(StartBattle());
     }
 
@@ -110,6 +120,7 @@ public class BattleSystem : MonoBehaviour
             combatButtonsParent.SetActive(true);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(combatButtons[0].gameObject);
+            if (buttonHoverSound != null)   buttonHoverSound.Stop();
         }
     }
 
@@ -120,6 +131,7 @@ public class BattleSystem : MonoBehaviour
         moveButtonsParent.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(moveButtons[0].gameObject);
+        if (buttonHoverSound != null)   buttonHoverSound.Stop();
 
         cancelable = true;
     }
@@ -174,6 +186,9 @@ public class BattleSystem : MonoBehaviour
             combatButtonsParent.SetActive(true);
             moveButtonsParent.SetActive(true);
             cancelable = true;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(moveButtons[0].gameObject);
+
             yield break;
         }
 

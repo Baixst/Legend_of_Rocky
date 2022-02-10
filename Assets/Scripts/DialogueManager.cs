@@ -50,7 +50,6 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.75f);
             dialogueText.gameObject.SetActive(true);
             nameText.gameObject.SetActive(true);
-            Debug.Log("soweit so gut");
             dialogueInputs.enabled = true;
         }
 

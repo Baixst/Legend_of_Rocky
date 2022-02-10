@@ -60,3 +60,10 @@ Für alle Savefiles werden eigene Binary-Datein verwendet. Es gibt zwei Arten vo
 Beide Savefiles sind unter dem selben Pfad zu finden.
 
 **Pfad:** C:\Users\ >UserName< \AppData\LocalLow\Namen\The Legend of Rocky
+
+---
+
+## BattleUnits anpassen
+
+In allen Kampfszenen sollten Prefabs der BattleUnit verwendet werden (nicht unpacken).
+Stats von Einheiten in Prefabs anpassen, die Position in der jeweiligen Szene selbst.
