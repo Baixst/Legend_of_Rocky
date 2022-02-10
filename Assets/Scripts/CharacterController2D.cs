@@ -24,6 +24,8 @@ public class CharacterController2D : MonoBehaviour
     public float groundedTimerMax = 0.1f;
     private float groundedTimer = 0f;
 
+    public AudioSource jumpSound;
+
     [Header("Events")]
     [Space]
 
@@ -151,6 +153,12 @@ public class CharacterController2D : MonoBehaviour
         // If the player should jump...
         if (m_Grounded && jump)
         {
+            // Play jump sound
+            if (jumpSound != null)
+            {
+                jumpSound.Play();
+            }
+
             // Add a vertical force to the player.
             m_Grounded = false;
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x,0f);
