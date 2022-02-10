@@ -65,4 +65,10 @@ public class RockyGameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public Vector3 GetPlayerSpawnPosition()
+    {
+        saveData = SaveSystem.LoadPlayerData();
+        return new Vector3(saveData.playerPosition[0], saveData.playerPosition[1], saveData.playerPosition[2]);            
+    }
 }

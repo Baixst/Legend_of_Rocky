@@ -6,6 +6,8 @@ public class CameraFollow : MonoBehaviour
 {
     public GameObject objectToFollow;
     public Rigidbody rb;
+    [HideInInspector]
+    public bool followObject = true;
 
 void Start(){
     transform.parent = null;
@@ -13,7 +15,10 @@ void Start(){
 
     void FixedUpdate()
     {
-        rb.velocity = 10f * (objectToFollow.transform.position - transform.position) * Vector3.Distance(objectToFollow.transform.position, transform.position);
-        transform.position = new Vector3(transform.position.x,transform.position.y, -1f);
+        if (followObject)
+        {
+            rb.velocity = 10f * (objectToFollow.transform.position - transform.position) * Vector3.Distance(objectToFollow.transform.position, transform.position);
+            transform.position = new Vector3(transform.position.x,transform.position.y, -1f);
+        }
     }
 }
