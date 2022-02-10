@@ -12,12 +12,14 @@ public class Player : MonoBehaviour
     private Camera camera;
     private PlayerMovement playerMovement;
     private RockyGameManager gameManager;
+    private Animator animator;
 
     void Awake()
     {
         camera = FindObjectOfType<Camera>();
         playerMovement = FindObjectOfType<PlayerMovement>();
         gameManager = FindObjectOfType<RockyGameManager>();
+        animator = gameObject.GetComponent<Animator>();
         
         // set spawn position
         if (loadPositionFromSaveData && gameManager.playerStartPositionSet) 
@@ -52,13 +54,33 @@ public class Player : MonoBehaviour
         if (otherObject.CompareTag("SceneEnd"))
         {
             gameManager.sceneLoader.LoadNextScene();
-            camera.transform.SetParent(null);
+            camera.GetComponent<CameraFollow>().followObject = false;
             forceWalkRight = true;
+            return;
         }
 
         if (otherObject.CompareTag("Checkpoint"))
         {
             otherObject.GetComponent<Checkpoint>().SaveGame(this);
+            return;
         }
+
+        if (otherObject.CompareTag("Spikes"))
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetTrigger("TakeDamage");
+            StartCoroutine(Respawn());
+        }
+    }
+
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(1f);
+        camera.GetComponent<CameraFollow>().followObject = false;
+        camera.transform.parent = gameObject.transform;
+        gameObject.transform.position = gameManager.GetPlayerSpawnPosition();
+        camera.transform.parent = null;
+        camera.GetComponent<CameraFollow>().followObject = true;
+        animator.SetTrigger("Idle");
     }
 }
