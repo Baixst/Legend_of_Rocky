@@ -26,6 +26,9 @@ public class CharacterController2D : MonoBehaviour
 
     public AudioSource jumpSound;
 
+    [HideInInspector]
+    public bool allowJump;
+
     [Header("Events")]
     [Space]
 
@@ -39,6 +42,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void Awake()
     {
+        allowJump = true;
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
         if (OnLandEvent == null)
@@ -151,7 +155,7 @@ public class CharacterController2D : MonoBehaviour
             }
         }
         // If the player should jump...
-        if (m_Grounded && jump)
+        if (m_Grounded && jump && allowJump)
         {
             // Play jump sound
             if (jumpSound != null)

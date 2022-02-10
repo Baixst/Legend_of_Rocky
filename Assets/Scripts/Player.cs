@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public bool triggerDialogue;
     public DialogueTrigger dialogueTrigger;
     public bool loadPositionFromSaveData;
+    public CharacterController2D controller2D;
     private bool forceWalkRight = false;
     private Camera camera;
     private PlayerMovement playerMovement;
@@ -67,6 +68,7 @@ public class Player : MonoBehaviour
 
         if (otherObject.CompareTag("Spikes"))
         {
+            controller2D.allowJump = false;
             animator.SetBool("IsJumping", false);
             animator.SetTrigger("TakeDamage");
             StartCoroutine(Respawn());
@@ -81,6 +83,8 @@ public class Player : MonoBehaviour
         gameObject.transform.position = gameManager.GetPlayerSpawnPosition();
         camera.transform.parent = null;
         camera.GetComponent<CameraFollow>().followObject = true;
+        animator.SetBool("IsJumping", false);
         animator.SetTrigger("Idle");
+        controller2D.allowJump = true;
     }
 }
