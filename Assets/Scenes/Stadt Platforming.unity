@@ -85704,7 +85704,7 @@ Animator:
   m_GameObject: {fileID: 1626401333}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 77cce63b79281bc45b9e08093de4dee8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7549ef3822e9b4f4ab436f1c814c660b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -85729,6 +85729,8 @@ MonoBehaviour:
   dialogueTrigger: {fileID: 952278916}
   loadPositionFromSaveData: 1
   controller2D: {fileID: 0}
+  forceWalkRight: 0
+  playerMovement: {fileID: 0}
 --- !u!70 &1626401343
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

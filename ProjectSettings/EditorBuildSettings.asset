@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Fight template.unity
     guid: 4f79ee4609730fb42862ad19c8fda618
   - enabled: 1
+    path: Assets/Scenes/Rolling Stones Cave.unity
+    guid: f7f690764b3611343b5cfc7833c4cf1f
+  - enabled: 1
     path: Assets/Scenes/Stadt Platforming.unity
     guid: d2b4cb4ad8feaee45a71cf73032b4bbe
   m_configObjects: {}
