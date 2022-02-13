@@ -20572,6 +20572,7 @@ MonoBehaviour:
   turnOrder: []
   utils: {fileID: 1810196866}
   buttonHoverSound: {fileID: 584749186}
+  waitForTutorial: 0
   state: 0
 --- !u!4 &1588003167
 Transform:
@@ -22108,7 +22109,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 190
+  m_PreferredWidth: 200
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1

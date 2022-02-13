@@ -6455,7 +6455,7 @@ MonoBehaviour:
   transition: {fileID: 6488022931752353698}
   transitionTime: 2
   music: {fileID: 182889636}
-  sound: {fileID: 0}
+  sound: {fileID: 1053481113}
 --- !u!1 &6488022930975990321
 GameObject:
   m_ObjectHideFlags: 0
