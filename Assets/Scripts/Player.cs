@@ -9,18 +9,21 @@ public class Player : MonoBehaviour
     public DialogueTrigger dialogueTrigger;
     public bool loadPositionFromSaveData;
     public CharacterController2D controller2D;
-    private bool forceWalkRight = false;
+    public bool forceWalkRight = false;
     private Camera camera;
-    private PlayerMovement playerMovement;
+    public PlayerMovement playerMovement;
     private RockyGameManager gameManager;
     private Animator animator;
 
     void Awake()
     {
         camera = FindObjectOfType<Camera>();
-        playerMovement = FindObjectOfType<PlayerMovement>();
         gameManager = FindObjectOfType<RockyGameManager>();
         animator = gameObject.GetComponent<Animator>();
+        if (playerMovement == null)
+        {
+            playerMovement = FindObjectOfType<PlayerMovement>();
+        }
         
         // set spawn position
         if (loadPositionFromSaveData && gameManager.playerStartPositionSet) 
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
         {
             if (triggerDialogue)
             {
+                triggerDialogue = false;
                 dialogueTrigger.TriggerDialogue();
             }
         }
@@ -72,6 +76,15 @@ public class Player : MonoBehaviour
             animator.SetBool("IsJumping", false);
             animator.SetTrigger("TakeDamage");
             StartCoroutine(Respawn());
+        }
+
+        if (otherObject.CompareTag("DialogueTrigger"))
+        {
+            if (triggerDialogue)
+            {
+                triggerDialogue = false;
+                dialogueTrigger.TriggerDialogue();
+            }
         }
     }
 

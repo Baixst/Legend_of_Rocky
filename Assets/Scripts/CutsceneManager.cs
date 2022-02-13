@@ -6,11 +6,13 @@ using UnityEngine.Playables;
 public class CutsceneManager : MonoBehaviour
 {
     public DialogueManager dialogueManager;
+    public GameObject camera;
     public List<DialogueTrigger> dialogueTriggers;
     public List<PlayableDirector> timelines;
     public List<double> timelineEnds;
     public bool startWithDialogue;
     public bool startWithTimeline;
+    public bool setCamFreeForTimeline;
     public float waitUntilDialogueStart;
     public bool loadNextSceneAfterDialogue;
     public bool loadNextSceneAfterTimeline;
@@ -69,6 +71,10 @@ public class CutsceneManager : MonoBehaviour
         {
             if (dialogueIndex == playNextTimelineAfterDialogues[i])
             {
+                if (setCamFreeForTimeline)
+                {
+                    SetCamFree();
+                }
                 timelines[timelineIndex].Play();
                 timelinePlaying = true;
             }
@@ -87,6 +93,7 @@ public class CutsceneManager : MonoBehaviour
             }
         }
 
+
         for (int i = 0; i < playNextDialogueAfterTimelines.Count; i++)
         {
             if (timelineIndex == playNextDialogueAfterTimelines[i])
@@ -95,6 +102,11 @@ public class CutsceneManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void SetCamFree()
+    {
+        camera.GetComponent<CameraFollow>().followObject = false;
     }
 
     private IEnumerator WaitAndTriggerDialogue(int index)
