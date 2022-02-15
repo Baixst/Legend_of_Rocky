@@ -51,6 +51,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Stadt Platforming.unity
     guid: d2b4cb4ad8feaee45a71cf73032b4bbe
   - enabled: 1
+    path: Assets/Scenes/Vor Schloss.unity
+    guid: 48d908bb45d072d4681ab33e4c3e6227
+  - enabled: 1
     path: Assets/Scenes/Fight template.unity
     guid: 4f79ee4609730fb42862ad19c8fda618
   m_configObjects: {}
