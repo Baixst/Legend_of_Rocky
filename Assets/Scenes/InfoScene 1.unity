@@ -720,6 +720,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee083d73b4a31e2488c9bd0a8f968c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showInfoPanel: 0
+  panel: {fileID: 0}
+  nextSceneAfter: 4
+  openPanelAfter: 0
+  closePanelAfter: 0
 --- !u!1 &2027608723
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +948,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 6488022931752353698}
   transitionTime: 1
+  music: {fileID: 0}
+  sound: {fileID: 0}
 --- !u!1 &6488022930975990321
 GameObject:
   m_ObjectHideFlags: 0

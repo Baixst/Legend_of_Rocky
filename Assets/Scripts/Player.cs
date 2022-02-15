@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
         if (otherObject.CompareTag("SceneEnd"))
         {
             gameManager.sceneLoader.LoadNextScene();
-            camera.GetComponent<CameraFollow>().followObject = false;
             forceWalkRight = true;
             return;
         }
