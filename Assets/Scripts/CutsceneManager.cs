@@ -16,6 +16,7 @@ public class CutsceneManager : MonoBehaviour
     public float waitUntilDialogueStart;
     public bool loadNextSceneAfterDialogue;
     public bool loadNextSceneAfterTimeline;
+    public bool backToStartScreen;
     public List<int> playNextDialogueAfterTimelines;
     public List<int> playNextTimelineAfterDialogues;
 
@@ -62,7 +63,14 @@ public class CutsceneManager : MonoBehaviour
         {
             if (dialogueIndex == dialogueTriggers.Count)
             {
-                sceneLoader.LoadNextScene();
+                if (backToStartScreen)
+                {
+                    sceneLoader.LoadScene(1);
+                }
+                else
+                {
+                    sceneLoader.LoadNextScene();
+                }
                 return;
             }
         }
@@ -88,7 +96,14 @@ public class CutsceneManager : MonoBehaviour
         {
             if (timelineIndex == timelines.Count)
             {
-                sceneLoader.LoadNextScene();
+                if (backToStartScreen)
+                {
+                    sceneLoader.LoadScene(1);
+                }
+                else
+                {
+                    sceneLoader.LoadNextScene();
+                }
                 return;
             }
         }
