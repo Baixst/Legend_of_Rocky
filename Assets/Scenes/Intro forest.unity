@@ -1906,6 +1906,7 @@ MonoBehaviour:
   partyMenu: {fileID: 0}
   playerMovementInputs: {fileID: 0}
   playerMovement: {fileID: 0}
+  dialogueManager: {fileID: 1886270010}
   dialogueInputs: {fileID: 1886270012}
   masterVol: {fileID: 346432642}
   musicVol: {fileID: 142896257}
@@ -10089,6 +10090,7 @@ MonoBehaviour:
   dialogueArrow: {fileID: 1237781211}
   nameText: {fileID: 407868420}
   dialogueText: {fileID: 1268430743}
+  dialogueActive: 0
   dialoguesFinished: 0
   playerMovementInputs: {fileID: 0}
   dialogueInputs: {fileID: 1886270012}
@@ -10969,6 +10971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1886270010}
+  camera: {fileID: 0}
   dialogueTriggers:
   - {fileID: 952278916}
   - {fileID: 480836162}
@@ -10980,6 +10983,7 @@ MonoBehaviour:
   - 2.2
   startWithDialogue: 1
   startWithTimeline: 0
+  setCamFreeForTimeline: 0
   waitUntilDialogueStart: 2
   loadNextSceneAfterDialogue: 0
   loadNextSceneAfterTimeline: 1
@@ -12578,6 +12582,9 @@ MonoBehaviour:
   transitionTime: 2
   music: {fileID: 1972546845}
   sound: {fileID: 1611095884}
+  saveOnLoad: 0
+  player: {fileID: 0}
+  saveIcon: {fileID: 0}
 --- !u!1 &8163963368701017874
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ public class SceneLoader : MonoBehaviour
     public float transitionTime = 1f;
     public AudioSource music;
     public AudioSource sound;
+    public bool saveOnLoad;
+    public Player player;
+    public GameObject saveIcon;
 
     void Awake()
     {
@@ -19,6 +22,15 @@ public class SceneLoader : MonoBehaviour
         if(sound != null)
         {
             StartCoroutine(EnableSoundAfter(sound, 0.5f));
+        }
+    }
+
+    void Start()
+    {
+        if(saveOnLoad)
+        {
+            SaveSystem.SavePlayerData(player, gameObject.transform.position.y, SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(ShowSaveIcon());
         }
     }
 
@@ -95,5 +107,15 @@ public class SceneLoader : MonoBehaviour
         audioSource.volume = 0;
         yield return new WaitForSeconds(waitTime);
         audioSource.volume = startVolume;
+    }
+
+    private IEnumerator ShowSaveIcon()
+    {
+        if (saveIcon != null)
+        {
+            saveIcon.SetActive(true);
+            yield return new WaitForSeconds(2.5f);
+            saveIcon.SetActive(false);
+        }
     }
 }

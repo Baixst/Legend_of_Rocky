@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro Platforming.unity
     guid: 7d9a11a5e82382b4f946e906cc92d5fb
   - enabled: 1
-    path: Assets/Scenes/Treffen mit SteinDerWeise.unity
+    path: Assets/Scenes/Treffen Stein Der Weise.unity
     guid: f8792a3f0248a2f4e8ee3a0889335282
   - enabled: 1
     path: Assets/Scenes/Fight 1 Wald.unity
@@ -39,8 +39,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Rolling Stones Cave.unity
     guid: f7f690764b3611343b5cfc7833c4cf1f
   - enabled: 1
+    path: Assets/Scenes/Vor dem Stadttor.unity
+    guid: 607f5d3c1631cf44bbebba78b2102832
+  - enabled: 1
     path: Assets/Scenes/Fight 3 Stadttor.unity
     guid: 32e28497095cc0045aa943d05dc05ec3
+  - enabled: 1
+    path: Assets/Scenes/Treffen Feuerstein.unity
+    guid: 3cb7e885cf991c549a9746688819fa39
   - enabled: 1
     path: Assets/Scenes/Stadt Platforming.unity
     guid: d2b4cb4ad8feaee45a71cf73032b4bbe
