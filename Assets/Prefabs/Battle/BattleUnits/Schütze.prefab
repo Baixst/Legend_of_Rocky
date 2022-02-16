@@ -98,22 +98,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   unitName: "Sch\xFCtze"
-  maxHP: 90
-  currentHP: 90
-  phyAtk: 40
-  phyDef: 40
-  magAtk: 25
+  maxHP: 95
+  currentHP: 95
+  phyAtk: 48
+  phyDef: 43
+  magAtk: 35
   magDef: 50
-  init: 47
-  maxAP: 125
+  init: 50
+  maxAP: 115
   currentAP: 0
-  APregenartion: 40
+  APregenartion: 35
   playerCharacter: 0
   buffs: []
   debuffs: []
   moves:
   - {fileID: 674384442738050226, guid: 7001d7bd3beef11408b5524b75a398b5, type: 3}
-  - {fileID: 674384442738050226, guid: 7001d7bd3beef11408b5524b75a398b5, type: 3}
+  - {fileID: 4175550404168007115, guid: cc16308e24fe0c24996426dd6dfaf64d, type: 3}
   - {fileID: 3624240806440095957, guid: 1bcdb253e2566f546a342208e38683af, type: 3}
   icon: {fileID: 4799563382456124459, guid: d4377fca1d4d3a6419a169b07a2b4c1c, type: 3}
   menuIcon: {fileID: 0}

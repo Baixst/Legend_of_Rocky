@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2951945040860519862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.56, y: -1.16, z: 0}
-  m_LocalScale: {x: 0.39, y: 0.34, z: 1}
+  m_LocalScale: {x: 0.42, y: 0.36, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,23 +98,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   unitName: Rammstein
-  maxHP: 100
-  currentHP: 100
-  phyAtk: 35
+  maxHP: 110
+  currentHP: 110
+  phyAtk: 45
   phyDef: 45
   magAtk: 30
-  magDef: 50
-  init: 70
-  maxAP: 85
+  magDef: 40
+  init: 50
+  maxAP: 90
   currentAP: 0
-  APregenartion: 35
+  APregenartion: 30
   playerCharacter: 0
   buffs: []
   debuffs: []
   moves:
-  - {fileID: 5568293343534328300, guid: a8bd124aa0b555b4e9312c38cf9b6332, type: 3}
-  - {fileID: 1601287009213639887, guid: d526381545d02bf4c9c2dea23a1140dd, type: 3}
-  - {fileID: 3756952481585323286, guid: a524f992de44db04faa5c91551ce6945, type: 3}
+  - {fileID: 5568293343534328300, guid: a361e21add6f5334f9be2e7c05533743, type: 3}
+  - {fileID: 1390771738580983607, guid: 4b01476e29e271b448aa5da47862ac4f, type: 3}
+  - {fileID: 1601287009213639887, guid: ae49cdea7995be641bfe76d752489b3c, type: 3}
   icon: {fileID: 298116072069037195, guid: 6b02556484f5cd345b1be31d6ac3a866, type: 3}
   menuIcon: {fileID: 0}
   description: 

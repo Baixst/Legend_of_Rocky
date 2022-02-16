@@ -104,10 +104,10 @@ MonoBehaviour:
   phyDef: 35
   magAtk: 55
   magDef: 50
-  init: 40
+  init: 45
   maxAP: 110
   currentAP: 0
-  APregenartion: 45
+  APregenartion: 40
   playerCharacter: 1
   buffs: []
   debuffs: []

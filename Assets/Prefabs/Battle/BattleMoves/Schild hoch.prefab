@@ -53,7 +53,7 @@ MonoBehaviour:
   debuffsToApply: 
   damage: 0
   healing: 0
-  apCost: 35
+  apCost: 30
   removeBuffs: 0
   removeDebuffs: 0
   buffs:

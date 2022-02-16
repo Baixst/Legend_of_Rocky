@@ -102,12 +102,12 @@ MonoBehaviour:
   currentHP: 110
   phyAtk: 40
   phyDef: 40
-  magAtk: 45
+  magAtk: 40
   magDef: 35
-  init: 65
-  maxAP: 120
+  init: 55
+  maxAP: 100
   currentAP: 0
-  APregenartion: 45
+  APregenartion: 40
   playerCharacter: 1
   buffs: []
   debuffs: []

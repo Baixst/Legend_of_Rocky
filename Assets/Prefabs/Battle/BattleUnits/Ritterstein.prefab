@@ -100,14 +100,14 @@ MonoBehaviour:
   unitName: Ritterstein
   maxHP: 120
   currentHP: 120
-  phyAtk: 45
-  phyDef: 55
+  phyAtk: 42
+  phyDef: 52
   magAtk: 10
-  magDef: 55
-  init: 50
-  maxAP: 90
+  magDef: 40
+  init: 40
+  maxAP: 80
   currentAP: 0
-  APregenartion: 35
+  APregenartion: 30
   playerCharacter: 0
   buffs: []
   debuffs: []

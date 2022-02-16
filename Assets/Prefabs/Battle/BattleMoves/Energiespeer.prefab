@@ -51,11 +51,10 @@ MonoBehaviour:
   damageTyp: 1
   buffsToApply: 
   debuffsToApply: 
-  damage: 15
+  damage: 20
   healing: 0
-  apCost: 40
+  apCost: 45
   removeBuffs: 1
   removeDebuffs: 0
   buffs: []
-  debuffs:
-  - ArmorBreak
+  debuffs: []

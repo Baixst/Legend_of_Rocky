@@ -105,7 +105,7 @@ MonoBehaviour:
   magAtk: 25
   magDef: 40
   init: 60
-  maxAP: 90
+  maxAP: 95
   currentAP: 0
   APregenartion: 40
   playerCharacter: 1

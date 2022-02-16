@@ -44,17 +44,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Feuerball
-  description: "Fred F. b\xFCndelt die enstehenden Funken zu einem gro\xDFen Feuerball,
-    der Gegnern Schaden zuf\xFCgt. "
+  description: "Fred F. b\xFCndelt Funken zu einem Feuerball, der Gegnern Schaden
+    zuf\xFCgt und einen Buff verbrennt."
   numberOfTargets: 1
   targetTyp: 0
-  damageTyp: 0
+  damageTyp: 1
   buffsToApply: 
   debuffsToApply: 
   damage: 25
   healing: 0
   apCost: 35
-  removeBuffs: 0
+  removeBuffs: 1
   removeDebuffs: 0
   buffs: []
   debuffs: []

@@ -45,6 +45,11 @@ public class EnemyController : MonoBehaviour
         movePoints_3 = CalcPointsMightyMove(move3, attackingUnit);
 
         float totalMovePoints = movePoints_1 + movePoints_2 + movePoints_3;
+
+        Debug.Log("Points 1: " + movePoints_1);
+        Debug.Log("Points 2: " + movePoints_2);
+        Debug.Log("Points 3: " + movePoints_3);
+        Debug.Log("totalPoints: " + totalMovePoints);
         
         // percentage = (percent value / base value) * 100
         float chance_move1 = movePoints_1 / totalMovePoints * 100;
@@ -52,6 +57,12 @@ public class EnemyController : MonoBehaviour
         float chance_move3 = movePoints_3 / totalMovePoints * 100 + chance_move1 + chance_move2;
 
         float randomMoveValue = Random.Range(0f, 100f);
+
+        Debug.Log("Chance 1: " + chance_move1);
+        Debug.Log("Chance 2: " + chance_move2);
+        Debug.Log("Chance 3: " + chance_move3);
+        Debug.Log("RandomMoveValue: " + randomMoveValue);
+
         if (chance_move1 >= randomMoveValue)
         {
             return move1;
@@ -268,6 +279,15 @@ public class EnemyController : MonoBehaviour
             sum += 10f;
         }
 
+        // move buffs the user and user doesn't have the buff
+        if (move.buffsToApply.Count > 0 && move.targetTyp == Move.TargetTyp.Self)
+        {
+            if (UnitHastAtLeastOneBuffNot(unit, move))
+            {
+                sum += 5f;
+            }
+        }
+
         return sum;
     }
 
@@ -277,7 +297,31 @@ public class EnemyController : MonoBehaviour
         if (unit.currentHP > unit.maxHP / 2)    return 0f;
         if (unitAP < move.apCost)  return 0f;
 
-        return 30f;
+        return 25f;
+    }
+
+    private bool UnitHastAtLeastOneBuffNot(BattleUnit unit, Move move)
+    {
+        foreach (string buff in move.buffs)
+        {
+            if (!UnitHasBuff(unit, buff))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool UnitHasBuff(BattleUnit unit, string buff)
+    {
+        foreach (string unitBuff in unit.buffs)
+        {
+            if (unitBuff.Equals(buff))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private bool AnyPlayerHasNoDebuff()

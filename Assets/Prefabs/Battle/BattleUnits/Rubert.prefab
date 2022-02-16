@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5289781833039794198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.87, y: -1.67, z: 0}
-  m_LocalScale: {x: 0.24, y: 0.26, z: 1}
+  m_LocalScale: {x: 0.28, y: 0.29, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,23 +98,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   unitName: Rubert
-  maxHP: 150
-  currentHP: 150
-  phyAtk: 45
-  phyDef: 40
+  maxHP: 155
+  currentHP: 155
+  phyAtk: 49
+  phyDef: 45
   magAtk: 30
-  magDef: 55
-  init: 53
+  magDef: 45
+  init: 58
   maxAP: 100
   currentAP: 0
-  APregenartion: 30
+  APregenartion: 40
   playerCharacter: 0
   buffs: []
   debuffs: []
   moves:
-  - {fileID: 5590815549108191979, guid: ab6f8a129daad83428b2669649121f30, type: 3}
-  - {fileID: 5778972962783638198, guid: d1852d8574e5bd444baee6310aa62e57, type: 3}
-  - {fileID: 2388324102278800439, guid: c57a0dfc82b4c974da4f583438f1b0a7, type: 3}
+  - {fileID: 5568293343534328300, guid: eb2fabfcd8f985946823b8f8993bd987, type: 3}
+  - {fileID: 5568293343534328300, guid: 9f271ec2cc50e1d4a9a48fdfd2444329, type: 3}
+  - {fileID: 5568293343534328300, guid: 707aef44a9bb88f44bc0437857762a64, type: 3}
   icon: {fileID: 8863968617720456182, guid: 2f86e16b7cb56574e86245af056c5f4c, type: 3}
   menuIcon: {fileID: 0}
   description: 

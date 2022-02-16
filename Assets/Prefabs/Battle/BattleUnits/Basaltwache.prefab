@@ -100,14 +100,14 @@ MonoBehaviour:
   unitName: Basaltwache
   maxHP: 100
   currentHP: 100
-  phyAtk: 35
+  phyAtk: 37
   phyDef: 45
-  magAtk: 30
+  magAtk: 32
   magDef: 50
   init: 59
   maxAP: 85
   currentAP: 0
-  APregenartion: 35
+  APregenartion: 30
   playerCharacter: 0
   buffs: []
   debuffs: []

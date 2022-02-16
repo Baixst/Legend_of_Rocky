@@ -16345,7 +16345,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2031043043805668920, guid: 35afb711f5c30ab4c9eb35914330b50a, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b9cbcbb39781d0846a2d2e6da3bb32b8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3e171d972766e27478a1741028ee42c3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
@@ -28477,8 +28477,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleSystem: {fileID: 1588003166}
-  chanceToDefendAtLowAp: 10
-  considerDefendingAtApPercentage: 40
+  chanceToDefendAtLowAp: 65
+  considerDefendingAtApPercentage: 50
 --- !u!1 &1988963074
 GameObject:
   m_ObjectHideFlags: 0
@@ -30813,6 +30813,9 @@ MonoBehaviour:
   transitionTime: 1
   music: {fileID: 1065771901}
   sound: {fileID: 584749186}
+  saveOnLoad: 0
+  player: {fileID: 0}
+  saveIcon: {fileID: 0}
 --- !u!1 &6488022930975990321
 GameObject:
   m_ObjectHideFlags: 0

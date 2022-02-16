@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Vor dem Stadttor.unity
     guid: 607f5d3c1631cf44bbebba78b2102832
   - enabled: 1
-    path: Assets/Scenes/Fight 3 Stadttor.unity
+    path: Assets/Scenes/Fight 2 Stadttor.unity
     guid: 32e28497095cc0045aa943d05dc05ec3
   - enabled: 1
     path: Assets/Scenes/Treffen Feuerstein.unity
@@ -54,8 +54,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Vor Schloss.unity
     guid: 48d908bb45d072d4681ab33e4c3e6227
   - enabled: 1
-    path: Assets/Scenes/Fight template.unity
-    guid: 4f79ee4609730fb42862ad19c8fda618
+    path: Assets/Scenes/Vorraum Thronsaal.unity
+    guid: 8d247333e9935a5439a7c081eececde5
+  - enabled: 1
+    path: Assets/Scenes/Fight 3 Schloss.unity
+    guid: 3fda97595d181bf45871c9dbd4545edd
+  - enabled: 1
+    path: Assets/Scenes/Thronsaal vor Kampf.unity
+    guid: 5b0df4bd4c91be8429a04bdbbcee431b
+  - enabled: 1
+    path: Assets/Scenes/Fight 4 Bossfight.unity
+    guid: 051035c1a54470f4fb0811884640a72c
+  - enabled: 1
+    path: Assets/Scenes/Thronsaal nach Kampf.unity
+    guid: c0ad9ab3991763849907b3330a7d2b0b
   - enabled: 1
     path: Assets/Scenes/End Campfire.unity
     guid: d235d0922128bb247a9641c910a72eb3
