@@ -48,7 +48,7 @@ MonoBehaviour:
     wird geheilt und ein negativer Statuseffekt wird entfernt.
   numberOfTargets: 1
   targetTyp: 1
-  damageTyp: 0
+  damageTyp: 1
   buffsToApply: 
   debuffsToApply: 
   damage: 0
