@@ -98,11 +98,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   unitName: Rammstein
-  maxHP: 110
-  currentHP: 110
-  phyAtk: 45
-  phyDef: 45
-  magAtk: 30
+  maxHP: 100
+  currentHP: 100
+  phyAtk: 43
+  phyDef: 43
+  magAtk: 31
   magDef: 40
   init: 50
   maxAP: 90

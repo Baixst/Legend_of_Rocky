@@ -11971,7 +11971,7 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4278216447
     sentences:
-    - Wird sind da.
+    - Wir sind da.
     - Ich war bei den Bauarbeiten des Schlosses dabei.
     - "Hinter dieser Mauer m\xFCsste der Thronsaal sein."
   nextPartToTrigger: {fileID: 730543212}

@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Manaladung
-  description: "Der Stein der Weisen sammelt Mana aus der Umgebung und fokussiert
-    sich auf den Kampf. Er erh\xF6ht dadurch seinen Angriffswert."
+  description: Der Stein der Weisen sammelt Mana aus der Umgebung und verleiht seinem
+    Ziel Macht und Energieschub.
   numberOfTargets: 1
   targetTyp: 1
   damageTyp: 1

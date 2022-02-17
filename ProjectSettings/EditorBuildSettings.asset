@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/InfoScene 1.unity
     guid: dd087d7fb5765fb48b4c352933ebad84
   - enabled: 1
+    path: Assets/Scenes/InfoScene 2.unity
+    guid: ed05442b9a167754d94192d6ba54a0e3
+  - enabled: 1
     path: Assets/Scenes/StartScreen.unity
     guid: b309eb4575b8a6c4685e87991ff0c800
   - enabled: 1
@@ -71,4 +74,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/End Campfire.unity
     guid: d235d0922128bb247a9641c910a72eb3
+  - enabled: 1
+    path: Assets/Scenes/Thanks for playing.unity
+    guid: 13b9e25c5391a664aa8d43fc1c316d7d
   m_configObjects: {}

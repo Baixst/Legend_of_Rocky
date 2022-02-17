@@ -4841,7 +4841,7 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4294901913
     sentences:
-    - Ihm geht es blendet. Lass uns weitergehen.
+    - Ihm geht es blendend. Lasst uns weitergehen.
   nextPartToTrigger: {fileID: 108757956}
 --- !u!224 &178634582
 RectTransform:
@@ -88698,7 +88698,7 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4288069887
     sentences:
-    - Aber er fliegt doch garnicht.
+    - Aber er fliegt doch gar nicht.
     - Oh......... verstehe.
   nextPartToTrigger: {fileID: 1403359511}
 --- !u!224 &1813759152

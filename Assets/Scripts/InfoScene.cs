@@ -10,6 +10,7 @@ public class InfoScene : MonoBehaviour
     public float nextSceneAfter;
     public float openPanelAfter;
     public float closePanelAfter;
+    public bool backToStartScreen;
 
     void Start()
     {
@@ -26,7 +27,15 @@ public class InfoScene : MonoBehaviour
     private IEnumerator WaitAndLoadNextScene(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        sceneLoader.LoadNextScene();
+        
+        if (backToStartScreen)
+        {
+            sceneLoader.LoadScene(2);
+        }
+        else
+        {
+            sceneLoader.LoadNextScene();
+        }
     }
     
     private IEnumerator WaitAndOpenPanel(float waitTime)

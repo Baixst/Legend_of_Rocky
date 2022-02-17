@@ -19642,7 +19642,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Jede Einheiten regeneriert einen Teil ihrer AP zu Beginn ihres Zuges.
+  m_text: 'Jede Einheit regeneriert einen Teil ihrer AP zu Beginn ihres Zuges.
 
     Wieviel
     AP eine Einheit hat, zeigt der blaue Balken an.'

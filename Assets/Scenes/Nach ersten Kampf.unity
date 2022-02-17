@@ -101039,7 +101039,7 @@ MonoBehaviour:
       rgba: 4294901913
     sentences:
     - Das habe ich gesehen.
-    - Ich wollte sie aufhalten, aber der Graft konnte mit ihr entwischen.
+    - Ich wollte sie aufhalten, aber der Graf konnte mit ihr entwischen.
     - "Aber danke f\xFCr deine Hilfe, Junge. Du hast Mut bewiesen!"
   nextPartToTrigger: {fileID: 1307532797}
 --- !u!224 &571121337

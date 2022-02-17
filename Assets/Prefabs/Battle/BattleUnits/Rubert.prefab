@@ -98,9 +98,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   unitName: Rubert
-  maxHP: 155
-  currentHP: 155
-  phyAtk: 49
+  maxHP: 150
+  currentHP: 150
+  phyAtk: 45
   phyDef: 45
   magAtk: 30
   magDef: 45

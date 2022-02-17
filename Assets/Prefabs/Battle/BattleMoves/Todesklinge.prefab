@@ -50,7 +50,7 @@ MonoBehaviour:
   damageTyp: 0
   buffsToApply: 
   debuffsToApply: 00000000
-  damage: 45
+  damage: 40
   healing: 0
   apCost: 60
   removeBuffs: 0

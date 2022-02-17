@@ -9118,7 +9118,7 @@ MonoBehaviour:
       rgba: 4288069887
     sentences:
     - Da haben wir etwas gemeinsam.
-    - "Dieser Kerl hat meine Freundin entf\xFChrt und versteck sich nun feige in
+    - "Dieser Kerl hat meine Freundin entf\xFChrt und versteckt sich nun feige in
       seinem Schloss."
   nextPartToTrigger: {fileID: 1416738081}
 --- !u!1 &741866693
@@ -23400,3 +23400,6 @@ MonoBehaviour:
   transitionTime: 1.5
   music: {fileID: 1803417}
   sound: {fileID: 292916704}
+  saveOnLoad: 0
+  player: {fileID: 0}
+  saveIcon: {fileID: 0}

@@ -7789,7 +7789,6 @@ MonoBehaviour:
   waitUntilDialogueStart: 1.5
   loadNextSceneAfterDialogue: 1
   loadNextSceneAfterTimeline: 0
-  backToStartScreen: 0
   playNextDialogueAfterTimelines: 01000000
   playNextTimelineAfterDialogues: 01000000
 --- !u!4 &925993236
@@ -12429,7 +12428,7 @@ MonoBehaviour:
       rgba: 4278216447
     sentences:
     - Nicht nur deiner, Lucy.
-    - "Die Jahre der Tyrannei deines Vater sind nun endlich vor\xFCber."
+    - "Die Jahre der Tyrannei deines Vaters sind nun endlich vor\xFCber."
     - Die Bewohner von Steinstadt stehen auf ewig in deiner Schuld.
   nextPartToTrigger: {fileID: 1572727239}
 --- !u!224 &1621379925
@@ -17471,7 +17470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 1272084872}
-  transitionTime: 0
+  transitionTime: 2
   music: {fileID: 1803417}
   sound: {fileID: 292916704}
   saveOnLoad: 0
