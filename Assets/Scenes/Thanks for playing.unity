@@ -730,7 +730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Danke f\xFCrs Spielen!"
+  m_text: "Danke f\xFCr's Spielen!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}
   m_sharedMaterial: {fileID: -7634311092574477392, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}

@@ -1373,7 +1373,7 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4294020158
     sentences:
-    - "Ihr m\xFCsst die Geschichte doch fast auswendig k\xF6nnen."
+    - "Ihr m\xFCsst die Geschichte doch fast auswendig kennen."
     - "Aber na gut... einmal erz\xE4hle ich sie euch noch."
     - Aber danach geht es dann auch ab ins Flussbett!
     - ... Es war vor nicht allzu langer Zeit in einem Land nicht weit weg von hier.
@@ -2563,6 +2563,7 @@ MonoBehaviour:
   dialogueArrow: {fileID: 1122968833}
   nameText: {fileID: 741628077}
   dialogueText: {fileID: 329977029}
+  dialogueActive: 0
   dialoguesFinished: 0
   playerMovementInputs: {fileID: 0}
   dialogueInputs: {fileID: 810045296}
@@ -4300,12 +4301,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 810045297}
+  camera: {fileID: 0}
   dialogueTriggers:
   - {fileID: 470030108}
   timelines: []
   timelineEnds: []
   startWithDialogue: 1
   startWithTimeline: 0
+  setCamFreeForTimeline: 0
   waitUntilDialogueStart: 3
   loadNextSceneAfterDialogue: 1
   loadNextSceneAfterTimeline: 0
@@ -7471,6 +7474,7 @@ MonoBehaviour:
   partyMenu: {fileID: 0}
   playerMovementInputs: {fileID: 0}
   playerMovement: {fileID: 0}
+  dialogueManager: {fileID: 0}
   dialogueInputs: {fileID: 0}
   masterVol: {fileID: 1725802645}
   musicVol: {fileID: 1801792891}
@@ -7842,6 +7846,9 @@ MonoBehaviour:
   transitionTime: 2
   music: {fileID: 182889636}
   sound: {fileID: 768453686}
+  saveOnLoad: 0
+  player: {fileID: 0}
+  saveIcon: {fileID: 0}
 --- !u!1 &6488022930975990321
 GameObject:
   m_ObjectHideFlags: 0

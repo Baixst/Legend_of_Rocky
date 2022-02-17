@@ -296,7 +296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bitte beendet das Spiel nicht wenn du dieses Zeichen siehst.
+  m_text: Bitte beendet das Spiel nicht, wenn du dieses Zeichen siehst.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -725,6 +725,7 @@ MonoBehaviour:
   nextSceneAfter: 4
   openPanelAfter: 0
   closePanelAfter: 0
+  backToStartScreen: 0
 --- !u!1 &2027608723
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,6 +951,9 @@ MonoBehaviour:
   transitionTime: 1
   music: {fileID: 0}
   sound: {fileID: 0}
+  saveOnLoad: 0
+  player: {fileID: 0}
+  saveIcon: {fileID: 0}
 --- !u!1 &6488022930975990321
 GameObject:
   m_ObjectHideFlags: 0

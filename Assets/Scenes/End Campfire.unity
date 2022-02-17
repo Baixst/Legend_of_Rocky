@@ -4436,7 +4436,6 @@ MonoBehaviour:
   waitUntilDialogueStart: 3
   loadNextSceneAfterDialogue: 1
   loadNextSceneAfterTimeline: 0
-  backToStartScreen: 1
   playNextDialogueAfterTimelines: 01000000
   playNextTimelineAfterDialogues: 01000000
 --- !u!4 &1331978951
@@ -5776,7 +5775,7 @@ MonoBehaviour:
       rgba: 4294965838
     sentences:
     - "Erz\xE4hlst du den Kindern schon wieder diese alte Geschichte?"
-    - Jetzt aber schnell ins Bett mit euch.
+    - Jetzt aber schnell ins Flussbett mit euch.
   nextPartToTrigger: {fileID: 0}
 --- !u!1 &1801792887
 GameObject:

@@ -2563,7 +2563,7 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4281423253
     sentences:
-    - Befehl vom Grafen. Niemanden aus der Waldsiedlung darf in die Stadt!
+    - Befehl vom Grafen. Niemand aus der Waldsiedlung darf in die Stadt!
   nextPartToTrigger: {fileID: 786192671}
 --- !u!1 &311709011
 GameObject:
@@ -2714,7 +2714,6 @@ MonoBehaviour:
   waitUntilDialogueStart: 0
   loadNextSceneAfterDialogue: 1
   loadNextSceneAfterTimeline: 0
-  backToStartScreen: 0
   playNextDialogueAfterTimelines: 0100000002000000
   playNextTimelineAfterDialogues: 01000000
 --- !u!4 &311884078

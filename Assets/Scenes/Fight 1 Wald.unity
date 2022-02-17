@@ -6862,7 +6862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 99.44501}
+  m_AnchoredPosition: {x: 0, y: 103.41}
   m_SizeDelta: {x: 147.62, y: 46.19}
   m_Pivot: {x: 0.5, y: 0.49999997}
 --- !u!114 &365219665
@@ -6924,7 +6924,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -8536,8 +8536,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Bist du am Zug, kannst du dich entscheiden ob du angreifen oder verteidigen
-    m\xF6chtest.\n\nVerteidigst du, verbrauchst deine Einheit keine Angriffspunkte
-    und erh\xE4lt bis zu ihrem n\xE4chsten Zug 50% weniger Schaden.\n"
+    m\xF6chtest.\n\nVerteidigst du, verbraucht deine Einheit keine Angriffspunkte
+    (AP) und erh\xE4lt bis zu ihrem n\xE4chsten Zug 50% weniger Schaden.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}
   m_sharedMaterial: {fileID: -7634311092574477392, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}
@@ -19644,7 +19644,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Jede Einheit regeneriert einen Teil ihrer AP zu Beginn ihres Zuges.
 
-    Wieviel
+    Wieviele
     AP eine Einheit hat, zeigt der blaue Balken an.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}
@@ -28079,11 +28079,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dein Ziel im Kampf ist es die Lebenspunkte aller Gegner auf 0 zu bringen.
+  m_text: 'Dein Ziel im Kampf ist es, die Lebenspunkte aller Gegner auf 0 zu bringen.
 
 
     Sollten
-    vorher alle Mitglieder deiner Party besiegt werden verlierst du.'
+    vorher alle Mitglieder deiner Party besiegt werden, verlierst du.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}
   m_sharedMaterial: {fileID: -7634311092574477392, guid: 9464d03febb280e4b8d00fe4ea64f2e1, type: 2}

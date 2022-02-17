@@ -19661,7 +19661,7 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4278216447
     sentences:
-    - "Richtig. Ich kenne einen Riss in dieser Wand durch den wir hinein kommen k\xF6nnen."
+    - "Richtig. Ich kenne einen Riss in dieser Wand durch, den wir hineinkommen k\xF6nnen."
   nextPartToTrigger: {fileID: 1313070178}
 --- !u!224 &1416738082
 RectTransform:

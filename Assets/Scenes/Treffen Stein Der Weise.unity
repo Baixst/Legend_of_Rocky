@@ -3457,7 +3457,6 @@ MonoBehaviour:
   waitUntilDialogueStart: 1.5
   loadNextSceneAfterDialogue: 1
   loadNextSceneAfterTimeline: 0
-  backToStartScreen: 0
   playNextDialogueAfterTimelines: 01000000
   playNextTimelineAfterDialogues: 01000000
 --- !u!4 &311884078
@@ -101164,7 +101163,7 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4294901913
     sentences:
-    - "Hallo Rocky. Los hilf mir diese Basaltk\xF6pfe platt zu machen."
+    - "Rocky! Los, hilf mir diese Basaltk\xF6pfe platt zu machen."
   nextPartToTrigger: {fileID: 1649298721}
 --- !u!224 &571121337
 RectTransform:
@@ -101504,7 +101503,7 @@ MonoBehaviour:
       serializedVersion: 2
       rgba: 4294901913
     sentences:
-    - Flieht, ihr Narren! Ich wisst nicht, mit wem ihr euch hier angelegt habt!
+    - Flieht, ihr Narren! Ihr wisst nicht, mit wem ihr euch hier angelegt habt!
   nextPartToTrigger: {fileID: 1307532797}
 --- !u!224 &591799939
 RectTransform:
