@@ -882,7 +882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleUnits:
   - {fileID: 536123054}
-  - {fileID: 1358360389}
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!4 &79424925
 Transform:
@@ -896,7 +896,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 536123055}
-  - {fileID: 324433809}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3473,11 +3472,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &324433809 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2905040175468452354, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-  m_PrefabInstance: {fileID: 952187221}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &337278098
 GameObject:
   m_ObjectHideFlags: 0
@@ -105344,67 +105338,6 @@ Transform:
   m_Father: {fileID: 868927390}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &952187221
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 79424925}
-    m_Modifications:
-    - target: {fileID: 2905040175468452354, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338411, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_Name
-      value: Stein der Weisen
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341611215028338414, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
 --- !u!1 &952278914
 GameObject:
   m_ObjectHideFlags: 0
@@ -110455,17 +110388,6 @@ Transform:
   m_Father: {fileID: 758585416}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1358360389 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2905040175468452352, guid: 6fb0208bb285bd94c85b9c27f1a9b659, type: 3}
-  m_PrefabInstance: {fileID: 952187221}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf22b0840fb33034badcdaf7ecd12e6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1363095505
 GameObject:
   m_ObjectHideFlags: 0

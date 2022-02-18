@@ -11140,7 +11140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 583976888719333987, guid: 0cb2cf9087a8248afab167f813182930, type: 3}
       propertyPath: m_SortingLayer
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 583976888719333987, guid: 0cb2cf9087a8248afab167f813182930, type: 3}
       propertyPath: m_SortingOrder
@@ -11148,7 +11148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 583976888719333987, guid: 0cb2cf9087a8248afab167f813182930, type: 3}
       propertyPath: m_SortingLayerID
-      value: -1923989529
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 583976888719333989, guid: 0cb2cf9087a8248afab167f813182930, type: 3}
       propertyPath: m_Name
@@ -21777,7 +21777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 583976888719333987, guid: 0cb2cf9087a8248afab167f813182930, type: 3}
       propertyPath: m_SortingLayer
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 583976888719333987, guid: 0cb2cf9087a8248afab167f813182930, type: 3}
       propertyPath: m_SortingOrder
@@ -21785,7 +21785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 583976888719333987, guid: 0cb2cf9087a8248afab167f813182930, type: 3}
       propertyPath: m_SortingLayerID
-      value: -1923989529
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 583976888719333989, guid: 0cb2cf9087a8248afab167f813182930, type: 3}
       propertyPath: m_Name
@@ -36342,6 +36342,9 @@ MonoBehaviour:
   transitionTime: 1.5
   music: {fileID: 358457700}
   sound: {fileID: 901965182}
+  saveOnLoad: 0
+  player: {fileID: 0}
+  saveIcon: {fileID: 0}
 --- !u!4 &7360300496399718186
 Transform:
   m_ObjectHideFlags: 0

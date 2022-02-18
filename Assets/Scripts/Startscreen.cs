@@ -12,6 +12,8 @@ public class Startscreen : MonoBehaviour
     public GameObject controlsPanel;
     public GameObject quitPanel;
     public GameObject optionsFirstSelected;
+    public GameObject rocky;
+    public GameObject lucy;
     public Button controlsFirstSelected;
     public Button quitFirstSelected;
     public Slider masterVol, musicVol, soundVol;
@@ -57,6 +59,8 @@ public class Startscreen : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(optionsFirstSelected);
         }
+        rocky.SetActive(false);
+        lucy.SetActive(false);
     }
 
     public void CloseOptionsPanel()
@@ -74,6 +78,8 @@ public class Startscreen : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(controlsFirstSelected.gameObject);
         }
+        rocky.SetActive(false);
+        lucy.SetActive(false);
     }
 
     public void CloseControlsPanel()
@@ -90,6 +96,8 @@ public class Startscreen : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(quitFirstSelected.gameObject);
         }
+        rocky.SetActive(false);
+        lucy.SetActive(false);
     }
 
     public void CloseQuitPanel()
@@ -102,6 +110,8 @@ public class Startscreen : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(mainFirstSelected);
+        rocky.SetActive(true);
+        lucy.SetActive(true);
     }
 
     public void SaveAudioSettings()

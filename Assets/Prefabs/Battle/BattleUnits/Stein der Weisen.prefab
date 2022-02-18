@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf22b0840fb33034badcdaf7ecd12e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
   unitName: Stein der Weisen
   maxHP: 95
   currentHP: 95
@@ -117,7 +116,7 @@ MonoBehaviour:
   - {fileID: 7850197355749694381, guid: 4d8e49e0b7d2e0c4ea05ac50a7eee527, type: 3}
   icon: {fileID: 6577724086024381578, guid: 48897f1d6886ab047b9c267a44a9614d, type: 3}
   menuIcon: {fileID: 6577724086024381578, guid: ce7b2b981fb0f1c4fae3723cc7f87bb1, type: 3}
-  description: 
+  description: "Der \xE4lteste und magischste Stein der Waldsiedlung."
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
   criticalHit: 0

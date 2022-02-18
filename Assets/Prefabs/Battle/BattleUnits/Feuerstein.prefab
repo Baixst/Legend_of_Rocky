@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf22b0840fb33034badcdaf7ecd12e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
   unitName: Fred F.
   maxHP: 110
   currentHP: 110
@@ -117,7 +116,7 @@ MonoBehaviour:
   - {fileID: 4175550404168007115, guid: cc16308e24fe0c24996426dd6dfaf64d, type: 3}
   icon: {fileID: 1807051587209615874, guid: 2347f89539431be49a70157d7be4c69b, type: 3}
   menuIcon: {fileID: 1807051587209615874, guid: 00ab25af8c2ab65488644b64400d6e1c, type: 3}
-  description: 
+  description: "Ein Schmied aus Steinstadt der die Funken fliegen l\xE4sst."
   lastTurnHP: 0
   startPosition: {x: 0, y: 0, z: 0}
   criticalHit: 0

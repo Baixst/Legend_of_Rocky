@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BattleUnit : MonoBehaviour
 {
-    public int level;
     public string unitName;
     public int maxHP;
     public int currentHP;
