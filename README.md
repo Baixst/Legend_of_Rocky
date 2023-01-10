@@ -1,4 +1,6 @@
-# Legend_of_Rocky
+# The Legend of Rocky - 2D Platformer mit rundenbasierten Kampfsystem
+## Studienprojekt für Spieleentwicklung
+
 **Unity Version:** 2020.3.10f1
 
 ---
